@@ -9,12 +9,25 @@ import { OrbitControls } from "@react-three/drei";
 
 const cursor = createRef<Mesh>();
 
-const Box = () => {
+const Boxes = ({ count }: { count: number }) => {
+  const boxes = [];
+  for (let i = 0; i < count; i++) {
+    boxes.push(
+      <Box
+        key={i}
+        position={[Math.random() * 10 - 5, Math.random() * 10 + 5, 0]}
+      />
+    );
+  }
+  return <>{boxes}</>;
+};
+
+const Box = ({ position }: { position: [x: number, y: number, z: number] }) => {
   const colorMap = useLoader(TextureLoader, "logos/javascript.png");
   colorMap.minFilter = LinearFilter;
   colorMap.magFilter = LinearFilter;
 
-  const [ref]: any = useBox(() => ({ mass: 1, position: [0, 5, 0] }));
+  const [ref]: any = useBox(() => ({ mass: 1, position: position }));
 
   return (
     <mesh ref={ref} receiveShadow castShadow>
@@ -101,7 +114,7 @@ export default function Home() {
             />
             <Physics gravity={[0, -9.81, 0]}>
               <Cursor />
-              <Box />
+              <Boxes count={10} />
               <Plane />
             </Physics>
           </Canvas>
