@@ -29,7 +29,7 @@ const Boxes = ({ count }: { count: number }) => {
 };
 
 const Box = ({ position }: { position: [x: number, y: number, z: number] }) => {
-  const colorMap = useLoader(TextureLoader, "logos/javascript.png");
+  const colorMap = useLoader(TextureLoader, "logos/sass.png");
   colorMap.minFilter = LinearFilter;
   colorMap.magFilter = LinearFilter;
 
@@ -38,7 +38,7 @@ const Box = ({ position }: { position: [x: number, y: number, z: number] }) => {
   return (
     <mesh ref={ref} receiveShadow castShadow>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial map={colorMap} metalness={0.9} roughness={0.1} />
+      <meshStandardMaterial map={colorMap} metalness={0.9} roughness={0.7} />
     </mesh>
   );
 };
@@ -123,9 +123,8 @@ export default function Home() {
           >
             <ambientLight intensity={2} />
             <directionalLight
-              color="white"
               position={[0, 1, 1]}
-              intensity={5}
+              intensity={1}
               castShadow
               shadow-mapSize-width={1024}
               shadow-mapSize-height={1024}
