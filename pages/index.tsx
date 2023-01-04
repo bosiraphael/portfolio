@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Suspense } from "react";
 import CubeScene from "../components/CubeScene";
+import LaplandScene from "../components/LaplandScene";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Suspense fallback={null}>
-          <CubeScene></CubeScene>
+          <LaplandScene></LaplandScene>
         </Suspense>
       </main>
     </>
