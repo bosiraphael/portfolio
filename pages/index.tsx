@@ -1,14 +1,31 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import { Physics, useBox } from "@react-three/cannon";
+import { Suspense } from "react";
+import { TextureLoader } from "three/src/loaders/TextureLoader";
+import { LinearFilter } from "three";
 
 const Box = () => {
+  const colorMap = useLoader(TextureLoader, "logos/javascript.png");
+  colorMap.minFilter = LinearFilter;
+  colorMap.magFilter = LinearFilter;
   const [ref] = useBox(() => ({ mass: 1, position: [0, 5, 0] }));
+
   return (
     <mesh ref={ref}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial />
+      <meshStandardMaterial map={colorMap} metalness={0.5} roughness={0.5} />
+    </mesh>
+  );
+};
+
+const Plane = () => {
+  const [ref] = useBox(() => ({ mass: 0, args: [100, 1, 100] }));
+  return (
+    <mesh ref={ref} receiveShadow>
+      <boxGeometry args={[100, 1, 100]} />
+      <meshStandardMaterial color="red" />
     </mesh>
   );
 };
@@ -23,19 +40,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Canvas
-          shadows={true}
-          className={styles.canvas}
-          camera={{
-            position: [1, 1, 1],
-          }}
-        >
-          <ambientLight intensity={0.3} />
-          <directionalLight color="red" position={[0, 0, 5]} intensity={10} />
-          <Physics allowSleep={true} gravity={[0, -9.81, 0]}>
-            <Box />
-          </Physics>
-        </Canvas>
+        <Suspense fallback={null}>
+          <Canvas
+            shadows={true}
+            className={styles.canvas}
+            camera={{
+              position: [5, 5, 5],
+            }}
+          >
+            <ambientLight intensity={0.3} />
+            <directionalLight color="red" position={[0, 0, 5]} intensity={1} />
+            <Physics allowSleep={true} gravity={[0, -9.81, 0]}>
+              <Box />
+              <Plane />
+            </Physics>
+          </Canvas>
+        </Suspense>
       </main>
     </>
   );
