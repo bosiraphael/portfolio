@@ -1,6 +1,17 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
+import { Physics, useBox } from "@react-three/cannon";
+
+const Box = () => {
+  const [ref] = useBox(() => ({ mass: 1, position: [0, 5, 0] }));
+  return (
+    <mesh ref={ref}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial />
+    </mesh>
+  );
+};
 
 export default function Home() {
   return (
@@ -16,15 +27,14 @@ export default function Home() {
           shadows={true}
           className={styles.canvas}
           camera={{
-            position: [10, 10, 10],
+            position: [1, 1, 1],
           }}
         >
-          <ambientLight intensity={1} />
-          <directionalLight color="red" position={[0, 0, 5]} />
-          <mesh recieveShadow={true}>
-            <boxBufferGeometry args={[10, 10, 10]} />
-            <meshStandardMaterial color="white" />
-          </mesh>
+          <ambientLight intensity={0.3} />
+          <directionalLight color="red" position={[0, 0, 5]} intensity={10} />
+          <Physics allowSleep={true} gravity={[0, -9.81, 0]}>
+            <Box />
+          </Physics>
         </Canvas>
       </main>
     </>
