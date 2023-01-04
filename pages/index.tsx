@@ -1,11 +1,13 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Canvas, useLoader } from "@react-three/fiber";
-import { Physics, useBox, usePlane } from "@react-three/cannon";
-import { Suspense } from "react";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Physics, useBox, usePlane, useSphere } from "@react-three/cannon";
+import { createRef, Suspense } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { LinearFilter } from "three";
+import { LinearFilter, Mesh, Vector3 } from "three";
 import { OrbitControls } from "@react-three/drei";
+
+const cursor = createRef<Mesh>();
 
 const Box = () => {
   const colorMap = useLoader(TextureLoader, "logos/javascript.png");
@@ -35,6 +37,36 @@ const Plane = () => {
   );
 };
 
+const Cursor = () => {
+  const size = 0.1;
+  const [ref, api]: any = useSphere(
+    () => ({ args: [size], position: [0, 0, 0], type: "Static" }),
+    cursor
+  );
+
+  useFrame(({ camera, mouse }) => {
+    var vector = new Vector3(mouse.x, mouse.y, 0.5);
+    vector.unproject(camera);
+    var dir = vector.sub(camera.position).normalize();
+    var distance = -camera.position.z / dir.z;
+    var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+
+    api.position.set(pos.x, pos.y, pos.z);
+  });
+
+  return (
+    <mesh ref={ref}>
+      <sphereGeometry args={[size, 32, 32]} />
+      <meshBasicMaterial
+        fog={false}
+        //depthTest={false}
+        transparent
+        opacity={0.8}
+      />
+    </mesh>
+  );
+};
+
 export default function Home() {
   return (
     <>
@@ -50,10 +82,9 @@ export default function Home() {
             shadows={true}
             className={styles.canvas}
             camera={{
-              position: [2, 2, 2],
+              position: [0, 1, 5],
             }}
           >
-            <OrbitControls />
             <ambientLight intensity={0.5} />
             <directionalLight
               color="white"
@@ -68,7 +99,8 @@ export default function Home() {
               shadow-camera-top={10}
               shadow-camera-bottom={-10}
             />
-            <Physics allowSleep={true} gravity={[0, -9.81, 0]}>
+            <Physics gravity={[0, -9.81, 0]}>
+              <Cursor />
               <Box />
               <Plane />
             </Physics>
