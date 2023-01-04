@@ -38,7 +38,7 @@ const Box = ({ position }: { position: [x: number, y: number, z: number] }) => {
   return (
     <mesh ref={ref} receiveShadow castShadow>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial map={colorMap} metalness={0.5} roughness={0.5} />
+      <meshStandardMaterial map={colorMap} metalness={0.9} roughness={0.1} />
     </mesh>
   );
 };
@@ -51,7 +51,7 @@ const Plane = () => {
   return (
     <mesh ref={ref} receiveShadow>
       <planeGeometry args={[100, 100]} />
-      <meshStandardMaterial color="red" />
+      <meshStandardMaterial color="#ffffff" />
     </mesh>
   );
 };
@@ -115,17 +115,17 @@ export default function Home() {
       <main className={styles.main}>
         <Suspense fallback={null}>
           <Canvas
-            shadows={true}
+            shadows
             className={styles.canvas}
             camera={{
               position: [0, 1, 10],
             }}
           >
-            <ambientLight intensity={0.5} />
+            <ambientLight intensity={2} />
             <directionalLight
               color="white"
-              position={[1, 5, -1]}
-              intensity={0.5}
+              position={[0, 1, 1]}
+              intensity={5}
               castShadow
               shadow-mapSize-width={1024}
               shadow-mapSize-height={1024}
