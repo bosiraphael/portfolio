@@ -1,19 +1,21 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { Physics, useBox } from "@react-three/cannon";
+import { Physics, useBox, usePlane } from "@react-three/cannon";
 import { Suspense } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { LinearFilter } from "three";
+import { OrbitControls } from "@react-three/drei";
 
 const Box = () => {
   const colorMap = useLoader(TextureLoader, "logos/javascript.png");
   colorMap.minFilter = LinearFilter;
   colorMap.magFilter = LinearFilter;
-  const [ref] = useBox(() => ({ mass: 1, position: [0, 5, 0] }));
+
+  const [ref]: any = useBox(() => ({ mass: 1, position: [0, 5, 0] }));
 
   return (
-    <mesh ref={ref}>
+    <mesh ref={ref} receiveShadow castShadow>
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial map={colorMap} metalness={0.5} roughness={0.5} />
     </mesh>
@@ -21,10 +23,13 @@ const Box = () => {
 };
 
 const Plane = () => {
-  const [ref] = useBox(() => ({ mass: 0, args: [100, 1, 100] }));
+  const [ref]: any = usePlane(() => ({
+    rotation: [-Math.PI / 2, 0, 0],
+    position: [0, 0, 0],
+  }));
   return (
     <mesh ref={ref} receiveShadow>
-      <boxGeometry args={[100, 1, 100]} />
+      <planeGeometry args={[100, 100]} />
       <meshStandardMaterial color="red" />
     </mesh>
   );
@@ -45,11 +50,24 @@ export default function Home() {
             shadows={true}
             className={styles.canvas}
             camera={{
-              position: [5, 5, 5],
+              position: [2, 2, 2],
             }}
           >
-            <ambientLight intensity={0.3} />
-            <directionalLight color="red" position={[0, 0, 5]} intensity={1} />
+            <OrbitControls />
+            <ambientLight intensity={0.5} />
+            <directionalLight
+              color="white"
+              position={[1, 2, -1]}
+              intensity={0.5}
+              castShadow
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+              shadow-camera-far={50}
+              shadow-camera-left={-10}
+              shadow-camera-right={10}
+              shadow-camera-top={10}
+              shadow-camera-bottom={-10}
+            />
             <Physics allowSleep={true} gravity={[0, -9.81, 0]}>
               <Box />
               <Plane />
