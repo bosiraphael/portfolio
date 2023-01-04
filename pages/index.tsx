@@ -57,7 +57,7 @@ const Plane = () => {
 };
 
 const Cursor = () => {
-  const radius = 0.5;
+  const radius = 0.2;
   const height = 20;
   const [cylinder, cylinderApi]: any = useCylinder(
     () => ({
