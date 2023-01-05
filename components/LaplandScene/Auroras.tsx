@@ -62,8 +62,8 @@ const fragmentShader = `
 
     void main() {
         
-        float noise1 = cnoise(vUv + vec2(0.0, uTime * 0.25));
-        float noise2 = cnoise(vUv - vec2(0.0, uTime * 0.2 + noise1 * 0.02));
+        float noise1 = cnoise(vUv * 2.0 + vec2(0.0, uTime * 0.25));
+        float noise2 = cnoise(vUv * 2.0 - vec2(0.0, uTime * 0.2 + noise1 * 0.02));
 
         float v = vUv.y + noise2 * 0.1;
         v = 1.0 - abs(v * 2.0 - 1.0);
@@ -99,9 +99,9 @@ const Auroras = () => {
       receiveShadow
       castShadow
       rotation={[0, 0, 0]}
-      position={[0, 0, -50]}
+      position={[0, 20, -50]}
     >
-      <planeGeometry args={[100, 100, 100, 100]} />
+      <planeGeometry args={[200, 100, 100, 100]} />
       <shaderMaterial
         fragmentShader={fragmentShader}
         vertexShader={vertexShader}

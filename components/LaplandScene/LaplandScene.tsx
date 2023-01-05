@@ -26,9 +26,9 @@ export default function LaplandScene({}: Props) {
     guiHillsXOffset: dat.GUIController,
     guiHillsYOffset: dat.GUIController;
   const [debugObject, setDebugObject] = useState({
-    hillsXScale: 10,
-    hillsYScale: 10,
-    hillsZScale: 1,
+    hillsXScale: 16,
+    hillsYScale: 14,
+    hillsZScale: 1.8,
     hillsXOffset: 0,
     hillsYOffset: 0,
   });
@@ -81,7 +81,7 @@ export default function LaplandScene({}: Props) {
       <ambientLight intensity={0.1} />
       <directionalLight
         position={[0, 1, 1]}
-        intensity={1}
+        intensity={0.5}
         castShadow
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
@@ -91,14 +91,14 @@ export default function LaplandScene({}: Props) {
         shadow-camera-top={10}
         shadow-camera-bottom={-10}
       />
-      {/* <Hills
+      <Hills
         hillsRef={hillsRef}
         hillsXScale={debugObject.hillsXScale}
         hillsYScale={debugObject.hillsYScale}
         hillsZScale={debugObject.hillsZScale}
         hillsXOffset={debugObject.hillsXOffset}
         hillsYOffset={debugObject.hillsYOffset}
-      /> */}
+      />
       <Auroras />
     </Canvas>
   );
