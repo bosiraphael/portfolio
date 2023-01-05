@@ -6,6 +6,7 @@ import { OrbitControls } from "@react-three/drei";
 import * as dat from "dat.gui";
 import Hills from "./Hills";
 import Auroras from "./Auroras";
+import Snow from "./Snow";
 
 const gui = new dat.GUI();
 
@@ -100,6 +101,7 @@ export default function LaplandScene({}: Props) {
         hillsYOffset={debugObject.hillsYOffset}
       />
       <Auroras />
+      <Snow />
     </Canvas>
   );
 }
