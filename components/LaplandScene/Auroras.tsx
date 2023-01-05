@@ -64,7 +64,7 @@ const fragmentShader = `
     void main() {
         
         float noise1 = cnoise(vUv * 2.0 + vec2(0.0, uTime * 0.25));
-        float noise2 = cnoise(vUv * 2.0 - vec2(0.0, uTime * 0.2 + noise1 * 0.02 + (1.0 / (distance(vUv, uCursorPos) + 1.0)) * 2.0));
+        float noise2 = cnoise(vUv * 2.0 - vec2(0.0, uTime * 0.2 + noise1 * 0.02 + (1.0 / (distance(vUv, uCursorPos) )) * 2.0));
 
         float v = vUv.y + noise2 * 0.1;
         v = 1.0 - abs(v * 2.0 - 1.0);
@@ -91,17 +91,18 @@ const Auroras = () => {
 
   useFrame(({ camera, mouse }) => {
     if (!auroraRef.current) return;
-    var vector = new Vector3(mouse.x, mouse.y, 0);
+    let vector = new Vector3(mouse.x, mouse.y, 0);
     vector.unproject(camera);
-    var dir = vector.sub(camera.position).normalize();
-    var distance = -camera.position.z / dir.z;
-    var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+    let dir = vector.sub(camera.position).normalize();
+    let distance = -(camera.position.z + 50) / dir.z;
+    let pos = camera.position.clone().add(dir.multiplyScalar(distance));
 
     const material = auroraRef.current.material as any;
     material.uniforms.uCursorPos.value = new Vector2(
       pos.x / 200 + 0.5,
       pos.y / 100 + 0.5
     );
+    console.log(pos);
   });
 
   return (
@@ -110,7 +111,7 @@ const Auroras = () => {
       receiveShadow
       castShadow
       rotation={[0, 0, 0]}
-      position={[0, 0, 0]}
+      position={[0, 0, -50]}
     >
       <planeGeometry args={[200, 100, 100, 100]} />
       <shaderMaterial
