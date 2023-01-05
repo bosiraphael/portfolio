@@ -1,17 +1,11 @@
 import { Canvas, useThree } from "@react-three/fiber";
-import styles from "../styles/Home.module.css";
-import React, { createRef, useEffect, useState } from "react";
-import {
-  BufferAttribute,
-  BufferGeometry,
-  Color,
-  Mesh,
-  PlaneGeometry,
-} from "three";
+import styles from "../../styles/Home.module.css";
+import { createRef, useEffect, useState } from "react";
+import { Color, Mesh } from "three";
 import { OrbitControls } from "@react-three/drei";
-import { createNoise2D } from "simplex-noise";
-import alea from "alea";
 import * as dat from "dat.gui";
+import Hills from "./Hills";
+import Auroras from "./Auroras";
 
 const gui = new dat.GUI();
 
@@ -22,55 +16,6 @@ const Scene = () => {
 };
 
 const hillsRef = createRef<Mesh>();
-
-const Hills = ({
-  hillsXScale,
-  hillsYScale,
-  hillsZScale,
-  hillsXOffset,
-  hillsYOffset,
-}: {
-  hillsXScale: number;
-  hillsYScale: number;
-  hillsZScale: number;
-  hillsXOffset: number;
-  hillsYOffset: number;
-}) => {
-  useEffect(() => {
-    const simplex = createNoise2D(alea("hello"));
-    const hillsGeometry = hillsRef.current?.geometry;
-
-    const position = hillsGeometry?.attributes?.position;
-    if (!position) return;
-
-    for (let i = 0; i < position.count; i++) {
-      const x = position.getX(i);
-      const y = position.getY(i);
-      const noise =
-        simplex(
-          (x + hillsXOffset) / hillsXScale,
-          (y + hillsYOffset) / hillsYScale
-        ) * hillsZScale;
-      position.setZ(i, noise);
-    }
-
-    position.needsUpdate = true;
-    hillsGeometry.computeVertexNormals();
-  }, [hillsXScale, hillsYScale, hillsZScale, hillsXOffset, hillsYOffset]);
-
-  return (
-    <mesh
-      ref={hillsRef}
-      receiveShadow
-      castShadow
-      rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, -1, 0]}
-    >
-      <planeGeometry args={[10, 10, 100, 100]} />
-      <meshStandardMaterial color="white" />
-    </mesh>
-  );
-};
 
 type Props = {};
 
@@ -89,17 +34,17 @@ export default function LaplandScene({}: Props) {
   });
   useEffect(() => {
     guiHillsXScale = gui
-      .add(debugObject, "hillsXScale", 0, 10)
+      .add(debugObject, "hillsXScale", 0, 20)
       .onChange((value) => {
         setDebugObject({ ...debugObject, hillsXScale: value });
       });
     guiHillsYScale = gui
-      .add(debugObject, "hillsYScale", 0, 10)
+      .add(debugObject, "hillsYScale", 0, 20)
       .onChange((value) => {
         setDebugObject({ ...debugObject, hillsYScale: value });
       });
     guiHillsZScale = gui
-      .add(debugObject, "hillsZScale", 0, 10)
+      .add(debugObject, "hillsZScale", 0, 5)
       .onChange((value) => {
         setDebugObject({ ...debugObject, hillsZScale: value });
       });
@@ -146,13 +91,15 @@ export default function LaplandScene({}: Props) {
         shadow-camera-top={10}
         shadow-camera-bottom={-10}
       />
-      <Hills
+      {/* <Hills
+        hillsRef={hillsRef}
         hillsXScale={debugObject.hillsXScale}
         hillsYScale={debugObject.hillsYScale}
         hillsZScale={debugObject.hillsZScale}
         hillsXOffset={debugObject.hillsXOffset}
         hillsYOffset={debugObject.hillsYOffset}
-      />
+      /> */}
+      <Auroras />
     </Canvas>
   );
 }

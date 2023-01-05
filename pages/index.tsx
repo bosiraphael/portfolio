@@ -5,9 +5,12 @@ import CubeScene from "../components/CubeScene";
 import dynamic from "next/dynamic";
 
 export default function Home() {
-  const LaplandScene = dynamic(() => import("../components/LaplandScene"), {
-    ssr: false,
-  });
+  const LaplandScene = dynamic(
+    () => import("../components/LaplandScene/LaplandScene"),
+    {
+      ssr: false,
+    }
+  );
   return (
     <>
       <Head>
