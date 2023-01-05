@@ -26,7 +26,7 @@ export default function SnowParticles() {
     if (!positions) return;
     for (let i = 0; i < positions.length; i += 3) {
       positions[i + 1] -= 0.02;
-      if (positions[i + 1] < -10) {
+      if (positions[i + 1] < 0) {
         positions[i + 1] = 10 + Math.random() * 10;
       }
     }
