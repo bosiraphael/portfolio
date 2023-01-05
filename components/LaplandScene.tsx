@@ -27,10 +27,14 @@ const Hills = ({
   hillsXScale,
   hillsYScale,
   hillsZScale,
+  hillsXOffset,
+  hillsYOffset,
 }: {
   hillsXScale: number;
   hillsYScale: number;
   hillsZScale: number;
+  hillsXOffset: number;
+  hillsYOffset: number;
 }) => {
   useEffect(() => {
     const simplex = createNoise2D(alea("hello"));
@@ -42,14 +46,17 @@ const Hills = ({
     for (let i = 0; i < position.count; i++) {
       const x = position.getX(i);
       const y = position.getY(i);
-      const z = position.getZ(i);
-      const noise = simplex(x * hillsXScale, y * hillsYScale) * hillsZScale;
+      const noise =
+        simplex(
+          (x + hillsXOffset) / hillsXScale,
+          (y + hillsYOffset) / hillsYScale
+        ) * hillsZScale;
       position.setZ(i, noise);
     }
 
     position.needsUpdate = true;
     hillsGeometry.computeVertexNormals();
-  }, [hillsXScale, hillsYScale, hillsZScale]);
+  }, [hillsXScale, hillsYScale, hillsZScale, hillsXOffset, hillsYOffset]);
 
   return (
     <mesh
@@ -70,33 +77,49 @@ type Props = {};
 export default function LaplandScene({}: Props) {
   let guiHillsXScale: dat.GUIController,
     guiHillsYScale: dat.GUIController,
-    guiHillsZScale: dat.GUIController;
+    guiHillsZScale: dat.GUIController,
+    guiHillsXOffset: dat.GUIController,
+    guiHillsYOffset: dat.GUIController;
   const [debugObject, setDebugObject] = useState({
-    hillsXScale: 0.1,
-    hillsYScale: 0.1,
-    hillsZScale: 0.1,
+    hillsXScale: 10,
+    hillsYScale: 10,
+    hillsZScale: 1,
+    hillsXOffset: 0,
+    hillsYOffset: 0,
   });
   useEffect(() => {
     guiHillsXScale = gui
-      .add(debugObject, "hillsXScale", 0, 1)
+      .add(debugObject, "hillsXScale", 0, 10)
       .onChange((value) => {
         setDebugObject({ ...debugObject, hillsXScale: value });
       });
     guiHillsYScale = gui
-      .add(debugObject, "hillsYScale", 0, 1)
+      .add(debugObject, "hillsYScale", 0, 10)
       .onChange((value) => {
         setDebugObject({ ...debugObject, hillsYScale: value });
       });
     guiHillsZScale = gui
-      .add(debugObject, "hillsZScale", 0, 1)
+      .add(debugObject, "hillsZScale", 0, 10)
       .onChange((value) => {
         setDebugObject({ ...debugObject, hillsZScale: value });
+      });
+    guiHillsXOffset = gui
+      .add(debugObject, "hillsXOffset", -100, 100)
+      .onChange((value) => {
+        setDebugObject({ ...debugObject, hillsXOffset: value });
+      });
+    guiHillsYOffset = gui
+      .add(debugObject, "hillsYOffset", -100, 100)
+      .onChange((value) => {
+        setDebugObject({ ...debugObject, hillsYOffset: value });
       });
 
     return () => {
       gui.remove(guiHillsXScale);
       gui.remove(guiHillsYScale);
       gui.remove(guiHillsZScale);
+      gui.remove(guiHillsXOffset);
+      gui.remove(guiHillsYOffset);
     };
   }, []);
 
@@ -127,6 +150,8 @@ export default function LaplandScene({}: Props) {
         hillsXScale={debugObject.hillsXScale}
         hillsYScale={debugObject.hillsYScale}
         hillsZScale={debugObject.hillsZScale}
+        hillsXOffset={debugObject.hillsXOffset}
+        hillsYOffset={debugObject.hillsYOffset}
       />
     </Canvas>
   );
