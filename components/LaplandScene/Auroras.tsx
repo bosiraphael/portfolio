@@ -1,6 +1,6 @@
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { createRef } from "react";
-import { Mesh, TextureLoader } from "three";
+import { Mesh, TextureLoader, Vector2, Vector3 } from "three";
 
 const vertexShader = `
     varying vec2 vUv;
@@ -17,6 +17,7 @@ const fragmentShader = `
     uniform float uAmplitude;
     uniform sampler2D uChannel0;
     uniform sampler2D uChannel1;
+    uniform vec2 uCursorPos;
 
     varying vec2 vUv;
 
@@ -63,7 +64,7 @@ const fragmentShader = `
     void main() {
         
         float noise1 = cnoise(vUv * 2.0 + vec2(0.0, uTime * 0.25));
-        float noise2 = cnoise(vUv * 2.0 - vec2(0.0, uTime * 0.2 + noise1 * 0.02));
+        float noise2 = cnoise(vUv * 2.0 - vec2(0.0, uTime * 0.2 + noise1 * 0.02 + (1.0 / (distance(vUv, uCursorPos) + 1.0)) * 2.0));
 
         float v = vUv.y + noise2 * 0.1;
         v = 1.0 - abs(v * 2.0 - 1.0);
@@ -82,15 +83,25 @@ const fragmentShader = `
 const Auroras = () => {
   const auroraRef = createRef<Mesh>();
 
-  // Load textures for the shader
-  const channel0Texture = useLoader(TextureLoader, "textures/noiseTexture.png");
-  const channel1Texture = useLoader(TextureLoader, "textures/noiseTexture.png");
-
   useFrame(({ clock }) => {
     if (!auroraRef.current) return;
     const material = auroraRef.current.material as any;
     material.uniforms.uTime.value = clock.getElapsedTime();
-    //console.log(material.uniforms.uTime.value);
+  });
+
+  useFrame(({ camera, mouse }) => {
+    if (!auroraRef.current) return;
+    var vector = new Vector3(mouse.x, mouse.y, 0);
+    vector.unproject(camera);
+    var dir = vector.sub(camera.position).normalize();
+    var distance = -camera.position.z / dir.z;
+    var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+
+    const material = auroraRef.current.material as any;
+    material.uniforms.uCursorPos.value = new Vector2(
+      pos.x / 200 + 0.5,
+      pos.y / 100 + 0.5
+    );
   });
 
   return (
@@ -99,7 +110,7 @@ const Auroras = () => {
       receiveShadow
       castShadow
       rotation={[0, 0, 0]}
-      position={[0, 20, -50]}
+      position={[0, 0, 0]}
     >
       <planeGeometry args={[200, 100, 100, 100]} />
       <shaderMaterial
@@ -108,8 +119,7 @@ const Auroras = () => {
         uniforms={{
           uTime: { value: 0 },
           uAmplitude: { value: 0.5 },
-          uChannel0: { value: channel0Texture },
-          uChannel1: { value: channel1Texture },
+          uCursorPos: { value: new Vector2(0, 0) },
         }}
       />
     </mesh>

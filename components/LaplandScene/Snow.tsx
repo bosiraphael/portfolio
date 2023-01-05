@@ -22,7 +22,7 @@ export default function SnowParticles() {
   }, []);
 
   useFrame(() => {
-    const positions = points.current?.geometry.attributes.position.array;
+    const positions = points.current?.geometry.attributes.position?.array;
     if (!positions) return;
     for (let i = 0; i < positions.length; i += 3) {
       positions[i + 1] -= 0.02;
