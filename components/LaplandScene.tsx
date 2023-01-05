@@ -1,6 +1,6 @@
 import { Canvas, useThree } from "@react-three/fiber";
 import styles from "../styles/Home.module.css";
-import React, { createRef, useEffect } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import {
   BufferAttribute,
   BufferGeometry,
@@ -11,6 +11,9 @@ import {
 import { OrbitControls } from "@react-three/drei";
 import { createNoise2D } from "simplex-noise";
 import alea from "alea";
+import * as dat from "dat.gui";
+
+const gui = new dat.GUI();
 
 const Scene = () => {
   const { scene } = useThree();
@@ -20,10 +23,17 @@ const Scene = () => {
 
 const hillsRef = createRef<Mesh>();
 
-const Hills = () => {
+const Hills = ({
+  hillsXScale,
+  hillsYScale,
+  hillsZScale,
+}: {
+  hillsXScale: number;
+  hillsYScale: number;
+  hillsZScale: number;
+}) => {
   useEffect(() => {
     const simplex = createNoise2D(alea("hello"));
-
     const hillsGeometry = hillsRef.current?.geometry;
 
     const position = hillsGeometry?.attributes?.position;
@@ -33,13 +43,13 @@ const Hills = () => {
       const x = position.getX(i);
       const y = position.getY(i);
       const z = position.getZ(i);
-      const noise = simplex(x, y);
-      position.setZ(i, z + noise);
+      const noise = simplex(x * hillsXScale, y * hillsYScale) * hillsZScale;
+      position.setZ(i, noise);
     }
 
     position.needsUpdate = true;
     hillsGeometry.computeVertexNormals();
-  }, []);
+  }, [hillsXScale, hillsYScale, hillsZScale]);
 
   return (
     <mesh
@@ -58,6 +68,38 @@ const Hills = () => {
 type Props = {};
 
 export default function LaplandScene({}: Props) {
+  let guiHillsXScale: dat.GUIController,
+    guiHillsYScale: dat.GUIController,
+    guiHillsZScale: dat.GUIController;
+  const [debugObject, setDebugObject] = useState({
+    hillsXScale: 0.1,
+    hillsYScale: 0.1,
+    hillsZScale: 0.1,
+  });
+  useEffect(() => {
+    guiHillsXScale = gui
+      .add(debugObject, "hillsXScale", 0, 1)
+      .onChange((value) => {
+        setDebugObject({ ...debugObject, hillsXScale: value });
+      });
+    guiHillsYScale = gui
+      .add(debugObject, "hillsYScale", 0, 1)
+      .onChange((value) => {
+        setDebugObject({ ...debugObject, hillsYScale: value });
+      });
+    guiHillsZScale = gui
+      .add(debugObject, "hillsZScale", 0, 1)
+      .onChange((value) => {
+        setDebugObject({ ...debugObject, hillsZScale: value });
+      });
+
+    return () => {
+      gui.remove(guiHillsXScale);
+      gui.remove(guiHillsYScale);
+      gui.remove(guiHillsZScale);
+    };
+  }, []);
+
   return (
     <Canvas
       shadows
@@ -68,7 +110,7 @@ export default function LaplandScene({}: Props) {
     >
       <Scene />
       <OrbitControls />
-      <ambientLight intensity={2} />
+      <ambientLight intensity={0.1} />
       <directionalLight
         position={[0, 1, 1]}
         intensity={1}
@@ -81,7 +123,11 @@ export default function LaplandScene({}: Props) {
         shadow-camera-top={10}
         shadow-camera-bottom={-10}
       />
-      <Hills />
+      <Hills
+        hillsXScale={debugObject.hillsXScale}
+        hillsYScale={debugObject.hillsYScale}
+        hillsZScale={debugObject.hillsZScale}
+      />
     </Canvas>
   );
 }

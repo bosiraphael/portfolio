@@ -2,9 +2,12 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Suspense } from "react";
 import CubeScene from "../components/CubeScene";
-import LaplandScene from "../components/LaplandScene";
+import dynamic from "next/dynamic";
 
 export default function Home() {
+  const LaplandScene = dynamic(() => import("../components/LaplandScene"), {
+    ssr: false,
+  });
   return (
     <>
       <Head>
