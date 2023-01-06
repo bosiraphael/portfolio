@@ -7,6 +7,7 @@ import * as dat from "dat.gui";
 import Hills from "./Hills";
 import Auroras from "./Auroras";
 import Snow from "./Snow";
+import Tree from "./Tree";
 
 const gui = new dat.GUI();
 
@@ -102,6 +103,7 @@ export default function LaplandScene({}: Props) {
       />
       <Auroras planeArgs={[200, 100, 100, 100]} position={[0, 20, -50]} />
       <Snow />
+      <Tree />
     </Canvas>
   );
 }
