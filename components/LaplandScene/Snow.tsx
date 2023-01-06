@@ -54,6 +54,7 @@ export default function SnowParticles() {
         sizeAttenuation
         alphaMap={alphaMap}
         transparent
+        alphaToCoverage
       />
     </points>
   );
