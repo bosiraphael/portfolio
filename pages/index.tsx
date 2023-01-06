@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Raphaël Bosi&aposs Portfolio</title>
+        <title>Raphaël Bosi&apos;s Portfolio</title>
         <meta name="description" content="Raphaël Bosi's Portfolio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
