@@ -1,6 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
-const Trees = () => {
+const Trees = ({ hillsHeight }) => {
   const gltf = useGLTF("/models/spruce.glb");
 
   gltf.scene.traverse((child) => {
@@ -25,7 +25,7 @@ const Trees = () => {
     const tree = gltf.scene.clone();
     tree.position.x = (Math.random() - 0.5) * 10;
     tree.position.z = -Math.random() * 20 + 7;
-    tree.position.y = 0;
+    tree.position.y = hillsHeight(tree.position.x, -tree.position.z);
 
     const randomScale = 0.5 + Math.random() * 0.5;
     tree.scale.set(randomScale, randomScale, randomScale);

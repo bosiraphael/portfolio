@@ -104,6 +104,7 @@ export default function LaplandScene({}: Props) {
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
         shadow-camera-far={50}
+        shadow-camera-near={0.1}
         shadow-camera-left={-10}
         shadow-camera-right={10}
         shadow-camera-top={10}
@@ -112,8 +113,8 @@ export default function LaplandScene({}: Props) {
       <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
       <Auroras planeArgs={[200, 100, 100, 100]} position={[0, 20, -50]} />
       <Snow />
-      <Tree />
-      <Forest />
+      <Tree hillsHeight={hillsHeight} />
+      <Forest hillsHeight={hillsHeight} />
     </Canvas>
   );
 }
