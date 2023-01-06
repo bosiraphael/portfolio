@@ -21,7 +21,7 @@ const Trees = () => {
 
   // Create multiple trees
   const trees = [];
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 10; i++) {
     const tree = gltf.scene.clone();
     tree.position.x = (Math.random() - 0.5) * 10;
     tree.position.z = -Math.random() * 20 + 7;

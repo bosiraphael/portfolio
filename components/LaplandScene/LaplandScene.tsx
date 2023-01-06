@@ -8,6 +8,9 @@ import Hills from "./Hills";
 import Auroras from "./Auroras";
 import Snow from "./Snow";
 import Tree from "./Tree";
+import Forest from "./Forest";
+import { createNoise2D } from "simplex-noise";
+import alea from "alea";
 
 const gui = new dat.GUI();
 
@@ -27,6 +30,7 @@ export default function LaplandScene({}: Props) {
     guiHillsZScale: dat.GUIController,
     guiHillsXOffset: dat.GUIController,
     guiHillsYOffset: dat.GUIController;
+
   const [debugObject, setDebugObject] = useState({
     hillsXScale: 16,
     hillsYScale: 14,
@@ -34,6 +38,18 @@ export default function LaplandScene({}: Props) {
     hillsXOffset: 0,
     hillsYOffset: 0,
   });
+
+  const hillsHeight = (x: any, y: any) => {
+    const simplex = createNoise2D(alea("hello"));
+
+    return (
+      simplex(
+        (x + debugObject.hillsXOffset) / debugObject.hillsXScale,
+        (y + debugObject.hillsYOffset) / debugObject.hillsYScale
+      ) * debugObject.hillsZScale
+    );
+  };
+
   useEffect(() => {
     guiHillsXScale = gui
       .add(debugObject, "hillsXScale", 0, 20)
@@ -93,17 +109,11 @@ export default function LaplandScene({}: Props) {
         shadow-camera-top={10}
         shadow-camera-bottom={-10}
       />
-      <Hills
-        hillsRef={hillsRef}
-        hillsXScale={debugObject.hillsXScale}
-        hillsYScale={debugObject.hillsYScale}
-        hillsZScale={debugObject.hillsZScale}
-        hillsXOffset={debugObject.hillsXOffset}
-        hillsYOffset={debugObject.hillsYOffset}
-      />
+      <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
       <Auroras planeArgs={[200, 100, 100, 100]} position={[0, 20, -50]} />
       <Snow />
       <Tree />
+      <Forest />
     </Canvas>
   );
 }

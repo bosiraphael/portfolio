@@ -5,21 +5,12 @@ import { Mesh } from "three";
 
 const Hills = ({
   hillsRef,
-  hillsXScale,
-  hillsYScale,
-  hillsZScale,
-  hillsXOffset,
-  hillsYOffset,
+  hillsHeight,
 }: {
   hillsRef: React.RefObject<Mesh>;
-  hillsXScale: number;
-  hillsYScale: number;
-  hillsZScale: number;
-  hillsXOffset: number;
-  hillsYOffset: number;
+  hillsHeight: (x: any, y: any) => number;
 }) => {
   useEffect(() => {
-    const simplex = createNoise2D(alea("hello"));
     const hillsGeometry = hillsRef.current?.geometry;
 
     const position = hillsGeometry?.attributes?.position;
@@ -28,17 +19,13 @@ const Hills = ({
     for (let i = 0; i < position.count; i++) {
       const x = position.getX(i);
       const y = position.getY(i);
-      const noise =
-        simplex(
-          (x + hillsXOffset) / hillsXScale,
-          (y + hillsYOffset) / hillsYScale
-        ) * hillsZScale;
+      const noise = hillsHeight(x, y);
       position.setZ(i, noise);
     }
 
     position.needsUpdate = true;
     hillsGeometry.computeVertexNormals();
-  }, [hillsXScale, hillsYScale, hillsZScale, hillsXOffset, hillsYOffset]);
+  }, [hillsHeight]);
 
   return (
     <mesh
