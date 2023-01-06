@@ -80,7 +80,13 @@ const fragmentShader = `
     }
 `;
 
-const Auroras = () => {
+const Auroras = ({
+  planeArgs,
+  position,
+}: {
+  planeArgs: [number, number, number, number];
+  position: [number, number, number];
+}) => {
   const auroraRef = createRef<Mesh>();
 
   useFrame(({ clock }) => {
@@ -94,13 +100,13 @@ const Auroras = () => {
     let vector = new Vector3(mouse.x, mouse.y, 0);
     vector.unproject(camera);
     let dir = vector.sub(camera.position).normalize();
-    let distance = -(camera.position.z + 50) / dir.z;
+    let distance = -(camera.position.z - position[2]) / dir.z;
     let pos = camera.position.clone().add(dir.multiplyScalar(distance));
 
     const material = auroraRef.current.material as any;
     material.uniforms.uCursorPos.value = new Vector2(
       pos.x / 200 + 0.5,
-      pos.y / 100 + 0.5
+      (pos.y - position[1]) / 100 + 0.5
     );
     console.log(pos);
   });
@@ -111,9 +117,9 @@ const Auroras = () => {
       receiveShadow
       castShadow
       rotation={[0, 0, 0]}
-      position={[0, 0, -50]}
+      position={position}
     >
-      <planeGeometry args={[200, 100, 100, 100]} />
+      <planeGeometry args={planeArgs} />
       <shaderMaterial
         fragmentShader={fragmentShader}
         vertexShader={vertexShader}

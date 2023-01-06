@@ -100,7 +100,7 @@ export default function LaplandScene({}: Props) {
         hillsXOffset={debugObject.hillsXOffset}
         hillsYOffset={debugObject.hillsYOffset}
       />
-      <Auroras />
+      <Auroras planeArgs={[200, 100, 100, 100]} position={[0, 20, -50]} />
       <Snow />
     </Canvas>
   );
