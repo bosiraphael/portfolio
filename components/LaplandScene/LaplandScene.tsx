@@ -11,6 +11,7 @@ import Tree from "./Tree";
 import Forest from "./Forest";
 import { createNoise2D } from "simplex-noise";
 import alea from "alea";
+import Moose from "./Moose";
 
 const gui = new dat.GUI();
 
@@ -115,6 +116,7 @@ export default function LaplandScene({}: Props) {
       <Snow />
       <Tree hillsHeight={hillsHeight} />
       <Forest hillsHeight={hillsHeight} />
+      <Moose hillsHeight={hillsHeight} />
     </Canvas>
   );
 }

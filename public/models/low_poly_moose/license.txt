@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low Poly Moose
+* source:	https://sketchfab.com/3d-models/low-poly-moose-ad0d58f8668f43d5b362d529371a7f6d
+* author:	Nioma van der Steen (https://sketchfab.com/fromthestone)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low Poly Moose" (https://sketchfab.com/3d-models/low-poly-moose-ad0d58f8668f43d5b362d529371a7f6d) by Nioma van der Steen (https://sketchfab.com/fromthestone) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
