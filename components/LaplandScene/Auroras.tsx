@@ -64,7 +64,7 @@ const fragmentShader = `
     void main() {
         
         float noise1 = cnoise(vUv * 2.0 + vec2(0.0, uTime * 0.25));
-        float noise2 = cnoise(vUv * 2.0 - vec2(0.0, uTime * 0.2 + noise1 * 0.02 + (1.0 / (distance(vUv, uCursorPos) )) * 2.0));
+        float noise2 = cnoise(vUv * 2.0 - vec2(0.0, uTime * 0.2 + noise1 * 0.02 + exp(- pow(distance(vUv, uCursorPos), 2.0) / 0.01) * 0.2 ));
 
         float v = vUv.y + noise2 * 0.1;
         v = 1.0 - abs(v * 2.0 - 1.0);
@@ -108,7 +108,6 @@ const Auroras = ({
       pos.x / 200 + 0.5,
       (pos.y - position[1]) / 100 + 0.5
     );
-    console.log(pos);
   });
 
   return (
