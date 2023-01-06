@@ -1,6 +1,4 @@
-import alea from "alea";
 import { useEffect } from "react";
-import { createNoise2D } from "simplex-noise";
 import { Mesh } from "three";
 
 const Hills = ({
@@ -25,7 +23,7 @@ const Hills = ({
 
     position.needsUpdate = true;
     hillsGeometry.computeVertexNormals();
-  }, [hillsHeight]);
+  }, [hillsHeight, hillsRef]);
 
   return (
     <mesh

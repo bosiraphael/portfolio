@@ -7,7 +7,7 @@ import { Color, Mesh } from "three";
 import Hills from "./Hills";
 import Auroras from "./Auroras";
 import Snow from "./Snow";
-import Tree from "./Tree";
+import Trees from "./Trees";
 import Forest from "./Forest";
 import { createNoise2D } from "simplex-noise";
 import alea from "alea";
@@ -114,7 +114,7 @@ export default function LaplandScene({}: Props) {
       <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
       <Auroras planeArgs={[200, 100, 100, 100]} position={[0, 20, -50]} />
       <Snow />
-      <Tree hillsHeight={hillsHeight} />
+      <Trees hillsHeight={hillsHeight} />
       <Forest hillsHeight={hillsHeight} />
       <Moose hillsHeight={hillsHeight} />
     </Canvas>

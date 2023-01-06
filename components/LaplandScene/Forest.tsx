@@ -8,7 +8,7 @@ const Forest = ({
   hillsHeight: (x: any, y: any) => number;
 }) => {
   const points = useRef() as any;
-  const treeTexture = useLoader(TextureLoader, "/textures/tree3.png") as any;
+  const treeTexture = useLoader(TextureLoader, "/textures/tree.png") as any;
   const treeAlphaMap = useLoader(
     TextureLoader,
     "/textures/tree-alpha.png"
@@ -33,7 +33,7 @@ const Forest = ({
       "position",
       new BufferAttribute(positions, 3)
     );
-  }, []);
+  }, [hillsHeight]);
 
   return (
     <points ref={points}>
