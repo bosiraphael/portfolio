@@ -2,8 +2,8 @@ import { Canvas, useThree } from "@react-three/fiber";
 import styles from "../../styles/Home.module.css";
 import { createRef, useEffect, useState } from "react";
 import { Color, Mesh } from "three";
-import { OrbitControls } from "@react-three/drei";
-import * as dat from "dat.gui";
+// import { OrbitControls } from "@react-three/drei";
+// import * as dat from "dat.gui";
 import Hills from "./Hills";
 import Auroras from "./Auroras";
 import Snow from "./Snow";
@@ -13,7 +13,7 @@ import { createNoise2D } from "simplex-noise";
 import alea from "alea";
 import Moose from "./Moose";
 
-const gui = new dat.GUI();
+//const gui = new dat.GUI();
 
 const Scene = () => {
   const { scene } = useThree();
@@ -26,11 +26,11 @@ const hillsRef = createRef<Mesh>();
 type Props = {};
 
 export default function LaplandScene({}: Props) {
-  let guiHillsXScale: dat.GUIController,
-    guiHillsYScale: dat.GUIController,
-    guiHillsZScale: dat.GUIController,
-    guiHillsXOffset: dat.GUIController,
-    guiHillsYOffset: dat.GUIController;
+  // let guiHillsXScale: dat.GUIController,
+  //   guiHillsYScale: dat.GUIController,
+  //   guiHillsZScale: dat.GUIController,
+  //   guiHillsXOffset: dat.GUIController,
+  //   guiHillsYOffset: dat.GUIController;
 
   const [debugObject, setDebugObject] = useState({
     hillsXScale: 16,
@@ -51,41 +51,41 @@ export default function LaplandScene({}: Props) {
     );
   };
 
-  useEffect(() => {
-    guiHillsXScale = gui
-      .add(debugObject, "hillsXScale", 0, 20)
-      .onChange((value) => {
-        setDebugObject({ ...debugObject, hillsXScale: value });
-      });
-    guiHillsYScale = gui
-      .add(debugObject, "hillsYScale", 0, 20)
-      .onChange((value) => {
-        setDebugObject({ ...debugObject, hillsYScale: value });
-      });
-    guiHillsZScale = gui
-      .add(debugObject, "hillsZScale", 0, 5)
-      .onChange((value) => {
-        setDebugObject({ ...debugObject, hillsZScale: value });
-      });
-    guiHillsXOffset = gui
-      .add(debugObject, "hillsXOffset", -100, 100)
-      .onChange((value) => {
-        setDebugObject({ ...debugObject, hillsXOffset: value });
-      });
-    guiHillsYOffset = gui
-      .add(debugObject, "hillsYOffset", -100, 100)
-      .onChange((value) => {
-        setDebugObject({ ...debugObject, hillsYOffset: value });
-      });
+  // useEffect(() => {
+  //   guiHillsXScale = gui
+  //     .add(debugObject, "hillsXScale", 0, 20)
+  //     .onChange((value) => {
+  //       setDebugObject({ ...debugObject, hillsXScale: value });
+  //     });
+  //   guiHillsYScale = gui
+  //     .add(debugObject, "hillsYScale", 0, 20)
+  //     .onChange((value) => {
+  //       setDebugObject({ ...debugObject, hillsYScale: value });
+  //     });
+  //   guiHillsZScale = gui
+  //     .add(debugObject, "hillsZScale", 0, 5)
+  //     .onChange((value) => {
+  //       setDebugObject({ ...debugObject, hillsZScale: value });
+  //     });
+  //   guiHillsXOffset = gui
+  //     .add(debugObject, "hillsXOffset", -100, 100)
+  //     .onChange((value) => {
+  //       setDebugObject({ ...debugObject, hillsXOffset: value });
+  //     });
+  //   guiHillsYOffset = gui
+  //     .add(debugObject, "hillsYOffset", -100, 100)
+  //     .onChange((value) => {
+  //       setDebugObject({ ...debugObject, hillsYOffset: value });
+  //     });
 
-    return () => {
-      gui.remove(guiHillsXScale);
-      gui.remove(guiHillsYScale);
-      gui.remove(guiHillsZScale);
-      gui.remove(guiHillsXOffset);
-      gui.remove(guiHillsYOffset);
-    };
-  }, []);
+  //   return () => {
+  //     gui.remove(guiHillsXScale);
+  //     gui.remove(guiHillsYScale);
+  //     gui.remove(guiHillsZScale);
+  //     gui.remove(guiHillsXOffset);
+  //     gui.remove(guiHillsYOffset);
+  //   };
+  // }, []);
 
   return (
     <Canvas
@@ -96,7 +96,7 @@ export default function LaplandScene({}: Props) {
       }}
     >
       <Scene />
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <ambientLight intensity={0.1} />
       <directionalLight
         position={[0, 1, 1]}

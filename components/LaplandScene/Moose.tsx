@@ -10,7 +10,6 @@ const Moose = ({
 }) => {
   const moose = useGLTF("models/low_poly_moose/scene.gltf");
 
-  console.log(moose);
   let mixer: AnimationMixer;
   if (moose.animations.length) {
     mixer = new AnimationMixer(moose.scene);
@@ -23,7 +22,7 @@ const Moose = ({
   useFrame((state, delta) => {
     mixer?.update(delta);
 
-    moose.scene.position.x = ((-state.clock.elapsedTime * 0.4) % 30) + 15;
+    moose.scene.position.x = ((-state.clock.elapsedTime * 0.3) % 24) + 12;
     moose.scene.position.y = hillsHeight(
       moose.scene.position.x,
       -moose.scene.position.z
@@ -39,7 +38,11 @@ const Moose = ({
     }
   });
   return (
-    <primitive object={moose.scene} scale={[1, 1, 1]} position={[0, 0, 0]} />
+    <primitive
+      object={moose.scene}
+      scale={[0.5, 0.5, 0.5]}
+      position={[0, 0, 0]}
+    />
   );
 };
 
