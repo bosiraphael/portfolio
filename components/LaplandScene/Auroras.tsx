@@ -64,7 +64,7 @@ const fragmentShader = `
     void main() {
         
         float noise1 = cnoise(vUv * 2.0 + vec2(0.0, uTime * 0.25));
-        float noise2 = cnoise(vUv * 2.0 - vec2(0.0, uTime * 0.2 + noise1 * 0.02 + exp(- pow(distance(vUv, uCursorPos), 2.0) / 0.01) * 0.2 ));
+        float noise2 = cnoise(vUv * 2.0 - vec2(0.0, uTime * 0.2 - noise1 * 0.5 + exp(- pow(distance(vUv, uCursorPos), 2.0) / 0.01) * 0.2 ));
 
         float v = vUv.y + noise2 * 0.1;
         v = 1.0 - abs(v * 2.0 - 1.0);
@@ -72,9 +72,9 @@ const fragmentShader = `
 
         vec3 color = vec3(0.0);
 
-        float x = (1.0 - vUv.x * 0.75);
+        float x = (1.0 - vUv.x * 0.5);
         float y = 1.0 - pow(vUv.y * 2.0 - 1.0, 2.0);
-        color += vec3(x * 0.5, y, x) * v;
+        color += vec3( 0.4 + x * 0.2 + sin(uTime * 0.1) * 0.1, y * 0.9, x * 0.8) * v;
 
         gl_FragColor = vec4(color, 1.0);
     }
