@@ -21,7 +21,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Suspense fallback={null}>
-          <LaplandScene></LaplandScene>
+          <CubeScene />
         </Suspense>
       </main>
     </>

@@ -21,7 +21,7 @@ const Boxes = ({ count }: { count: number }) => {
 };
 
 const Box = ({ position }: { position: [x: number, y: number, z: number] }) => {
-  const colorMap = useLoader(TextureLoader, "logos/sass.png");
+  const colorMap = useLoader(TextureLoader, "logos/typescript.png");
   colorMap.minFilter = LinearFilter;
   colorMap.magFilter = LinearFilter;
 
@@ -121,7 +121,7 @@ export default function CubeScene({}: Props) {
       />
       <Physics gravity={[0, -9.81, 0]}>
         <Cursor />
-        <Boxes count={20} />
+        <Boxes count={100} />
         <Plane />
       </Physics>
     </Canvas>
