@@ -1,3 +1,5 @@
+import styles from "../styles/Skills.module.css";
+
 const Skills = ({
   title,
   description,
@@ -6,18 +8,15 @@ const Skills = ({
   description: string;
 }) => {
   return (
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <h1>{title}</h1>
-      <p>{description}</p>
+    <div style={{ height: "100%" }}>
+      <h1 className={styles.heading}>{title}</h1>
+      <p
+        style={{
+          textAlign: "justify",
+        }}
+      >
+        {description}
+      </p>
     </div>
   );
 };
