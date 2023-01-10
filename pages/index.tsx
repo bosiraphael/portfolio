@@ -27,7 +27,7 @@ export default function Home() {
             shadows
             className={styles.canvas}
             camera={{
-              position: [0, 2, 10],
+              position: [0, 2, 11],
             }}
           >
             <ScrollControls pages={2} damping={5}>

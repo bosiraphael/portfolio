@@ -1,6 +1,6 @@
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import styles from "../../styles/Home.module.css";
-import { createRef, useEffect, useState } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import { Color, Mesh } from "three";
 // import { OrbitControls } from "@react-three/drei";
 // import * as dat from "dat.gui";
@@ -12,7 +12,7 @@ import Forest from "./Forest";
 import { createNoise2D } from "simplex-noise";
 import alea from "alea";
 import Moose from "./Moose";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, useScroll } from "@react-three/drei";
 import { clamp } from "three/src/math/MathUtils";
 
 //const gui = new dat.GUI();
@@ -26,6 +26,17 @@ export default function LaplandScene({}: Props) {
   //   guiHillsXOffset: dat.GUIController,
   //   guiHillsYOffset: dat.GUIController;
   const hillsRef = createRef<Mesh>();
+
+  const groupRef = useRef<any>();
+  const data = useScroll();
+
+  useFrame(() => {
+    if (data.range(0, 1 / 2) === 1) {
+      groupRef.current.position.y = 100;
+    } else {
+      groupRef.current.position.y = 0;
+    }
+  });
 
   const [debugObject, setDebugObject] = useState({
     hillsXScale: 16,
@@ -85,7 +96,7 @@ export default function LaplandScene({}: Props) {
   // }, []);
 
   return (
-    <group>
+    <group ref={groupRef}>
       {/* <OrbitControls /> */}
       <ambientLight intensity={0.1} />
       <directionalLight
@@ -102,7 +113,10 @@ export default function LaplandScene({}: Props) {
         shadow-camera-bottom={-10}
         shadow-bias={-0.001}
       />
-
+      <mesh position={[0, -50, 10]} rotation={[0, 0, 0]}>
+        <planeGeometry args={[500, 100]} />
+        <meshBasicMaterial color={new Color("white")} />
+      </mesh>
       <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
       <Auroras planeArgs={[500, 100, 100, 100]} position={[0, 20, -50]} />
       <Snow />
