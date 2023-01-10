@@ -17,14 +17,42 @@
 
 .heading {
   position: absolute;
-  font-size: 8rem;
+  font-size: 10rem;
   font-weight: 700;
   letter-spacing: 0.2rem;
-  top: 50 vh;
+  top: 50vh;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgb(32, 32, 32);
-  opacity: 0.8;
+  color: rgb(24, 63, 27);
+}
+
+.subheading {
+  position: absolute;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  top: 60vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(24, 63, 27);
+}
+
+.content_container {
+  position: absolute;
+  top: 100vh;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  color: rgb(24, 63, 27);
 }
 
 .canvas {

@@ -30,20 +30,26 @@ export default function Home() {
               position: [0, 2, 11],
             }}
           >
+            <color attach="background" args={["#ffffff"]} />
             <ScrollControls pages={2} damping={5}>
               <Scroll>
                 <LaplandScene />
               </Scroll>
               <Scroll html style={{ width: "100%" }}>
                 <h1 className={styles.heading}>Raphaël Bosi</h1>
-                <p style={{ position: "absolute", top: `100vh` }}>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Consequuntur provident a maxime ducimus similique repudiandae
-                  iste voluptatem distinctio! Officiis eveniet modi, blanditiis
-                  maiores quae facilis necessitatibus architecto nam. Ut nisi
-                  consequatur officia nesciunt ipsum quae omnis optio explicabo
-                  hic?
-                </p>
+                <h2 className={styles.subheading}>
+                  Data Scientist and Developer
+                </h2>
+                <div className={styles.content_container}>
+                  <p className={styles.content}>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Consequuntur provident a maxime ducimus similique
+                    repudiandae iste voluptatem distinctio! Officiis eveniet
+                    modi, blanditiis maiores quae facilis necessitatibus
+                    architecto nam. Ut nisi consequatur officia nesciunt ipsum
+                    quae omnis optio explicabo hic?
+                  </p>
+                </div>
               </Scroll>
             </ScrollControls>
           </Canvas>

@@ -36,7 +36,7 @@ const Hills = ({
       position={[0, 0, -20]}
     >
       <planeGeometry args={[100, 60, 100, 100]} />
-      <meshStandardMaterial color="white" side={DoubleSide} />
+      <meshStandardMaterial color="white" />
     </mesh>
   );
 };

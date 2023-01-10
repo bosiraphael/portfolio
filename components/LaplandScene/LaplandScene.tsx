@@ -1,7 +1,6 @@
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import styles from "../../styles/Home.module.css";
-import { createRef, useEffect, useRef, useState } from "react";
-import { Color, Mesh } from "three";
+import { useFrame } from "@react-three/fiber";
+import { createRef, useRef, useState } from "react";
+import { Mesh } from "three";
 // import { OrbitControls } from "@react-three/drei";
 // import * as dat from "dat.gui";
 import Hills from "./Hills";
@@ -12,7 +11,7 @@ import Forest from "./Forest";
 import { createNoise2D } from "simplex-noise";
 import alea from "alea";
 import Moose from "./Moose";
-import { OrbitControls, useScroll } from "@react-three/drei";
+import { useScroll } from "@react-three/drei";
 import { clamp } from "three/src/math/MathUtils";
 
 //const gui = new dat.GUI();
@@ -98,7 +97,7 @@ export default function LaplandScene({}: Props) {
   return (
     <group ref={groupRef}>
       {/* <OrbitControls /> */}
-      <ambientLight intensity={0.1} />
+      <ambientLight intensity={0.3} />
       <directionalLight
         position={[0, 1, 1]}
         intensity={0.5}
@@ -115,7 +114,7 @@ export default function LaplandScene({}: Props) {
       />
       <mesh position={[0, -50, 10]} rotation={[0, 0, 0]}>
         <planeGeometry args={[500, 100]} />
-        <meshBasicMaterial color={new Color("white")} />
+        <meshBasicMaterial toneMapped={false} />
       </mesh>
       <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
       <Auroras planeArgs={[500, 100, 100, 100]} position={[0, 20, -50]} />
