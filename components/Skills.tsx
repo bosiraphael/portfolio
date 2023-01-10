@@ -10,9 +10,10 @@ const Skills = ({
   return (
     <div
       style={{
-        height: "100%",
+        height: "40rem",
         display: "grid",
         gridTemplateRows: "1fr 3fr",
+        gridRowGap: "1rem",
         placeItems: "center",
       }}
     >
