@@ -92,7 +92,7 @@ export default function LaplandScene({}: Props) {
       shadows
       className={styles.canvas}
       camera={{
-        position: [0, 1, 10],
+        position: [0, 0, 10],
       }}
     >
       <Scene />
@@ -112,7 +112,7 @@ export default function LaplandScene({}: Props) {
         shadow-camera-bottom={-10}
       />
       <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
-      <Auroras planeArgs={[200, 100, 100, 100]} position={[0, 20, -50]} />
+      <Auroras planeArgs={[500, 250, 100, 100]} position={[0, 20, -50]} />
       <Snow />
       <Trees hillsHeight={hillsHeight} />
       <Forest hillsHeight={hillsHeight} />

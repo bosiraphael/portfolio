@@ -22,7 +22,7 @@ const Forest = ({
 
     for (let i = 0; i < count * 3; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 50;
-      positions[i * 3 + 2] = -Math.random() * 50 + 5;
+      positions[i * 3 + 2] = -Math.random() * 50 + 8;
       positions[i * 3 + 1] = hillsHeight(
         positions[i * 3],
         -positions[i * 3 + 2]
@@ -41,7 +41,6 @@ const Forest = ({
       <pointsMaterial
         attach="material"
         size={5}
-        sizeAttenuation
         map={treeTexture}
         alphaMap={treeAlphaMap}
         transparent

@@ -105,8 +105,8 @@ const Auroras = ({
 
     const material = auroraRef.current.material as any;
     material.uniforms.uCursorPos.value = new Vector2(
-      pos.x / 200 + 0.5,
-      (pos.y - position[1]) / 100 + 0.5
+      pos.x / planeArgs[0] + 0.5,
+      (pos.y - position[1]) / planeArgs[1] + 0.5
     );
   });
 
