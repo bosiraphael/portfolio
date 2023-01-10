@@ -5,8 +5,6 @@ import { createRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { LinearFilter, Mesh, Vector3 } from "three";
 
-const cursor = createRef<Mesh>();
-
 const Boxes = ({ count }: { count: number }) => {
   const boxes = [];
   for (let i = 0; i < count; i++) {
@@ -51,6 +49,8 @@ const Plane = () => {
 const Cursor = () => {
   const radius = 0.2;
   const height = 20;
+
+  const cursor = createRef<Mesh>();
   const [cylinder, cylinderApi]: any = useCylinder(
     () => ({
       args: [radius, radius, height],
