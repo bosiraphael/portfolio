@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { Mesh } from "three";
+import { DoubleSide, Mesh } from "three";
+import { clamp } from "three/src/math/MathUtils";
 
 const Hills = ({
   hillsRef,
@@ -10,6 +11,7 @@ const Hills = ({
 }) => {
   useEffect(() => {
     const hillsGeometry = hillsRef.current?.geometry;
+    if (!hillsGeometry) return;
 
     const position = hillsGeometry?.attributes?.position;
     if (!position) return;
@@ -31,10 +33,10 @@ const Hills = ({
       receiveShadow
       castShadow
       rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, 0, 0]}
+      position={[0, 0, -20]}
     >
-      <planeGeometry args={[100, 100, 100, 100]} />
-      <meshStandardMaterial color="white" />
+      <planeGeometry args={[100, 60, 100, 100]} />
+      <meshStandardMaterial color="white" side={DoubleSide} />
     </mesh>
   );
 };

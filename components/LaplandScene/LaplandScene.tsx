@@ -12,16 +12,10 @@ import Forest from "./Forest";
 import { createNoise2D } from "simplex-noise";
 import alea from "alea";
 import Moose from "./Moose";
+import { OrbitControls } from "@react-three/drei";
+import { clamp } from "three/src/math/MathUtils";
 
 //const gui = new dat.GUI();
-
-const Scene = () => {
-  const { scene } = useThree();
-  scene.background = new Color("#c9f5ff");
-  return <></>;
-};
-
-const hillsRef = createRef<Mesh>();
 
 type Props = {};
 
@@ -31,6 +25,7 @@ export default function LaplandScene({}: Props) {
   //   guiHillsZScale: dat.GUIController,
   //   guiHillsXOffset: dat.GUIController,
   //   guiHillsYOffset: dat.GUIController;
+  const hillsRef = createRef<Mesh>();
 
   const [debugObject, setDebugObject] = useState({
     hillsXScale: 16,
@@ -47,7 +42,9 @@ export default function LaplandScene({}: Props) {
       simplex(
         (x + debugObject.hillsXOffset) / debugObject.hillsXScale,
         (y + debugObject.hillsYOffset) / debugObject.hillsYScale
-      ) * debugObject.hillsZScale
+      ) *
+      debugObject.hillsZScale *
+      clamp((y - 10) * 0.5, 0, 1)
     );
   };
 
@@ -88,14 +85,7 @@ export default function LaplandScene({}: Props) {
   // }, []);
 
   return (
-    <Canvas
-      shadows
-      className={styles.canvas}
-      camera={{
-        position: [0, 0, 10],
-      }}
-    >
-      <Scene />
+    <group>
       {/* <OrbitControls /> */}
       <ambientLight intensity={0.1} />
       <directionalLight
@@ -105,18 +95,20 @@ export default function LaplandScene({}: Props) {
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
         shadow-camera-far={50}
-        shadow-camera-near={0.1}
+        shadow-camera-near={0}
         shadow-camera-left={-10}
         shadow-camera-right={10}
         shadow-camera-top={10}
         shadow-camera-bottom={-10}
+        shadow-bias={-0.001}
       />
+
       <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
-      <Auroras planeArgs={[500, 250, 100, 100]} position={[0, 20, -50]} />
+      <Auroras planeArgs={[500, 100, 100, 100]} position={[0, 20, -50]} />
       <Snow />
       <Trees hillsHeight={hillsHeight} />
       <Forest hillsHeight={hillsHeight} />
       <Moose hillsHeight={hillsHeight} />
-    </Canvas>
+    </group>
   );
 }
