@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import dynamic from "next/dynamic";
 import { Html, Scroll, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const LaplandScene = dynamic(
@@ -21,6 +22,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar />
       <main className={styles.main}>
         <Suspense fallback={null}>
           <Canvas

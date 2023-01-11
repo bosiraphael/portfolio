@@ -23,7 +23,8 @@
   top: 50vh;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgb(24, 63, 27);
+  color: var(--color-primary);
+  text-align: center;
 }
 
 .subheading {
@@ -34,7 +35,8 @@
   top: 60vh;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgb(24, 63, 27);
+  color: var(--color-primary);
+  text-align: center;
 }
 
 .content_container {
