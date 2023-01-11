@@ -35,7 +35,6 @@ const Trees = ({
     tree.scale.set(randomScale, randomScale, randomScale);
     trees.push(tree);
   }
-  console.log(trees);
 
   return (
     <>
