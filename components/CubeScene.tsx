@@ -1,17 +1,34 @@
 import styles from "../styles/Home.module.css";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { Physics, useBox, useCylinder, usePlane } from "@react-three/cannon";
+import {
+  Debug,
+  Physics,
+  useBox,
+  useCylinder,
+  usePlane,
+} from "@react-three/cannon";
 import { createRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { LinearFilter, Mesh, Vector3 } from "three";
+import { useScroll } from "@react-three/drei";
 
-const Boxes = ({ count }: { count: number }) => {
+const Boxes = ({
+  count,
+  position,
+}: {
+  count: number;
+  position: [x: number, y: number, z: number];
+}) => {
   const boxes = [];
   for (let i = 0; i < count; i++) {
     boxes.push(
       <Box
         key={i}
-        position={[Math.random() * 10 - 5, Math.random() * 10 + 5, 0]}
+        position={[
+          position[0] + Math.random() * 10 - 5,
+          position[1] + Math.random() * 10 + 5,
+          position[2] + 0,
+        ]}
       />
     );
   }
@@ -33,11 +50,16 @@ const Box = ({ position }: { position: [x: number, y: number, z: number] }) => {
   );
 };
 
-const Plane = () => {
+const Plane = ({
+  position,
+}: {
+  position: [x: number, y: number, z: number];
+}) => {
   const [ref]: any = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
-    position: [0, 0, 0],
+    position: position,
   }));
+
   return (
     <mesh ref={ref} receiveShadow>
       <planeGeometry args={[100, 100]} />
@@ -46,7 +68,11 @@ const Plane = () => {
   );
 };
 
-const Cursor = () => {
+const Cursor = ({
+  position,
+}: {
+  position: [x: number, y: number, z: number];
+}) => {
   const radius = 0.2;
   const height = 20;
 
@@ -62,6 +88,7 @@ const Cursor = () => {
   );
 
   const sphere = createRef<Mesh>();
+  const scrol = useScroll();
 
   useFrame(({ camera, mouse }) => {
     var vector = new Vector3(mouse.x, mouse.y, 0.5);
@@ -95,18 +122,13 @@ const Cursor = () => {
   );
 };
 
-type Props = {};
+type Props = {
+  position: [x: number, y: number, z: number];
+};
 
-export default function CubeScene({}: Props) {
+export default function CubeScene({ position }: Props) {
   return (
-    <Canvas
-      shadows
-      className={styles.canvas}
-      camera={{
-        position: [0, 1, 10],
-      }}
-    >
-      <ambientLight intensity={2} />
+    <group>
       <directionalLight
         position={[0, 1, 1]}
         intensity={1}
@@ -120,10 +142,12 @@ export default function CubeScene({}: Props) {
         shadow-camera-bottom={-10}
       />
       <Physics gravity={[0, -9.81, 0]}>
-        <Cursor />
-        <Boxes count={100} />
-        <Plane />
+        <Debug>
+          <Cursor position={position} />
+          <Boxes count={100} position={position} />
+          <Plane position={position} />
+        </Debug>
       </Physics>
-    </Canvas>
+    </group>
   );
 }
