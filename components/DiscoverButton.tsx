@@ -1,10 +1,21 @@
-import { useScroll } from "@react-three/drei";
-
+import {
+  Link,
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 const DiscoverButton = () => {
-  const scroll = useScroll();
   return (
     <button
-      onClick={() => {}}
+      onClick={() => {
+        window.scrollTo({
+          top: window.innerHeight,
+          behavior: "smooth",
+        });
+      }}
       style={{
         position: "absolute",
         top: "80vh",
@@ -15,7 +26,6 @@ const DiscoverButton = () => {
         cursor: "pointer",
         fontSize: "2rem",
         color: "black",
-        zIndex: 100,
         backgroundColor: "white",
         border: "none",
         borderRadius: "50%",

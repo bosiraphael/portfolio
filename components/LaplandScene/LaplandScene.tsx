@@ -1,4 +1,3 @@
-import { useFrame } from "@react-three/fiber";
 import { createRef, useRef, useState } from "react";
 import { Mesh } from "three";
 // import { OrbitControls } from "@react-three/drei";
@@ -11,91 +10,27 @@ import Forest from "./Forest";
 import { createNoise2D } from "simplex-noise";
 import alea from "alea";
 import Moose from "./Moose";
-import { useScroll } from "@react-three/drei";
 import { clamp } from "three/src/math/MathUtils";
 
-//const gui = new dat.GUI();
+const hillsRef = createRef<Mesh>();
 
-type Props = {};
+const hillsHeight = (x: any, y: any) => {
+  const simplex = createNoise2D(alea("hello"));
 
-export default function LaplandScene({}: Props) {
-  // let guiHillsXScale: dat.GUIController,
-  //   guiHillsYScale: dat.GUIController,
-  //   guiHillsZScale: dat.GUIController,
-  //   guiHillsXOffset: dat.GUIController,
-  //   guiHillsYOffset: dat.GUIController;
-  const hillsRef = createRef<Mesh>();
+  return simplex(x / 16, y / 14) * 1.8 * clamp((y - 12) * 0.5, 0, 1);
+};
 
-  const groupRef = useRef<any>();
-  const data = useScroll();
-
-  useFrame(() => {
-    if (data.range(0, 1 / 2) === 1) {
-      groupRef.current.position.y = 100;
-    } else {
-      groupRef.current.position.y = 0;
-    }
-  });
-
-  const [debugObject, setDebugObject] = useState({
-    hillsXScale: 16,
-    hillsYScale: 14,
-    hillsZScale: 1.8,
-    hillsXOffset: 0,
-    hillsYOffset: 0,
-  });
-
-  const hillsHeight = (x: any, y: any) => {
-    const simplex = createNoise2D(alea("hello"));
-
-    return (
-      simplex(
-        (x + debugObject.hillsXOffset) / debugObject.hillsXScale,
-        (y + debugObject.hillsYOffset) / debugObject.hillsYScale
-      ) *
-      debugObject.hillsZScale *
-      clamp((y - 10) * 0.5, 0, 1)
-    );
-  };
-
-  // useEffect(() => {
-  //   guiHillsXScale = gui
-  //     .add(debugObject, "hillsXScale", 0, 20)
-  //     .onChange((value) => {
-  //       setDebugObject({ ...debugObject, hillsXScale: value });
-  //     });
-  //   guiHillsYScale = gui
-  //     .add(debugObject, "hillsYScale", 0, 20)
-  //     .onChange((value) => {
-  //       setDebugObject({ ...debugObject, hillsYScale: value });
-  //     });
-  //   guiHillsZScale = gui
-  //     .add(debugObject, "hillsZScale", 0, 5)
-  //     .onChange((value) => {
-  //       setDebugObject({ ...debugObject, hillsZScale: value });
-  //     });
-  //   guiHillsXOffset = gui
-  //     .add(debugObject, "hillsXOffset", -100, 100)
-  //     .onChange((value) => {
-  //       setDebugObject({ ...debugObject, hillsXOffset: value });
-  //     });
-  //   guiHillsYOffset = gui
-  //     .add(debugObject, "hillsYOffset", -100, 100)
-  //     .onChange((value) => {
-  //       setDebugObject({ ...debugObject, hillsYOffset: value });
-  //     });
-
-  //   return () => {
-  //     gui.remove(guiHillsXScale);
-  //     gui.remove(guiHillsYScale);
-  //     gui.remove(guiHillsZScale);
-  //     gui.remove(guiHillsXOffset);
-  //     gui.remove(guiHillsYOffset);
-  //   };
-  // }, []);
+export default function LaplandScene() {
+  // useFrame(() => {
+  //   if (data.range(0, 1 / 2) === 1) {
+  //     groupRef.current.position.y = 100;
+  //   } else {
+  //     groupRef.current.position.y = 0;
+  //   }
+  // });
 
   return (
-    <group ref={groupRef}>
+    <group>
       {/* <OrbitControls /> */}
       <ambientLight intensity={0.3} />
       <directionalLight
