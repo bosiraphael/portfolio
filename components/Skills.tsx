@@ -5,17 +5,21 @@ import Skill from "./Skill";
 
 const Skills = () => {
   return (
-    <section id="skills" className={styles.section}>
+    <section
+      id="skills"
+      className={styles.sectionLarge}
+      style={{ top: "200vh" }}
+    >
       <h1 className={styles.heading}>Skills</h1>
       <div
         style={{
-          width: "100%",
           flex: 1,
           display: "grid",
           gap: "5rem",
           gridTemplateColumns: "repeat(2, 1fr)",
           gridTemplateRows: "repeat(4, 1fr)",
           placeItems: "center",
+          margin: "0 5rem",
         }}
       >
         <Suspense fallback={null}>

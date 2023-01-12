@@ -17,7 +17,7 @@ const Skill = ({
         placeItems: "center",
       }}
     >
-      <h1 className={styles.heading}>{title}</h1>
+      <h1 className={styles.subheading}>{title}</h1>
       <p
         style={{
           textAlign: "justify",

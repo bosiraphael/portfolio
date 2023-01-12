@@ -7,6 +7,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Navbar from "../components/Navbar";
 import DiscoverButton from "../components/DiscoverButton";
 import Skills from "../components/Skills";
+import Education from "../components/Education";
 
 const LaplandScene = dynamic(
   () => import("../components/LaplandScene/LaplandScene"),
@@ -46,15 +47,7 @@ export default function Home() {
         <h2 className={styles.subheading}>Data Scientist and Developer</h2>
         <DiscoverButton />
 
-        <div className={styles.content_container}>
-          <p className={styles.content}>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Consequuntur provident a maxime ducimus similique repudiandae iste
-            voluptatem distinctio! Officiis eveniet modi, blanditiis maiores
-            quae facilis necessitatibus architecto nam. Ut nisi consequatur
-            officia nesciunt ipsum quae omnis optio explicabo hic?
-          </p>
-        </div>
+        <Education />
         <Skills />
       </main>
     </>

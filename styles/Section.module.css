@@ -1,15 +1,31 @@
-.section {
+.sectionSmall {
   font-size: 1.6rem;
-
   position: absolute;
-  top: 200vh;
   width: 100%;
-  height: 200vh;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+}
+
+.sectionLarge {
+  font-size: 1.6rem;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 200vh;
 }
 
 .heading {
+  font-size: 10rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin: 10rem auto;
+}
+
+.subheading {
+  color: var(--color-primary);
+  font-size: 3rem;
   text-align: center;
   margin: 0 auto;
 }
