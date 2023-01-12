@@ -6,6 +6,7 @@ import { Html, Scroll, ScrollControls, useScroll } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Navbar from "../components/Navbar";
 import DiscoverButton from "../components/DiscoverButton";
+import Skills from "../components/Skills";
 
 const LaplandScene = dynamic(
   () => import("../components/LaplandScene/LaplandScene"),
@@ -39,12 +40,12 @@ export default function Home() {
           <Suspense fallback={null}>
             <Scene />
             <LaplandScene />
-            {/* <CubeScene position={[0, -viewport.height * 1, 0]} /> */}
           </Suspense>
         </Canvas>
         <h1 className={styles.heading}>Raphaël Bosi</h1>
         <h2 className={styles.subheading}>Data Scientist and Developer</h2>
         <DiscoverButton />
+
         <div className={styles.content_container}>
           <p className={styles.content}>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -54,6 +55,7 @@ export default function Home() {
             officia nesciunt ipsum quae omnis optio explicabo hic?
           </p>
         </div>
+        <Skills />
       </main>
     </>
   );

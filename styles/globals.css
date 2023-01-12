@@ -15,6 +15,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body,
 body > div:first-child,

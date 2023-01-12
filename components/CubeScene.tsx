@@ -1,4 +1,3 @@
-import styles from "../styles/Home.module.css";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import {
   Debug,
@@ -10,25 +9,14 @@ import {
 import { createRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { LinearFilter, Mesh, Vector3 } from "three";
-import { useScroll } from "@react-three/drei";
 
-const Boxes = ({
-  count,
-  position,
-}: {
-  count: number;
-  position: [x: number, y: number, z: number];
-}) => {
+const Boxes = ({ count }: { count: number }) => {
   const boxes = [];
   for (let i = 0; i < count; i++) {
     boxes.push(
       <Box
         key={i}
-        position={[
-          position[0] + Math.random() * 10 - 5,
-          position[1] + Math.random() * 10 + 5,
-          position[2] + 0,
-        ]}
+        position={[Math.random() * 10 - 5, Math.random() * 10 + 5, 0]}
       />
     );
   }
@@ -50,14 +38,9 @@ const Box = ({ position }: { position: [x: number, y: number, z: number] }) => {
   );
 };
 
-const Plane = ({
-  position,
-}: {
-  position: [x: number, y: number, z: number];
-}) => {
+const Plane = () => {
   const [ref]: any = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
-    position: position,
   }));
 
   return (
@@ -68,11 +51,7 @@ const Plane = ({
   );
 };
 
-const Cursor = ({
-  position,
-}: {
-  position: [x: number, y: number, z: number];
-}) => {
+const Cursor = () => {
   const radius = 0.2;
   const height = 20;
 
@@ -88,7 +67,6 @@ const Cursor = ({
   );
 
   const sphere = createRef<Mesh>();
-  const scrol = useScroll();
 
   useFrame(({ camera, mouse }) => {
     var vector = new Vector3(mouse.x, mouse.y, 0.5);
@@ -126,9 +104,14 @@ type Props = {
   position: [x: number, y: number, z: number];
 };
 
-export default function CubeScene({ position }: Props) {
+export default function CubeScene() {
   return (
-    <group>
+    <Canvas
+      shadows
+      camera={{
+        position: [0, 2, 11],
+      }}
+    >
       <directionalLight
         position={[0, 1, 1]}
         intensity={1}
@@ -143,11 +126,11 @@ export default function CubeScene({ position }: Props) {
       />
       <Physics gravity={[0, -9.81, 0]}>
         <Debug>
-          <Cursor position={position} />
-          <Boxes count={100} position={position} />
-          <Plane position={position} />
+          <Cursor />
+          <Boxes count={100} />
+          <Plane />
         </Debug>
       </Physics>
-    </group>
+    </Canvas>
   );
 }

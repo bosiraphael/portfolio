@@ -3,21 +3,21 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <Link className="navbar__links" href="/">
+      <a className="navbar__links" href="/">
         Home
-      </Link>
-      <Link className="navbar__links" href="/education">
+      </a>
+      <a className="navbar__links" href="#education">
         Education
-      </Link>
-      <Link className="navbar__links" href="/work">
+      </a>
+      <a className="navbar__links" href="#work">
         Work experiences
-      </Link>
-      <Link className="navbar__links" href="/skills">
+      </a>
+      <a className="navbar__links" href="#skills">
         Skills
-      </Link>
-      <Link className="navbar__links" href="/Contacts">
+      </a>
+      <a className="navbar__links" href="#contacts">
         Contacts
-      </Link>
+      </a>
     </nav>
   );
 };
