@@ -68,9 +68,6 @@ a {
   height: 15rem;
   transform: translate(-50%, -50%);
   cursor: pointer;
-  font-size: 2rem;
-  font-weight: 500;
-  letter-spacing: 0.1rem;
   color: var(--color-primary);
   border: none;
   border-radius: 50%;

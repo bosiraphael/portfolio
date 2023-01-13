@@ -1,8 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { createRef, Suspense } from "react";
+import { Suspense } from "react";
 import dynamic from "next/dynamic";
-import { Html, Scroll, ScrollControls, useScroll } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Navbar from "../components/Navbar";
 import DiscoverButton from "../components/DiscoverButton";
@@ -15,9 +14,6 @@ const LaplandScene = dynamic(
     ssr: false,
   }
 );
-const CubeScene = dynamic(() => import("../components/CubeScene"), {
-  ssr: false,
-});
 
 export default function Home() {
   return (
@@ -57,7 +53,7 @@ export default function Home() {
 const Scene = () => {
   let viewport = useThree((state) => state.viewport);
   useFrame((state, delta) => {
-    const offset = window.scrollY / (window.innerHeight * 2);
+    const offset = window.scrollY / (window.innerHeight * 4);
     state.camera.position.set(0, 2 - viewport.height * offset, 11);
   });
 
