@@ -1,7 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { AnimationMixer } from "three";
-import { clamp } from "three/src/math/MathUtils";
 
 const Moose = ({
   hillsHeight,
