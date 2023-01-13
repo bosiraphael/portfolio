@@ -117,7 +117,7 @@ export default function CubeScene() {
       />
       <Physics gravity={[0, -9.81, 0]}>
         <Cursor />
-        <Boxes count={100} />
+        <Boxes count={10} />
         <Plane />
       </Physics>
     </Canvas>

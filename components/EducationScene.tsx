@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Mesh } from "three";
 
 const CentraleSupelec = () => {
-  const centraleSupelec = useGLTF("models/centraleSupelec.glb");
+  const centraleSupelec = useGLTF("models/chalmers.glb");
   const scene = centraleSupelec.scene;
   scene.rotation.x = Math.PI / 2;
 
