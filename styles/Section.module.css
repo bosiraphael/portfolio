@@ -18,16 +18,18 @@
 
 .heading {
   font-size: 10rem;
+  letter-spacing: 0.2rem;
   color: var(--color-primary);
   text-align: center;
   margin: 10rem auto;
 }
 
 .subheading {
-  color: var(--color-primary);
   font-size: 3rem;
+  letter-spacing: 0.1rem;
+  color: var(--color-primary);
   text-align: center;
-  margin: 0 auto;
+  margin: 5rem auto;
 }
 
 .canvas {

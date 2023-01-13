@@ -1,7 +1,7 @@
-import { useGLTF } from "@react-three/drei";
+import { Center, Text3D, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-import { Mesh } from "three";
+import { useEffect, useRef } from "react";
+import { Color, Mesh, MeshStandardMaterial, Vector3 } from "three";
 
 const Model = ({ modelPath }: { modelPath: string }) => {
   const model = useGLTF(modelPath);
@@ -24,14 +24,58 @@ const Model = ({ modelPath }: { modelPath: string }) => {
     const time = state.clock.getElapsedTime();
 
     if (modelRef.current) {
-      modelRef.current.rotation.z = Math.sin(time * 0.5) * Math.PI * 0.2;
+      modelRef.current.rotation.z = -Math.sin(time * 0.5) * Math.PI * 0.2;
     }
   });
 
   return <primitive object={model.scene} ref={modelRef} />;
 };
 
-export default function EducationScene({ modelPath }: { modelPath: string }) {
+const TextModel = ({ text }: { text: string }) => {
+  const modelRef = useRef<any>();
+
+  useEffect(() => {
+    if (!modelRef.current) return;
+    modelRef.current.geometry.center();
+
+    // Translate the model to the center of the screen
+    const box = new Vector3();
+    modelRef.current.geometry.boundingBox?.getCenter(box);
+    modelRef.current.position.x -= box.x;
+    modelRef.current.position.y -= box.y;
+    modelRef.current.position.z -= box.z;
+
+    modelRef.current.position.needsUpdate;
+  }, [modelRef.current?.geometry]);
+
+  useFrame((state, delta) => {
+    const time = state.clock.getElapsedTime();
+
+    if (modelRef.current) {
+      modelRef.current.rotation.y = Math.sin(time * 0.5) * Math.PI * 0.2;
+    }
+  });
+  return (
+    <Text3D
+      ref={modelRef}
+      position={[0, 0, 0]}
+      font={"typefaces/PlayfairDisplay_Regular.json"}
+      height={0.1}
+      size={0.5}
+    >
+      <meshStandardMaterial color="#2e2e2d" metalness={0.7} roughness={0.5} />
+      {text}
+    </Text3D>
+  );
+};
+
+export default function EducationScene({
+  modelPath,
+  text,
+}: {
+  modelPath?: string;
+  text?: string;
+}) {
   return (
     <Canvas
       shadows
@@ -39,9 +83,11 @@ export default function EducationScene({ modelPath }: { modelPath: string }) {
         position: [0, 0, 5],
       }}
     >
-      <ambientLight intensity={1} />
-      <directionalLight position={[0, 1, 1]} intensity={2} />
-      <Model modelPath={modelPath} />
+      <ambientLight intensity={2} />
+      <directionalLight position={[0, 2, 5]} intensity={1} />
+      {text ? <TextModel text={text} /> : <></>}
+
+      {modelPath ? <Model modelPath={modelPath} /> : <></>}
     </Canvas>
   );
 }

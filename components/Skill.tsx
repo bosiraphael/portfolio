@@ -10,17 +10,18 @@ const Skill = ({
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "1fr",
-        gridTemplateRows: "1fr 3fr",
-        gridRowGap: "1rem",
-        placeItems: "center",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <h1 className={styles.subheading}>{title}</h1>
       <p
         style={{
           textAlign: "justify",
+          flex: 1,
         }}
       >
         {description}

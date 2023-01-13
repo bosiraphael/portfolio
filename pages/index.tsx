@@ -54,6 +54,9 @@ const Scene = () => {
   let viewport = useThree((state) => state.viewport);
   useFrame((state, delta) => {
     const offset = window.scrollY / (window.innerHeight * 4);
+    if (offset > 1 / 4) {
+      return;
+    }
     state.camera.position.set(0, 2 - viewport.height * offset, 11);
   });
 
