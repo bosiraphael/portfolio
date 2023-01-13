@@ -3,9 +3,9 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { Mesh } from "three";
 
-const CentraleSupelec = () => {
-  const centraleSupelec = useGLTF("models/chalmers.glb");
-  const scene = centraleSupelec.scene;
+const Model = ({ modelPath }: { modelPath: string }) => {
+  const model = useGLTF(modelPath);
+  const scene = model.scene;
   scene.rotation.x = Math.PI / 2;
 
   scene.traverse((child) => {
@@ -18,21 +18,20 @@ const CentraleSupelec = () => {
     }
   });
 
-  const centraleSupelecRef = useRef<Mesh>();
+  const modelRef = useRef<Mesh>();
 
   useFrame((state, delta) => {
     const time = state.clock.getElapsedTime();
 
-    if (centraleSupelecRef.current) {
-      centraleSupelecRef.current.rotation.z =
-        Math.sin(time * 0.5) * Math.PI * 0.2;
+    if (modelRef.current) {
+      modelRef.current.rotation.z = Math.sin(time * 0.5) * Math.PI * 0.2;
     }
   });
 
-  return <primitive object={centraleSupelec.scene} ref={centraleSupelecRef} />;
+  return <primitive object={model.scene} ref={modelRef} />;
 };
 
-export default function EducationScene() {
+export default function EducationScene({ modelPath }: { modelPath: string }) {
   return (
     <Canvas
       shadows
@@ -42,7 +41,7 @@ export default function EducationScene() {
     >
       <ambientLight intensity={1} />
       <directionalLight position={[0, 1, 1]} intensity={2} />
-      <CentraleSupelec />
+      <Model modelPath={modelPath} />
     </Canvas>
   );
 }
