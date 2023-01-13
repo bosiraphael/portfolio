@@ -11,9 +11,6 @@ const CentraleSupelec = () => {
   scene.traverse((child) => {
     // @ts-ignore
     if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-
       // @ts-ignore
       child.material.metalness = 0.7;
       // @ts-ignore
@@ -24,8 +21,11 @@ const CentraleSupelec = () => {
   const centraleSupelecRef = useRef<Mesh>();
 
   useFrame((state, delta) => {
+    const time = state.clock.getElapsedTime();
+
     if (centraleSupelecRef.current) {
-      centraleSupelecRef.current.rotation.z -= 0.01;
+      centraleSupelecRef.current.rotation.z =
+        Math.sin(time * 0.5) * Math.PI * 0.2;
     }
   });
 
@@ -41,19 +41,7 @@ export default function EducationScene() {
       }}
     >
       <ambientLight intensity={1} />
-      <directionalLight
-        position={[0, 1, 1]}
-        intensity={2}
-        castShadow
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
-        shadow-bias={-0.001}
-        shadow-camera-far={50}
-        shadow-camera-left={-10}
-        shadow-camera-right={10}
-        shadow-camera-top={10}
-        shadow-camera-bottom={-10}
-      />
+      <directionalLight position={[0, 1, 1]} intensity={2} />
       <CentraleSupelec />
     </Canvas>
   );
