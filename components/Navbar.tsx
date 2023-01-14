@@ -3,6 +3,9 @@ import { useEffect, useRef } from "react";
 
 const Navbar = () => {
   const isBlack = () => {
+    if (typeof window === "undefined") {
+      return false;
+    }
     return window.scrollY > window.innerHeight / 2;
   };
 
@@ -27,21 +30,21 @@ const Navbar = () => {
         color: isBlack() ? "black" : "white",
       }}
     >
-      <a className="navbar__links" href="/">
+      <Link className="navbar__links" href="/">
         Home
-      </a>
-      <a className="navbar__links" href="#education">
+      </Link>
+      <Link className="navbar__links" href="/#education">
         Education
-      </a>
-      <a className="navbar__links" href="#work">
+      </Link>
+      <Link className="navbar__links" href="/#work">
         Work experiences
-      </a>
-      <a className="navbar__links" href="#skills">
+      </Link>
+      <Link className="navbar__links" href="/#skills">
         Skills
-      </a>
-      <a className="navbar__links" href="#contacts">
+      </Link>
+      <Link className="navbar__links" href="/#contacts">
         Contacts
-      </a>
+      </Link>
     </nav>
   );
 };
