@@ -26,3 +26,13 @@
   width: 100%;
   height: 100%;
 }
+
+.contactLink {
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin: 5rem auto;
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+}

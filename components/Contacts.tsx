@@ -1,4 +1,5 @@
 import styles from "../styles/Section.module.css";
+
 import LogoTextScene from "./LogoTextScene";
 
 const Contacts = () => {
@@ -16,9 +17,15 @@ const Contacts = () => {
           margin: "0 auto",
         }}
       >
-        <LogoTextScene modelPath="models/email.glb" />
-        <LogoTextScene modelPath="models/linkedin.glb" />
-        <LogoTextScene modelPath="models/github.glb" />
+        <a href="" target="_blank" className={styles.contactLink}>
+          <LogoTextScene modelPath="models/email.glb" />
+        </a>
+        <a href="" target="_blank" className={styles.contactLink}>
+          <LogoTextScene modelPath="models/linkedin.glb" />
+        </a>
+        <a href="" target="_blank" className={styles.contactLink}>
+          <LogoTextScene modelPath="models/github.glb" />
+        </a>
       </div>
     </section>
   );
