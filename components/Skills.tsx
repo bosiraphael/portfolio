@@ -17,7 +17,6 @@ const Skills = () => {
             gridTemplateColumns: "repeat(2, 1fr)",
             gridTemplateRows: "repeat(4, 1fr)",
             placeItems: "center",
-            margin: "0 5rem",
           }}
         >
           <CubeScene />

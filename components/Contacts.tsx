@@ -26,20 +26,33 @@ const Contacts = () => {
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
               placeItems: "center",
-              width: "100vw",
+              width: "100%",
               height: 300,
               margin: "0 auto",
+              gap: "2rem",
             }}
           >
-            <a href="" target="_blank" className={styles.contactLink}>
+            <a
+              href="mailto:contact@raphaelbosi.dev"
+              target="_blank"
+              className={styles.contactLink}
+            >
               <h2>Email</h2>
               <LogoTextScene modelPath="models/email.glb" />
             </a>
-            <a href="" target="_blank" className={styles.contactLink}>
+            <a
+              href="https://www.linkedin.com/in/rapha%C3%ABl-bosi-8b704a173/"
+              target="_blank"
+              className={styles.contactLink}
+            >
               <h2>LinkedIn</h2>
               <LogoTextScene modelPath="models/linkedin.glb" />
             </a>
-            <a href="" target="_blank" className={styles.contactLink}>
+            <a
+              href="https://github.com/bosiraphael"
+              target="_blank"
+              className={styles.contactLink}
+            >
               <h2>Github</h2>
 
               <LogoTextScene modelPath="models/github.glb" />

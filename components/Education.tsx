@@ -15,7 +15,6 @@ const Education = () => {
           gridTemplateColumns: "1fr 3fr 3fr",
           gridTemplateRows: "1fr 1fr 1fr",
           placeItems: "center",
-          margin: "0 5rem",
         }}
       >
         <div className="education-date">

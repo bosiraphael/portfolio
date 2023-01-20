@@ -1,5 +1,15 @@
 :root {
   --color-primary: rgb(24, 63, 27);
+
+  --color-gray-100: #f7fafc;
+  --color-gray-200: #edf2f7;
+  --color-gray-300: #e2e8f0;
+  --color-gray-400: #cbd5e0;
+  --color-gray-500: #a0aec0;
+  --color-gray-600: #718096;
+  --color-gray-700: #4a5568;
+  --color-gray-800: #2d3748;
+  --color-gray-900: #1a202c;
 }
 
 * {
@@ -11,7 +21,7 @@
 
 html,
 body {
-  font-size: 10px;
+  font-size: 62.5%;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -108,4 +118,15 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 10rem;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

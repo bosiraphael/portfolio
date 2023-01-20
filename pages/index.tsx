@@ -8,6 +8,7 @@ import DiscoverButton from "../components/DiscoverButton";
 import Skills from "../components/Skills";
 import Education from "../components/Education";
 import Contacts from "../components/Contacts";
+import Footer from "../components/Footer";
 
 const LaplandScene = dynamic(
   () => import("../components/LaplandScene/LaplandScene"),
@@ -45,10 +46,17 @@ export default function Home() {
         <h2 className={styles.subheading}>Data Scientist and Developer</h2>
         <DiscoverButton />
 
-        <div style={{ position: "absolute", top: "100vh" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "100vh",
+            width: "100%",
+          }}
+        >
           <Education />
           <Skills />
           <Contacts />
+          <Footer />
         </div>
       </main>
     </>
