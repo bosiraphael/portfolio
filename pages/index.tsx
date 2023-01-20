@@ -9,6 +9,7 @@ import Skills from "../components/Skills";
 import Education from "../components/Education";
 import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
+import Work from "../components/Work";
 
 const LaplandScene = dynamic(
   () => import("../components/LaplandScene/LaplandScene"),
@@ -41,23 +42,25 @@ export default function Home() {
             <Scene />
             <LaplandScene />
           </Canvas>
-        </Suspense>
-        <h1 className={styles.heading}>Raphaël Bosi</h1>
-        <h2 className={styles.subheading}>Data Scientist and Developer</h2>
-        <DiscoverButton />
 
-        <div
-          style={{
-            position: "absolute",
-            top: "100vh",
-            width: "100%",
-          }}
-        >
-          <Education />
-          <Skills />
-          <Contacts />
-          <Footer />
-        </div>
+          <h1 className={styles.heading}>Raphaël Bosi</h1>
+          <h2 className={styles.subheading}>Data Scientist and Developer</h2>
+          <DiscoverButton />
+
+          <div
+            style={{
+              position: "absolute",
+              top: "100vh",
+              width: "100%",
+            }}
+          >
+            <Education />
+            <Work />
+            <Skills />
+            <Contacts />
+            <Footer />
+          </div>
+        </Suspense>
       </main>
     </>
   );
