@@ -1,6 +1,6 @@
 import styles from "../styles/Section.module.css";
 import Skill from "./Skill";
-import EducationScene from "./LogoTextScene";
+import LogoTextScene from "./LogoTextScene";
 
 const Education = () => {
   return (
@@ -22,7 +22,7 @@ const Education = () => {
           <p>2018 - 2022</p>
         </div>
 
-        <EducationScene modelPath="models/centraleSupelec.glb" />
+        <LogoTextScene modelPath="models/centraleSupelec.glb" />
         <Skill
           title="CentraleSupélec"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
@@ -32,7 +32,7 @@ const Education = () => {
           <p>2020</p>
         </div>
 
-        <EducationScene modelPath="models/chalmers.glb" />
+        <LogoTextScene modelPath="models/chalmers.glb" />
         <Skill
           title="Chalmers University of Technology"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
@@ -40,7 +40,7 @@ const Education = () => {
         <div className="education-date">
           <p>2016-2018</p>
         </div>
-        <EducationScene text="MPSI - MP*" />
+        <LogoTextScene text="MPSI - MP*" />
         <Skill
           title="MPSI - MP*"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."

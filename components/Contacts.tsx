@@ -1,5 +1,5 @@
 import styles from "../styles/Section.module.css";
-import EducationScene from "./LogoTextScene";
+import LogoTextScene from "./LogoTextScene";
 
 const Contacts = () => {
   return (
@@ -9,14 +9,16 @@ const Contacts = () => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: "1fr 1fr 1fr",
           placeItems: "center",
-          width: "50%",
+          width: "100%",
+          height: 300,
           margin: "0 auto",
         }}
       >
-        <EducationScene text="@" />
-        <span style={{ flex: 1 }}>contact@raphaelbosi.dev</span>
+        <LogoTextScene modelPath="models/email.glb" />
+        <LogoTextScene modelPath="models/linkedin.glb" />
+        <LogoTextScene modelPath="models/github.glb" />
       </div>
     </section>
   );
