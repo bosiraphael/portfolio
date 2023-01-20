@@ -31,13 +31,15 @@
 }
 
 .contactLink {
+  height: 20rem;
+  width: 100%;
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 8px 0 rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 10px;
 
-  padding: 1.5rem 3rem;
+  padding: 3rem;
   font-size: 2rem;
   letter-spacing: 0.2rem;
   color: #fff;

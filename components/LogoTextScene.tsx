@@ -82,6 +82,7 @@ export default function LogoTextScene({
       camera={{
         position: [0, 0, 5],
       }}
+      style={{ width: "100%", height: "100%" }}
     >
       <ambientLight intensity={2} />
       <directionalLight position={[0, 2, 5]} intensity={1} />
