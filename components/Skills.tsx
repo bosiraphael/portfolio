@@ -6,11 +6,7 @@ import Skill from "./Skill";
 const Skills = () => {
   return (
     <Suspense fallback={null}>
-      <section
-        id="skills"
-        className={styles.sectionLarge}
-        style={{ top: "300vh" }}
-      >
+      <section id="skills" className={styles.section}>
         <h1 className={styles.heading}>Skills</h1>
         <div
           style={{

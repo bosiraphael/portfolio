@@ -54,9 +54,9 @@ export default function LaplandScene() {
       <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
       <Auroras planeArgs={[500, 100, 100, 100]} position={[0, 20, -50]} />
       <Snow />
-      <Trees hillsHeight={hillsHeight} />
+      {/* <Trees hillsHeight={hillsHeight} />
       <Forest hillsHeight={hillsHeight} />
-      <Moose hillsHeight={hillsHeight} />
+      <Moose hillsHeight={hillsHeight} /> */}
     </group>
   );
 }

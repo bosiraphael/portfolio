@@ -1,7 +1,7 @@
-import { Center, Text3D, useGLTF } from "@react-three/drei";
+import { Text3D, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
-import { Color, Mesh, MeshStandardMaterial, Vector3 } from "three";
+import { Mesh, Vector3 } from "three";
 
 const Model = ({ modelPath }: { modelPath: string }) => {
   const model = useGLTF(modelPath);
@@ -69,7 +69,7 @@ const TextModel = ({ text }: { text: string }) => {
   );
 };
 
-export default function EducationScene({
+export default function LogoTextScene({
   modelPath,
   text,
 }: {

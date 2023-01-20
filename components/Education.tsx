@@ -1,18 +1,10 @@
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import styles from "../styles/Section.module.css";
 import Skill from "./Skill";
-import EducationScene from "./EducationScene";
+import EducationScene from "./LogoTextScene";
 
 const Education = () => {
   return (
-    <section
-      id="education"
-      className={styles.sectionLarge}
-      style={{
-        top: "100vh",
-      }}
-    >
+    <section id="education" className={styles.section}>
       <h1 className={styles.heading}>Education</h1>
 
       <div

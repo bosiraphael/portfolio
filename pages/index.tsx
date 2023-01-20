@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import DiscoverButton from "../components/DiscoverButton";
 import Skills from "../components/Skills";
 import Education from "../components/Education";
+import Contacts from "../components/Contacts";
 
 const LaplandScene = dynamic(
   () => import("../components/LaplandScene/LaplandScene"),
@@ -29,7 +30,7 @@ export default function Home() {
         <Canvas
           shadows
           camera={{
-            position: [0, 1, 11],
+            position: [0, 2, 11],
           }}
           style={{ width: "100%", height: "100vh" }}
         >
@@ -43,8 +44,11 @@ export default function Home() {
         <h2 className={styles.subheading}>Data Scientist and Developer</h2>
         <DiscoverButton />
 
-        <Education />
-        <Skills />
+        <div style={{ position: "absolute", top: "100vh" }}>
+          <Education />
+          <Skills />
+          <Contacts />
+        </div>
       </main>
     </>
   );
