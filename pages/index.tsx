@@ -27,19 +27,20 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className={styles.main}>
-        <Canvas
-          shadows
-          camera={{
-            position: [0, 2, 11],
-          }}
-          style={{ width: "100%", height: "100vh" }}
-        >
-          <color attach="background" args={["#ffffff"]} />
-          <Suspense fallback={null}>
+        <Suspense fallback={null}>
+          <Canvas
+            shadows
+            camera={{
+              position: [0, 2, 11],
+            }}
+            style={{ width: "100%", height: "100vh" }}
+          >
+            <color attach="background" args={["#ffffff"]} />
+
             <Scene />
             <LaplandScene />
-          </Suspense>
-        </Canvas>
+          </Canvas>
+        </Suspense>
         <h1 className={styles.heading}>Raphaël Bosi</h1>
         <h2 className={styles.subheading}>Data Scientist and Developer</h2>
         <DiscoverButton />
