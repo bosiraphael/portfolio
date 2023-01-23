@@ -39,6 +39,10 @@ export default function Home() {
   const workViewRef2 = useRef<any>(null);
   const workViewRef3 = useRef<any>(null);
 
+  const contactsViewRef1 = useRef<any>(null);
+  const contactsViewRef2 = useRef<any>(null);
+  const contactsViewRef3 = useRef<any>(null);
+
   return (
     <>
       <Head>
@@ -86,6 +90,16 @@ export default function Home() {
             viewRef2={workViewRef2}
             viewRef3={workViewRef3}
           />
+
+          <Skills />
+
+          <Contacts
+            viewRef1={contactsViewRef1}
+            viewRef2={contactsViewRef2}
+            viewRef3={contactsViewRef3}
+          />
+
+          <Footer />
         </div>
 
         <Suspense fallback={null}>
@@ -125,23 +139,23 @@ export default function Home() {
               <LogoTextScene text="MPSI - MP*" />
             </View>
 
+            {/*
+              Contacts
+              */}
+
+            <View track={contactsViewRef1}>
+              <LogoTextScene modelPath="models/email.glb" />
+            </View>
+            <View track={contactsViewRef2}>
+              <LogoTextScene modelPath="models/linkedin.glb" />
+            </View>
+            <View track={contactsViewRef3}>
+              <LogoTextScene modelPath="models/github.glb" />
+            </View>
+
             <Preload all />
           </Canvas>
         </Suspense>
-
-        {/* <div
-            style={{
-              position: "absolute",
-              top: "100vh",
-              width: "100%",
-            }}
-          >
-            <Education />
-            <Work />
-            <Skills />
-            <Contacts />
-            <Footer />
-          </div> */}
       </main>
     </>
   );
