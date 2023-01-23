@@ -1,8 +1,17 @@
 import styles from "../styles/Section.module.css";
 import Skill from "./Skill";
-import LogoTextScene from "./LogoTextScene";
 
-const Education = () => {
+interface EducationProps {
+  educationViewRef1: any;
+  educationViewRef2: any;
+  educationViewRef3: any;
+}
+
+const Education = ({
+  educationViewRef1,
+  educationViewRef2,
+  educationViewRef3,
+}: EducationProps) => {
   return (
     <section id="education" className={styles.section}>
       <h1 className={styles.heading}>Education</h1>
@@ -21,7 +30,10 @@ const Education = () => {
           <p>2018 - 2022</p>
         </div>
 
-        <LogoTextScene modelPath="models/centraleSupelec.glb" />
+        <div
+          ref={educationViewRef1}
+          style={{ width: "100%", height: "100%" }}
+        />
         <Skill
           title="CentraleSupélec"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
@@ -31,7 +43,10 @@ const Education = () => {
           <p>2020</p>
         </div>
 
-        <LogoTextScene modelPath="models/chalmers.glb" />
+        <div
+          ref={educationViewRef2}
+          style={{ width: "100%", height: "100%" }}
+        />
         <Skill
           title="Chalmers University of Technology"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
@@ -39,7 +54,11 @@ const Education = () => {
         <div className="education-date">
           <p>2016-2018</p>
         </div>
-        <LogoTextScene text="MPSI - MP*" />
+
+        <div
+          ref={educationViewRef3}
+          style={{ width: "100%", height: "100%" }}
+        />
         <Skill
           title="MPSI - MP*"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."

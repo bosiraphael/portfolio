@@ -1,4 +1,4 @@
-import { Text3D, useGLTF } from "@react-three/drei";
+import { PerspectiveCamera, Text3D, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { Mesh, Vector3 } from "three";
@@ -77,18 +77,23 @@ export default function LogoTextScene({
   text?: string;
 }) {
   return (
-    <Canvas
-      shadows
-      camera={{
-        position: [0, 0, 5],
-      }}
-      style={{ width: "100%", height: "100%" }}
-    >
+    // <Canvas
+    //   shadows
+    //   camera={{
+    //     position: [0, 0, 5],
+    //   }}
+    //   dpr={[1, 2]}
+    //   style={{ width: "100%", height: "100%" }}
+    // >
+    <>
       <ambientLight intensity={2} />
       <directionalLight position={[0, 2, 5]} intensity={1} />
+
+      <PerspectiveCamera makeDefault fov={75} position={[0, 0, 5]} />
+
       {text ? <TextModel text={text} /> : <></>}
 
       {modelPath ? <Model modelPath={modelPath} /> : <></>}
-    </Canvas>
+    </>
   );
 }

@@ -4,8 +4,11 @@ import { createRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { LinearFilter, Mesh, Vector3 } from "three";
 
+const boxGeometry_ = <boxGeometry args={[1, 1, 1]} />;
+
 const Boxes = ({ count }: { count: number }) => {
   const boxes = [];
+
   for (let i = 0; i < count; i++) {
     boxes.push(
       <Box
@@ -26,7 +29,7 @@ const Box = ({ position }: { position: [x: number, y: number, z: number] }) => {
 
   return (
     <mesh ref={ref} receiveShadow castShadow>
-      <boxGeometry args={[1, 1, 1]} />
+      {boxGeometry_}
       <meshStandardMaterial map={colorMap} metalness={0.9} roughness={0.7} />
     </mesh>
   );
@@ -101,6 +104,7 @@ export default function CubeScene() {
       camera={{
         position: [0, 2, 5],
       }}
+      dpr={[1, 2]}
     >
       <ambientLight intensity={0.5} />
       <directionalLight
@@ -117,7 +121,7 @@ export default function CubeScene() {
       />
       <Physics gravity={[0, -9.81, 0]}>
         <Cursor />
-        <Boxes count={10} />
+        <Boxes count={5} />
         <Plane />
       </Physics>
     </Canvas>

@@ -10,6 +10,16 @@ import Education from "../components/Education";
 import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
 import Work from "../components/Work";
+import FPSStats from "react-fps-stats";
+import {
+  Environment,
+  PerspectiveCamera,
+  Preload,
+  View,
+} from "@react-three/drei";
+import { useRef } from "react";
+import Skill from "../components/Skill";
+import LogoTextScene from "../components/LogoTextScene";
 
 const LaplandScene = dynamic(
   () => import("../components/LaplandScene/LaplandScene"),
@@ -19,6 +29,12 @@ const LaplandScene = dynamic(
 );
 
 export default function Home() {
+  const containerRef = useRef<any>(null);
+
+  const educationViewRef1 = useRef<any>(null);
+  const educationViewRef2 = useRef<any>(null);
+  const educationViewRef3 = useRef<any>(null);
+
   return (
     <>
       <Head>
@@ -28,26 +44,68 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className={styles.main}>
+      <main className={styles.main} ref={containerRef}>
+        <FPSStats />
+        <Canvas
+          shadows
+          camera={{
+            position: [0, 2, 11],
+          }}
+          dpr={[1, 2]}
+          style={{ width: "100%", height: "100vh" }}
+        >
+          <color attach="background" args={["#ffffff"]} />
+
+          <Scene />
+          <LaplandScene />
+        </Canvas>
+
+        <h1 className={styles.heading}>Raphaël Bosi</h1>
+        <h2 className={styles.subheading}>Data Scientist and Developer</h2>
+        <DiscoverButton />
+
+        <div
+          style={{
+            position: "absolute",
+            top: "100vh",
+            width: "100%",
+          }}
+        >
+          <Education
+            educationViewRef1={educationViewRef1}
+            educationViewRef2={educationViewRef2}
+            educationViewRef3={educationViewRef3}
+          />
+        </div>
+
         <Suspense fallback={null}>
           <Canvas
-            shadows
-            camera={{
-              position: [0, 2, 11],
+            eventSource={containerRef}
+            style={{
+              position: "fixed !important",
+              top: "0px",
+              left: "0px",
+              width: "100vw !important",
+              height: "100vh !important",
             }}
-            style={{ width: "100%", height: "100vh" }}
           >
-            <color attach="background" args={["#ffffff"]} />
-
-            <Scene />
-            <LaplandScene />
+            {/*
+            Education
+             */}
+            <View track={educationViewRef1}>
+              <LogoTextScene modelPath="models/centraleSupelec.glb" />
+            </View>
+            <View track={educationViewRef2}>
+              <LogoTextScene modelPath="models/chalmers.glb" />
+            </View>
+            <View track={educationViewRef3}>
+              <LogoTextScene text="MPSI - MP*" />
+            </View>
+            <Preload all />
           </Canvas>
+        </Suspense>
 
-          <h1 className={styles.heading}>Raphaël Bosi</h1>
-          <h2 className={styles.subheading}>Data Scientist and Developer</h2>
-          <DiscoverButton />
-
-          <div
+        {/* <div
             style={{
               position: "absolute",
               top: "100vh",
@@ -59,8 +117,7 @@ export default function Home() {
             <Skills />
             <Contacts />
             <Footer />
-          </div>
-        </Suspense>
+          </div> */}
       </main>
     </>
   );
