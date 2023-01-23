@@ -15,22 +15,13 @@ const Contacts = ({ viewRef1, viewRef2, viewRef3 }: ContactsProps) => {
   return (
     <section id="contacts" className={styles.section}>
       <h1 className={styles.heading}>Contacts</h1>
-      <div
-        style={{
-          position: "relative",
-          display: "flex",
-          height: "70rem",
-          width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div className={styles.contact__container}>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr));",
             placeItems: "center",
-            width: "90%",
+            width: "100%",
             gap: "5rem",
           }}
         >

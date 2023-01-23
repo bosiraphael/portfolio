@@ -39,6 +39,16 @@
   place-items: center;
 }
 
+.contact__container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 5rem;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+}
+
 .contactLink {
   height: 20rem;
   width: 100%;
