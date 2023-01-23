@@ -35,6 +35,10 @@ export default function Home() {
   const educationViewRef2 = useRef<any>(null);
   const educationViewRef3 = useRef<any>(null);
 
+  const workViewRef1 = useRef<any>(null);
+  const workViewRef2 = useRef<any>(null);
+  const workViewRef3 = useRef<any>(null);
+
   return (
     <>
       <Head>
@@ -72,9 +76,15 @@ export default function Home() {
           }}
         >
           <Education
-            educationViewRef1={educationViewRef1}
-            educationViewRef2={educationViewRef2}
-            educationViewRef3={educationViewRef3}
+            viewRef1={educationViewRef1}
+            viewRef2={educationViewRef2}
+            viewRef3={educationViewRef3}
+          />
+
+          <Work
+            viewRef1={workViewRef1}
+            viewRef2={workViewRef2}
+            viewRef3={workViewRef3}
           />
         </div>
 
@@ -90,7 +100,7 @@ export default function Home() {
             }}
           >
             {/*
-            Education
+              Education
              */}
             <View track={educationViewRef1}>
               <LogoTextScene modelPath="models/centraleSupelec.glb" />
@@ -101,6 +111,20 @@ export default function Home() {
             <View track={educationViewRef3}>
               <LogoTextScene text="MPSI - MP*" />
             </View>
+
+            {/*
+              Work
+              */}
+            <View track={workViewRef1}>
+              <LogoTextScene text="test" />
+            </View>
+            <View track={workViewRef2}>
+              <LogoTextScene text="test" />
+            </View>
+            <View track={workViewRef3}>
+              <LogoTextScene text="MPSI - MP*" />
+            </View>
+
             <Preload all />
           </Canvas>
         </Suspense>
