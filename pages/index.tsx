@@ -64,7 +64,7 @@ export default function Home() {
           <Scene />
           <LaplandScene />
         </Canvas>
-        {/* 
+
         <h1 className={styles.heading}>Raphaël Bosi</h1>
         <h2 className={styles.subheading}>Data Scientist and Developer</h2>
         <DiscoverButton />
@@ -113,7 +113,6 @@ export default function Home() {
               height: "100vh !important",
             }}
           >
-
             <View track={educationViewRef1}>
               <LogoTextScene modelPath="models/centraleSupelec.glb" />
             </View>
@@ -149,21 +148,21 @@ export default function Home() {
 
             <Preload all />
           </Canvas>
-        </Suspense> */}
+        </Suspense>
       </main>
     </>
   );
 }
 
 const Scene = () => {
-  // let viewport = useThree((state) => state.viewport);
-  // useFrame((state, delta) => {
-  //   const offset = window.scrollY / (window.innerHeight * 4);
-  //   if (offset > 1 / 4) {
-  //     return;
-  //   }
-  //   state.camera.position.set(0, 2 - viewport.height * offset, 11);
-  // });
+  let viewport = useThree((state) => state.viewport);
+  useFrame((state, delta) => {
+    const offset = window.scrollY / (window.innerHeight * 4);
+    if (offset > 1 / 4) {
+      return;
+    }
+    state.camera.position.set(0, 2 - viewport.height * offset, 11);
+  });
 
   return <></>;
 };

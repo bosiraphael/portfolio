@@ -1,46 +1,71 @@
-import { useGLTF } from "@react-three/drei";
-import { MeshStandardMaterial } from "three";
+import { Instance, Instances, useGLTF } from "@react-three/drei";
+import { useEffect, useRef } from "react";
+import {
+  InstancedBufferAttribute,
+  InstancedBufferGeometry,
+  MeshStandardMaterial,
+} from "three";
 const Trees = ({
   hillsHeight,
+  count,
 }: {
   hillsHeight: (x: any, y: any) => number;
+  count: number;
 }) => {
-  const gltf = useGLTF("/models/spruce.glb");
+  const { nodes } = useGLTF("/models/spruce.glb");
 
-  gltf.scene.traverse((child) => {
-    // @ts-ignore
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-      if (child.name === "leaves002") {
-        // @ts-ignore
-        child.material = new MeshStandardMaterial({
-          color: "white",
-          roughness: 0.5,
-          metalness: 0.5,
-        });
-      }
-    }
-  });
-
-  // Create multiple trees
   const trees = [];
-  for (let i = 0; i < 2; i++) {
-    const tree = gltf.scene.clone();
-    tree.position.x = (Math.random() - 0.5) * 5;
-    tree.position.z = -Math.random() * 0.5 + 9;
-    tree.position.y = hillsHeight(tree.position.x, -tree.position.z - 20);
+  for (let i = 0; i < count; i++) {
+    const tree: {
+      position: [x: number, y: number, z: number];
+      scale: number;
+    } = {
+      position: [0, 0, 0],
+      scale: 1,
+    };
+    tree.position[0] = (Math.random() - 0.5) * 8;
+    tree.position[2] = -Math.random() * 4 + 9;
+    tree.position[1] = hillsHeight(tree.position[0], -tree.position[2] - 20);
 
     const randomScale = 0.2 + Math.random() * 0.2;
-    tree.scale.set(randomScale, randomScale, randomScale);
+    tree.scale = randomScale;
     trees.push(tree);
   }
 
   return (
     <>
-      {trees.map((tree, index) => (
-        <primitive key={index} object={tree} />
-      ))}
+      <Instances
+        range={count}
+        limit={count}
+        position={[0, 0, 0]}
+        material={nodes.spruce002.material}
+        geometry={nodes.spruce002.geometry}
+      >
+        {trees.map((tree, i) => {
+          return (
+            <Instance key={i} position={tree.position} scale={tree.scale} />
+          );
+        })}
+      </Instances>
+      <Instances
+        range={count}
+        limit={count}
+        position={[0, 0, 0]}
+        material={
+          new MeshStandardMaterial({
+            color: "white",
+            roughness: 0.5,
+            metalness: 0.5,
+          })
+        }
+        geometry={nodes.leaves002.geometry}
+      >
+        {trees.map((tree, i) => {
+          return (
+            <Instance key={i} position={tree.position} scale={tree.scale} />
+          );
+        })}
+      </Instances>
     </>
   );
 };

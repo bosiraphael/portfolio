@@ -24,7 +24,7 @@ const Moose = ({
     moose.scene.position.x = ((-state.clock.elapsedTime * 0.3) % 24) + 12;
     moose.scene.position.y = hillsHeight(
       moose.scene.position.x,
-      -moose.scene.position.z
+      -moose.scene.position.z - 20
     );
   });
   // *************************
@@ -40,7 +40,7 @@ const Moose = ({
     <primitive
       object={moose.scene}
       scale={[0.5, 0.5, 0.5]}
-      position={[0, 0, 0]}
+      position={[0, 0, 5]}
     />
   );
 };
