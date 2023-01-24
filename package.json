@@ -26,6 +26,8 @@
     "react-fps-stats": "^0.3.1",
     "react-scroll": "^1.8.9",
     "simplex-noise": "^4.0.1",
+    "smooth-scrollbar": "^8.8.1",
+    "smooth-scrollbar-react": "^2.4.1",
     "three": "^0.148.0",
     "typescript": "4.9.4"
   },

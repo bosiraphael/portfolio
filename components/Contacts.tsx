@@ -1,9 +1,4 @@
-import { Html } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
 import styles from "../styles/Section.module.css";
-import Auroras from "./LaplandScene/Auroras";
-
-import LogoTextScene from "./LogoTextScene";
 
 interface ContactsProps {
   viewRef1: any;
@@ -19,7 +14,7 @@ const Contacts = ({ viewRef1, viewRef2, viewRef3 }: ContactsProps) => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr));",
+            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
             placeItems: "center",
             width: "100%",
             gap: "5rem",

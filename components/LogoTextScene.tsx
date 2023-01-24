@@ -82,7 +82,7 @@ export default function LogoTextScene({
     //   camera={{
     //     position: [0, 0, 5],
     //   }}
-    //   dpr={[1, 2]}
+    //   dpr={[1, 1]}
     //   style={{ width: "100%", height: "100%" }}
     // >
     <>

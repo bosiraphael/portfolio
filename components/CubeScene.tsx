@@ -104,7 +104,7 @@ export default function CubeScene() {
       camera={{
         position: [0, 2, 5],
       }}
-      dpr={[1, 2]}
+      dpr={[1, 1]}
     >
       <ambientLight intensity={0.5} />
       <directionalLight

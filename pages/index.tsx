@@ -11,15 +11,10 @@ import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
 import Work from "../components/Work";
 import FPSStats from "react-fps-stats";
-import {
-  Environment,
-  PerspectiveCamera,
-  Preload,
-  View,
-} from "@react-three/drei";
+import { Preload, View } from "@react-three/drei";
 import { useRef } from "react";
-import Skill from "../components/Skill";
 import LogoTextScene from "../components/LogoTextScene";
+import { Scrollbar } from "smooth-scrollbar-react";
 
 const LaplandScene = dynamic(
   () => import("../components/LaplandScene/LaplandScene"),
@@ -54,12 +49,13 @@ export default function Home() {
       <Navbar />
       <main className={styles.main} ref={containerRef}>
         <FPSStats />
+
         <Canvas
           shadows
           camera={{
             position: [0, 2, 11],
           }}
-          dpr={[1, 2]}
+          dpr={[1, 1]}
           style={{ width: "100%", height: "100vh" }}
         >
           <color attach="background" args={["#ffffff"]} />
@@ -79,27 +75,29 @@ export default function Home() {
             width: "100%",
           }}
         >
-          <Education
-            viewRef1={educationViewRef1}
-            viewRef2={educationViewRef2}
-            viewRef3={educationViewRef3}
-          />
+          <Scrollbar damping={0.1} thumbMinSize={50}>
+            <Education
+              viewRef1={educationViewRef1}
+              viewRef2={educationViewRef2}
+              viewRef3={educationViewRef3}
+            />
 
-          <Work
-            viewRef1={workViewRef1}
-            viewRef2={workViewRef2}
-            viewRef3={workViewRef3}
-          />
+            <Work
+              viewRef1={workViewRef1}
+              viewRef2={workViewRef2}
+              viewRef3={workViewRef3}
+            />
 
-          <Skills />
+            <Skills />
 
-          <Contacts
-            viewRef1={contactsViewRef1}
-            viewRef2={contactsViewRef2}
-            viewRef3={contactsViewRef3}
-          />
+            <Contacts
+              viewRef1={contactsViewRef1}
+              viewRef2={contactsViewRef2}
+              viewRef3={contactsViewRef3}
+            />
 
-          <Footer />
+            <Footer />
+          </Scrollbar>
         </div>
 
         <Suspense fallback={null}>
