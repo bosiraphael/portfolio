@@ -8,12 +8,35 @@
 }
 
 .heading {
-  font-size: 10rem;
+  position: relative;
+  overflow: hidden;
+  font-size: 6rem;
   letter-spacing: 0.2rem;
   font-weight: 500;
   color: var(--color-primary);
   text-align: center;
-  margin: 4rem auto;
+  margin: 5rem auto;
+  width: 100%;
+}
+
+.heading:before,
+.heading:after {
+  position: absolute;
+  top: 51%;
+  overflow: hidden;
+  width: 50%;
+  height: 1px;
+  content: "\a0";
+  background-color: var(--color-primary);
+}
+
+.heading:before {
+  margin-left: -55%;
+  text-align: right;
+}
+.heading:after {
+  margin-left: 5%;
+  text-align: right;
 }
 
 .subheading {
@@ -57,44 +80,31 @@
   position: relative;
   display: flex;
   width: 100%;
-  padding: 10rem 5rem;
+  padding: 5rem;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    0deg,
-    var(--color-primary),
-    var(--color-tertiary)
-  );
 }
 
 .contactLink {
   height: 20rem;
   width: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+
+  color: var(--color-secondary);
+
+  background: #fff;
+  box-shadow: 0 8px 32px 0 var(--color-gray-300);
+  border: 1px solid var(--color-secondary);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
 
   padding: 3rem;
   font-size: 2rem;
   letter-spacing: 0.2rem;
-  color: #fff;
 
   text-decoration: none;
   text-align: center;
 }
 
 .contactLink:hover {
-  background: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 10px;
-
-  color: var(--color-secondary);
-
   transform: scale(1.05) translateY(-5px);
   transition: all 0.3s ease-in-out;
 }
