@@ -92,8 +92,7 @@
   color: var(--color-secondary);
 
   background: #fff;
-  box-shadow: 0 8px 32px 0 var(--color-gray-300);
-  border: 1px solid var(--color-secondary);
+  box-shadow: 0 8px 32px 0 var(--color-gray-400);
   border-radius: 10px;
 
   padding: 3rem;
