@@ -33,6 +33,7 @@ export default function Home() {
   const workViewRef1 = useRef<any>(null);
   const workViewRef2 = useRef<any>(null);
   const workViewRef3 = useRef<any>(null);
+  const workViewRef4 = useRef<any>(null);
 
   const contactsViewRef1 = useRef<any>(null);
   const contactsViewRef2 = useRef<any>(null);
@@ -86,6 +87,7 @@ export default function Home() {
               viewRef1={workViewRef1}
               viewRef2={workViewRef2}
               viewRef3={workViewRef3}
+              viewRef4={workViewRef4}
             />
 
             <Skills />
@@ -134,7 +136,10 @@ export default function Home() {
               <LogoTextScene text="test" />
             </View>
             <View track={workViewRef3}>
-              <LogoTextScene text="MPSI - MP*" />
+              <LogoTextScene modelPath="models/danone.glb" />
+            </View>
+            <View track={workViewRef4}>
+              <LogoTextScene modelPath="models/safran.glb" />
             </View>
 
             {/*
