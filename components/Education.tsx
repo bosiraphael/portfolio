@@ -13,7 +13,7 @@ const Education = ({ viewRef1, viewRef2, viewRef3 }: EducationProps) => {
       <h1 className={styles.heading}>Education</h1>
 
       <div className={styles.gridEducationWork}>
-        <div className="education-date">
+        <div className={styles.educationDate}>
           <p>2018 - 2022</p>
         </div>
 
@@ -23,7 +23,7 @@ const Education = ({ viewRef1, viewRef2, viewRef3 }: EducationProps) => {
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
         />
 
-        <div className="education-date">
+        <div className={styles.educationDate}>
           <p>2020</p>
         </div>
 
@@ -32,7 +32,7 @@ const Education = ({ viewRef1, viewRef2, viewRef3 }: EducationProps) => {
           title="Chalmers University of Technology"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
         />
-        <div className="education-date">
+        <div className={styles.educationDate}>
           <p>2016-2018</p>
         </div>
 

@@ -14,7 +14,7 @@ const Work = ({ viewRef1, viewRef2, viewRef3, viewRef4 }: WorkProps) => {
       <h1 className={styles.heading}>Work experiences</h1>
 
       <div className={styles.gridEducationWork}>
-        <div className="education-date">
+        <div className={styles.educationDate}>
           <p>2021-2022</p>
         </div>
         <div ref={viewRef1} style={{ width: "100%", height: "100%" }} />
@@ -23,7 +23,7 @@ const Work = ({ viewRef1, viewRef2, viewRef3, viewRef4 }: WorkProps) => {
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
         />
 
-        <div className="education-date">
+        <div className={styles.educationDate}>
           <p>2021-2022</p>
         </div>
         <div ref={viewRef2} style={{ width: "100%", height: "100%" }} />
@@ -32,7 +32,7 @@ const Work = ({ viewRef1, viewRef2, viewRef3, viewRef4 }: WorkProps) => {
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
         />
 
-        <div className="education-date">
+        <div className={styles.educationDate}>
           <p>2020</p>
         </div>
         <div ref={viewRef3} style={{ width: "100%", height: "100%" }} />
@@ -41,7 +41,7 @@ const Work = ({ viewRef1, viewRef2, viewRef3, viewRef4 }: WorkProps) => {
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
         />
 
-        <div className="education-date">
+        <div className={styles.educationDate}>
           <p>2019</p>
         </div>
         <div ref={viewRef4} style={{ width: "100%", height: "100%" }} />

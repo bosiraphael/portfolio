@@ -1,5 +1,7 @@
 :root {
   --color-primary: rgb(24, 63, 27);
+  --color-secondary: rgb(67, 58, 63);
+  --color-tertiary: rgb(114, 169, 143);
 
   --color-gray-100: #f5f5f5;
   --color-gray-200: #eeeeee;
@@ -60,7 +62,7 @@ a {
   width: 100%;
   height: 6rem;
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #ffffff;
   display: flex;
   justify-content: space-around;
@@ -106,20 +108,6 @@ a {
   background: #e0e0e0;
   box-shadow: inset 9px 9px 19px #cecece, inset -9px -9px 19px #f2f2f2;
   transform: scale(0.99) translate(-50%, -50%);
-}
-
-.education-date {
-  width: 100%;
-  height: 100%;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.2rem;
-  color: var(--color-primary);
-  border-right: 1px solid rgb(171, 171, 171);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 .footer {
