@@ -11,13 +11,14 @@ import { createNoise2D } from "simplex-noise";
 import alea from "alea";
 import Moose from "./Moose";
 import { clamp } from "three/src/math/MathUtils";
+import { OrbitControls } from "@react-three/drei";
 
 const hillsRef = createRef<Mesh>();
 
 const hillsHeight = (x: any, y: any) => {
   const simplex = createNoise2D(alea("hello"));
 
-  return simplex(x / 16, y / 14) * 1.8 * clamp((y - 12) * 0.5, 0, 1);
+  return simplex(x / 16, y / 14) * 1.8 * clamp((y + 30) * 0.1, 0, 1);
 };
 
 export default function LaplandScene() {
@@ -31,7 +32,7 @@ export default function LaplandScene() {
 
   return (
     <group>
-      {/* <OrbitControls /> */}
+      <OrbitControls />
       <ambientLight intensity={0.3} />
       <directionalLight
         position={[0, 1, 1]}
@@ -54,9 +55,9 @@ export default function LaplandScene() {
       <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
       <Auroras planeArgs={[500, 100, 100, 100]} position={[0, 20, -50]} />
       <Snow />
-      {/* <Trees hillsHeight={hillsHeight} />
+      <Trees hillsHeight={hillsHeight} />
       <Forest hillsHeight={hillsHeight} />
-      <Moose hillsHeight={hillsHeight} /> */}
+      <Moose hillsHeight={hillsHeight} />
     </group>
   );
 }

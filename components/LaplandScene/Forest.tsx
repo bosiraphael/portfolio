@@ -25,7 +25,7 @@ const Forest = ({
       positions[i * 3 + 2] = -Math.random() * 50 + 8;
       positions[i * 3 + 1] = hillsHeight(
         positions[i * 3],
-        -positions[i * 3 + 2]
+        -positions[i * 3 + 2] - 20
       );
     }
 

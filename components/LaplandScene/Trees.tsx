@@ -29,7 +29,7 @@ const Trees = ({
     const tree = gltf.scene.clone();
     tree.position.x = (Math.random() - 0.5) * 5;
     tree.position.z = -Math.random() * 0.5 + 9;
-    tree.position.y = hillsHeight(tree.position.x, -tree.position.z);
+    tree.position.y = hillsHeight(tree.position.x, -tree.position.z - 20);
 
     const randomScale = 0.2 + Math.random() * 0.2;
     tree.scale.set(randomScale, randomScale, randomScale);
