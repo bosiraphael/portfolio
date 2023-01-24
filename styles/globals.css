@@ -69,7 +69,7 @@ a {
   align-items: center;
   letter-spacing: 0.1rem;
   padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 5px 20px 0 rgba(167, 167, 167, 0.37);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
