@@ -33,8 +33,7 @@ export default function LaplandScene() {
   return (
     <group>
       {/* <OrbitControls /> */}
-      <ambientLight intensity={0.3} />
-      <directionalLight position={[0, 1, 1]} intensity={0.5} />
+      <ambientLight intensity={1} />
       <mesh position={[0, -50, 10]} rotation={[0, 0, 0]}>
         <planeGeometry args={[500, 100]} />
         <meshBasicMaterial toneMapped={false} />

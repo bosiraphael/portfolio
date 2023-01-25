@@ -35,7 +35,7 @@ const Hills = ({
       position={[0, 0, -20]}
     >
       <planeGeometry args={[100, 60, 100, 100]} />
-      <meshStandardMaterial color="white" />
+      <meshLambertMaterial color="white" />
     </mesh>
   );
 };

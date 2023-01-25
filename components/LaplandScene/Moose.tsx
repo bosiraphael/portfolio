@@ -27,15 +27,7 @@ const Moose = ({
       -moose.scene.position.z - 20
     );
   });
-  // *************************
 
-  moose.scene.traverse((child) => {
-    // @ts-ignore
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    }
-  });
   return (
     <primitive object={moose.scene} scale={[1, 1, 1]} position={[0, 0, 2]} />
   );

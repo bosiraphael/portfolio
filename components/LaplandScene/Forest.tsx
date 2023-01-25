@@ -21,8 +21,8 @@ const Forest = ({
     const positions = new Float32Array(count * 3);
 
     for (let i = 0; i < count * 3; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 50;
-      positions[i * 3 + 2] = -Math.random() * 50 + 1;
+      positions[i * 3] = (Math.random() - 0.5) * 40;
+      positions[i * 3 + 2] = -Math.random() * 30 - 1;
       positions[i * 3 + 1] = hillsHeight(
         positions[i * 3],
         -positions[i * 3 + 2] - 20

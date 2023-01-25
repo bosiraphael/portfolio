@@ -1,10 +1,5 @@
 import { Instance, Instances, useGLTF } from "@react-three/drei";
-import { useEffect, useRef } from "react";
-import {
-  InstancedBufferAttribute,
-  InstancedBufferGeometry,
-  MeshStandardMaterial,
-} from "three";
+import { MeshLambertMaterial } from "three";
 const Trees = ({
   hillsHeight,
   count,
@@ -33,10 +28,8 @@ const Trees = ({
     trees.push(tree);
   }
 
-  const leavesMaterial = new MeshStandardMaterial({
-    color: "white",
-    roughness: 0.5,
-    metalness: 0.5,
+  const leavesMaterial = new MeshLambertMaterial({
+    color: "#c4c2c2",
   });
 
   return (
