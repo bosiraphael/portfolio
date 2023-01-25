@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { DoubleSide, Mesh } from "three";
-import { clamp } from "three/src/math/MathUtils";
+import { Mesh } from "three";
 
 const Hills = ({
   hillsRef,

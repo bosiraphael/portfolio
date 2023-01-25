@@ -23,14 +23,21 @@ const Trees = ({
       position: [0, 0, 0],
       scale: 1,
     };
-    tree.position[0] = (Math.random() - 0.5) * 8;
-    tree.position[2] = -Math.random() * 4 + 9;
+    tree.position[0] =
+      (((Math.random() - 0.5) * 0.5 + i) / (count - 1) - 0.5) * 6;
+    tree.position[2] = -Math.random() * 1 + 9;
     tree.position[1] = hillsHeight(tree.position[0], -tree.position[2] - 20);
 
-    const randomScale = 0.2 + Math.random() * 0.2;
+    const randomScale = 0.3 + Math.random() * 0.1;
     tree.scale = randomScale;
     trees.push(tree);
   }
+
+  const leavesMaterial = new MeshStandardMaterial({
+    color: "white",
+    roughness: 0.5,
+    metalness: 0.5,
+  });
 
   return (
     <>
@@ -51,13 +58,7 @@ const Trees = ({
         range={count}
         limit={count}
         position={[0, 0, 0]}
-        material={
-          new MeshStandardMaterial({
-            color: "white",
-            roughness: 0.5,
-            metalness: 0.5,
-          })
-        }
+        material={leavesMaterial}
         geometry={nodes.leaves002.geometry}
       >
         {trees.map((tree, i) => {

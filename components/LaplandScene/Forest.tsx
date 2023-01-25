@@ -17,12 +17,12 @@ const Forest = ({
   useEffect(() => {
     if (!points.current) return;
 
-    const count = 2000;
+    const count = 1000;
     const positions = new Float32Array(count * 3);
 
     for (let i = 0; i < count * 3; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 50;
-      positions[i * 3 + 2] = -Math.random() * 50 + 8;
+      positions[i * 3 + 2] = -Math.random() * 50 + 1;
       positions[i * 3 + 1] = hillsHeight(
         positions[i * 3],
         -positions[i * 3 + 2] - 20

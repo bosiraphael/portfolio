@@ -40,10 +40,10 @@ export default function LaplandScene() {
         <meshBasicMaterial toneMapped={false} />
       </mesh>
       <Hills hillsRef={hillsRef} hillsHeight={hillsHeight} />
-      <Auroras planeArgs={[500, 100, 100, 100]} position={[0, 20, -50]} />
+      <Auroras planeArgs={[500, 100, 1, 1]} position={[0, 20, -50]} />
       <Snow />
-      <Trees hillsHeight={hillsHeight} count={10} />
-      {/* <Forest hillsHeight={hillsHeight} /> */}
+      <Trees hillsHeight={hillsHeight} count={4} />
+      <Forest hillsHeight={hillsHeight} />
       <Moose hillsHeight={hillsHeight} />
     </group>
   );

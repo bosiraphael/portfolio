@@ -15,7 +15,7 @@ export default function SnowParticles() {
   useEffect(() => {
     if (!points.current) return;
 
-    const count = 10000;
+    const count = 1000;
     const positions = new Float32Array(count * 3);
 
     for (let i = 0; i < count * 3; i++) {
@@ -50,7 +50,7 @@ export default function SnowParticles() {
       <pointsMaterial
         attach="material"
         color="white"
-        size={0.1}
+        size={0.5}
         sizeAttenuation
         alphaMap={alphaMap}
         transparent
