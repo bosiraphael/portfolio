@@ -15,21 +15,13 @@ import { OrbitControls } from "@react-three/drei";
 
 const hillsRef = createRef<Mesh>();
 
-const hillsHeight = (x: any, y: any) => {
-  const simplex = createNoise2D(alea("hello"));
+const simplex = createNoise2D(alea("hello"));
 
+const hillsHeight = (x: any, y: any) => {
   return simplex(x / 16, y / 14) * 1.8 * clamp((y + 30) * 0.1, 0, 1);
 };
 
 export default function LaplandScene() {
-  // useFrame(() => {
-  //   if (data.range(0, 1 / 2) === 1) {
-  //     groupRef.current.position.y = 100;
-  //   } else {
-  //     groupRef.current.position.y = 0;
-  //   }
-  // });
-
   return (
     <group>
       {/* <OrbitControls /> */}

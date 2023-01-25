@@ -56,6 +56,7 @@ export default function Home() {
           camera={{
             position: [0, 2, 11],
             far: 100,
+            near: 0.1,
           }}
           dpr={[1, 1]}
           style={{ width: "100%", height: "100vh" }}
