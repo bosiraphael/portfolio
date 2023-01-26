@@ -1,9 +1,11 @@
-import { Merged, useGLTF } from "@react-three/drei";
+import { Merged, useGLTF, useTexture } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { useMemo } from "react";
 import {
+  Mesh,
   MeshLambertMaterial,
   MeshStandardMaterial,
+  RepeatWrapping,
   TextureLoader,
 } from "three";
 const Trees = ({
@@ -14,21 +16,13 @@ const Trees = ({
   count: number;
 }) => {
   const spruce = useGLTF("/models/lowPolySpruce.glb");
+
   const meshes = useMemo(
     () => ({ Trunc: spruce.nodes.Cube, Leaves: spruce.nodes.Circle }),
     [spruce]
   );
 
-  const [colorMap, displacementMap, normalMap, roughnessMap, aoMap] = useLoader(
-    TextureLoader,
-    [
-      "textures/Snow_001_SD/Snow_001_COLOR.jpg",
-      "textures/Snow_001_SD/Snow_001_DISP.png",
-      "textures/Snow_001_SD/Snow_001_NORM.jpg",
-      "textures/Snow_001_SD/Snow_001_ROUGH.jpg",
-      "textures/Snow_001_SD/Snow_001_OCC.jpg",
-    ]
-  );
+  console.log(meshes);
 
   const trees = [];
   for (let i = 0; i < count; i++) {
@@ -49,16 +43,6 @@ const Trees = ({
     trees.push(tree);
   }
 
-  const leavesMaterial = new MeshStandardMaterial({
-    map: colorMap,
-    displacementMap,
-    normalMap,
-    roughnessMap,
-    aoMap,
-    displacementScale: 0.1,
-    displacementBias: -0.05,
-  });
-
   return (
     <Merged name="trees" receiveShadow castShadow meshes={meshes}>
       {(models) => {
@@ -68,7 +52,7 @@ const Trees = ({
             {trees.map((tree, i) => (
               <group key={i} position={tree.position} scale={tree.scale}>
                 <models.Trunc />
-                <models.Leaves position={[0, 1, 0]} material={leavesMaterial} />
+                <models.Leaves position={[0, 1, 0]} />
               </group>
             ))}
           </group>
