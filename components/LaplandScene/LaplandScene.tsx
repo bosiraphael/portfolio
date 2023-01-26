@@ -24,8 +24,20 @@ const hillsHeight = (x: any, y: any) => {
 export default function LaplandScene() {
   return (
     <group>
-      {/* <OrbitControls /> */}
-      <ambientLight intensity={1} />
+      <OrbitControls />
+      <ambientLight intensity={0.5} />
+      <directionalLight
+        position={[0, 0, 1]}
+        intensity={0.5}
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        shadow-camera-far={100}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
+      />
       <mesh position={[0, -50, 10]} rotation={[0, 0, 0]}>
         <planeGeometry args={[500, 100]} />
         <meshBasicMaterial toneMapped={false} />

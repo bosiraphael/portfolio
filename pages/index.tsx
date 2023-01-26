@@ -63,10 +63,10 @@ export default function Home() {
         >
           <color attach="background" args={["#ffffff"]} />
 
-          <Scene />
+          {/* <Scene /> */}
           <LaplandScene />
         </Canvas>
-
+        {/* 
         <h1 className={styles.heading}>Raphaël Bosi</h1>
         <h2 className={styles.subheading}>Data Scientist and Developer</h2>
         <DiscoverButton />
@@ -150,7 +150,7 @@ export default function Home() {
 
             <Preload all />
           </Canvas>
-        </Suspense>
+        </Suspense> */}
       </main>
     </>
   );
