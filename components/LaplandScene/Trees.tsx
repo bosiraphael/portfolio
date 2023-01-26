@@ -25,7 +25,10 @@ const Trees = ({
 
   console.log(meshes);
 
-  const trees = [];
+  const trees: {
+    position: [x: number, y: number, z: number];
+    scale: number;
+  }[] = [];
   for (let i = 0; i < count; i++) {
     const tree: {
       position: [x: number, y: number, z: number];
@@ -46,7 +49,7 @@ const Trees = ({
 
   return (
     <Merged name="trees" meshes={meshes}>
-      {(models) => {
+      {(models: any) => {
         console.log(models);
         return (
           <group>

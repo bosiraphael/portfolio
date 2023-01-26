@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Navbar from "../components/Navbar";
 import DiscoverButton from "../components/DiscoverButton";
-import Skills from "../components/Skills";
+import Skills from "../components/Skills/Skills";
 import Education from "../components/Education";
 import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
@@ -63,10 +63,10 @@ export default function Home() {
         >
           <color attach="background" args={["#ffffff"]} />
 
-          {/* <Scene /> */}
+          <Scene />
           <LaplandScene />
         </Canvas>
-        {/* 
+
         <h1 className={styles.heading}>Raphaël Bosi</h1>
         <h2 className={styles.subheading}>Data Scientist and Developer</h2>
         <DiscoverButton />
@@ -150,7 +150,7 @@ export default function Home() {
 
             <Preload all />
           </Canvas>
-        </Suspense> */}
+        </Suspense>
       </main>
     </>
   );

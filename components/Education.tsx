@@ -1,5 +1,5 @@
 import styles from "../styles/Section.module.css";
-import Skill from "./Skill";
+import Skill from "./Skills/Skill";
 
 interface EducationProps {
   viewRef1: any;

@@ -4,27 +4,37 @@ import { createRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { LinearFilter, Mesh, Vector3 } from "three";
 
+interface CubeSceneProps {
+  textures: string[];
+}
+
 const boxGeometry_ = <boxGeometry args={[1, 1, 1]} />;
 
-const Boxes = ({ count }: { count: number }) => {
-  const boxes = [];
+const Boxes = ({ textures }: CubeSceneProps) => {
+  const boxes: JSX.Element[] = [];
 
-  for (let i = 0; i < count; i++) {
+  textures.forEach((texture, i) => {
+    const colorMap = useLoader(TextureLoader, texture);
+    colorMap.minFilter = LinearFilter;
+    colorMap.magFilter = LinearFilter;
     boxes.push(
       <Box
         key={i}
         position={[Math.random() * 10 - 5, Math.random() * 10 + 5, 0]}
+        colorMap={colorMap}
       />
     );
-  }
+  });
   return <>{boxes}</>;
 };
 
-const Box = ({ position }: { position: [x: number, y: number, z: number] }) => {
-  const colorMap = useLoader(TextureLoader, "logos/typescript.png");
-  colorMap.minFilter = LinearFilter;
-  colorMap.magFilter = LinearFilter;
-
+const Box = ({
+  position,
+  colorMap,
+}: {
+  position: [x: number, y: number, z: number];
+  colorMap: any;
+}) => {
   const [ref]: any = useBox(() => ({ mass: 1, position: position }));
 
   return (
@@ -97,7 +107,7 @@ const Cursor = () => {
   );
 };
 
-export default function CubeScene() {
+export default function CubeScene({ textures }: CubeSceneProps) {
   return (
     <Canvas
       shadows
@@ -121,7 +131,7 @@ export default function CubeScene() {
       />
       <Physics gravity={[0, -9.81, 0]}>
         <Cursor />
-        <Boxes count={5} />
+        <Boxes textures={textures} />
         <Plane />
       </Physics>
     </Canvas>
