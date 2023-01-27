@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Navbar from "../components/Navbar";
@@ -157,14 +157,21 @@ export default function Home() {
 }
 
 const Scene = () => {
-  let viewport = useThree((state) => state.viewport);
-  useFrame((state, delta) => {
-    const offset = window.scrollY / (window.innerHeight * 4);
-    if (offset > 1 / 4) {
-      return;
-    }
-    state.camera.position.set(0, 2 - viewport.height * offset, 11);
-  });
+  let { viewport, camera } = useThree();
+
+  // Set event listener for scrolling
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      const offset = window.scrollY / (window.innerHeight * 4);
+      if (offset < 1 / 4) {
+        camera.position.set(0, 2 - viewport.height * offset, 11);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
+  }, []);
 
   return <></>;
 };
