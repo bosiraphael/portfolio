@@ -93,21 +93,9 @@ a {
   color: var(--color-primary);
   border: none;
   border-radius: 50%;
-
-  background: linear-gradient(145deg, #cacaca, #f0f0f0);
-  box-shadow: 9px 9px 19px #cecece, -9px -9px 19px #f2f2f2;
+  background-color: transparent;
 
   transition: transform 0.5s ease-out;
-}
-
-.discover-button:hover {
-  transform: scale(1.01) translate(-50%, -50%);
-}
-
-.discover-button:active {
-  background: #e0e0e0;
-  box-shadow: inset 9px 9px 19px #cecece, inset -9px -9px 19px #f2f2f2;
-  transform: scale(0.99) translate(-50%, -50%);
 }
 
 .footer {
