@@ -8,7 +8,12 @@ const DevelopmentScene = () => {
         "logos/cplusplus.png",
         "logos/csharp.png",
         "logos/java.png",
+        "logos/matlab.png",
         "logos/sql.png",
+        "logos/vscode.png",
+        "logos/androidstudio.png",
+        "logos/docker.png",
+        "logos/github.png",
       ]}
     />
   );

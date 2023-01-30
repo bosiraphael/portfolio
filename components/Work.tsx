@@ -15,7 +15,7 @@ const Work = ({ viewRef1, viewRef2, viewRef3, viewRef4 }: WorkProps) => {
 
       <div className={styles.gridEducationWork}>
         <div className={styles.educationDate}>
-          <p>2021-2022</p>
+          <p>2023</p>
         </div>
         <div ref={viewRef1} style={{ width: "100%", height: "100%" }} />
         <Skill
