@@ -51,3 +51,17 @@
   width: 100%;
   height: 100%;
 }
+
+@media screen and (max-width: 768px) {
+  .heading {
+    top: 40vh;
+    font-size: 5rem;
+  }
+  .subheading {
+    font-size: 2rem;
+    top: 60vh;
+  }
+  .content {
+    font-size: 1.5rem;
+  }
+}

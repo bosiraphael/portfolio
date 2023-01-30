@@ -71,7 +71,6 @@
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 3fr 3fr;
-  grid-template-rows: 1fr 1fr 1fr;
   gap: 5rem;
   place-items: center;
 }
@@ -110,4 +109,26 @@
 
 .contactLink:active {
   transform: scale(1) translateY(0px);
+}
+
+@media screen and (max-width: 768px) {
+  .heading {
+    font-size: 3rem;
+  }
+  .subheading {
+    font-size: 2rem;
+  }
+  .educationDate {
+    font-size: 1.5rem;
+    border-right: none;
+    border-bottom: 0.5px solid var(--color-gray-500);
+  }
+  .gridEducationWork {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr 3fr 3fr;
+    gap: 2rem;
+  }
+  .contactLink {
+    font-size: 1.5rem;
+  }
 }
