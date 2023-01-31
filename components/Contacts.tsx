@@ -23,6 +23,7 @@ const Contacts = ({ viewRef1, viewRef2, viewRef3 }: ContactsProps) => {
           <a
             href="mailto:contact@raphaelbosi.dev"
             target="_blank"
+            rel="noopener noreferrer"
             className={styles.contactLink}
           >
             <h2>Email</h2>
@@ -31,6 +32,7 @@ const Contacts = ({ viewRef1, viewRef2, viewRef3 }: ContactsProps) => {
           <a
             href="https://www.linkedin.com/in/rapha%C3%ABl-bosi-8b704a173/"
             target="_blank"
+            rel="noopener noreferrer"
             className={styles.contactLink}
           >
             <h2>LinkedIn</h2>
@@ -39,6 +41,7 @@ const Contacts = ({ viewRef1, viewRef2, viewRef3 }: ContactsProps) => {
           <a
             href="https://github.com/bosiraphael"
             target="_blank"
+            rel="noopener noreferrer"
             className={styles.contactLink}
           >
             <h2>Github</h2>

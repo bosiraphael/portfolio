@@ -1,5 +1,5 @@
 import { useLoader } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { BufferAttribute, TextureLoader } from "three";
 
 const Forest = ({
@@ -14,8 +14,8 @@ const Forest = ({
     "/textures/tree-alpha.png"
   ) as any;
 
-  useEffect(() => {
-    if (!points.current) return;
+  useLayoutEffect(() => {
+    if (!points.current || !hillsHeight) return;
 
     const count = 500;
     const positions = new Float32Array(count * 3);

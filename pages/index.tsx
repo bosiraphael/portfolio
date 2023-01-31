@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useLayoutEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Navbar from "../components/Navbar";
@@ -11,11 +11,21 @@ import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
 import Work from "../components/Work";
 import FPSStats from "react-fps-stats";
-import { Html, Loader, Preload, useProgress, View } from "@react-three/drei";
+import { Html, useProgress, View } from "@react-three/drei";
 import { useRef } from "react";
 import LogoTextScene from "../components/LogoTextScene";
 import { Scrollbar } from "smooth-scrollbar-react";
 import LaplandScene from "../components/LaplandScene/LaplandScene";
+
+function Loader() {
+  const { progress } = useProgress();
+  // useLayoutEffect(() => {
+  //   if (!loaded && progress === 100) {
+  //     setLoaded(true);
+  //   }
+  // }, [progress]);
+  return <Html center>{progress} % loaded</Html>;
+}
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -32,6 +42,10 @@ export default function Home() {
   const contactsViewRef1 = useRef<any>(null);
   const contactsViewRef2 = useRef<any>(null);
   const contactsViewRef3 = useRef<any>(null);
+
+  const [loaded, setLoaded] = useState(false);
+
+  console.log(loaded);
 
   return (
     <>
@@ -56,7 +70,7 @@ export default function Home() {
           style={{ width: "100%", height: "100vh" }}
         >
           <color attach="background" args={["#ffffff"]} />
-          <Suspense>
+          <Suspense fallback={null}>
             <Scene />
             <LaplandScene />
             <Html center>
@@ -67,8 +81,8 @@ export default function Home() {
               <DiscoverButton />
             </Html>
           </Suspense>
+          <Loader />
         </Canvas>
-        <Loader />
 
         <div
           style={{
@@ -166,7 +180,7 @@ const Scene = () => {
     return () => {
       window.removeEventListener("scroll", () => {});
     };
-  }, []);
+  }, [camera.position, viewport.height]);
 
   return <></>;
 };

@@ -14,14 +14,11 @@ const Boxes = ({ textures }: CubeSceneProps) => {
   const boxes: JSX.Element[] = [];
 
   textures.forEach((texture, i) => {
-    const colorMap = useLoader(TextureLoader, texture);
-    colorMap.minFilter = LinearFilter;
-    colorMap.magFilter = LinearFilter;
     boxes.push(
       <Box
         key={i}
         position={[Math.random() * 10 - 5, Math.random() * 10 + 5, 0]}
-        colorMap={colorMap}
+        texture={texture}
       />
     );
   });
@@ -30,12 +27,15 @@ const Boxes = ({ textures }: CubeSceneProps) => {
 
 const Box = ({
   position,
-  colorMap,
+  texture,
 }: {
   position: [x: number, y: number, z: number];
-  colorMap: any;
+  texture: string;
 }) => {
   const [ref]: any = useBox(() => ({ mass: 1, position: position }));
+  const colorMap = useLoader(TextureLoader, texture);
+  colorMap.minFilter = LinearFilter;
+  colorMap.magFilter = LinearFilter;
 
   return (
     <mesh ref={ref} receiveShadow castShadow>
