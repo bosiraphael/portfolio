@@ -1,8 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Suspense, useEffect, useLayoutEffect, useState } from "react";
-import dynamic from "next/dynamic";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Suspense, useEffect, useState } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
 import Navbar from "../components/Navbar";
 import DiscoverButton from "../components/DiscoverButton";
 import Skills from "../components/Skills/Skills";
@@ -13,18 +12,32 @@ import Work from "../components/Work";
 import FPSStats from "react-fps-stats";
 import { Html, useProgress, View } from "@react-three/drei";
 import { useRef } from "react";
-import LogoTextScene from "../components/LogoTextScene";
+import LogoTextScene from "../components/LogoTextScene/LogoTextScene";
 import { Scrollbar } from "smooth-scrollbar-react";
 import LaplandScene from "../components/LaplandScene/LaplandScene";
 
 function Loader() {
   const { progress } = useProgress();
-  // useLayoutEffect(() => {
-  //   if (!loaded && progress === 100) {
-  //     setLoaded(true);
-  //   }
-  // }, [progress]);
-  return <Html center>{progress} % loaded</Html>;
+
+  return (
+    <Html
+      center
+      style={{
+        height: "100vh",
+        width: "100vw",
+        zIndex: 1000,
+        backgroundColor: "white",
+        textAlign: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: "5rem",
+        visibility: progress === 100 ? "hidden" : "visible",
+      }}
+    >
+      {progress.toFixed(0)} % loaded
+    </Html>
+  );
 }
 
 export default function Home() {
@@ -74,11 +87,14 @@ export default function Home() {
             <Scene />
             <LaplandScene />
             <Html center>
-              <h1 className={styles.heading}>Raphaël Bosi</h1>
-              <h2 className={styles.subheading}>
-                Data Scientist and Developer
-              </h2>
-              <DiscoverButton />
+              <div className={styles.header}>
+                <h1 className={styles.heading}>Raphaël Bosi</h1>
+                <h2 className={styles.subheading}>
+                  Data Scientist and Developer
+                </h2>
+
+                <DiscoverButton />
+              </div>
             </Html>
           </Suspense>
           <Loader />
@@ -127,38 +143,40 @@ export default function Home() {
             height: "100vh !important",
           }}
         >
-          <View track={educationViewRef1}>
-            <LogoTextScene modelPath="models/centraleSupelec.glb" />
-          </View>
-          <View track={educationViewRef2}>
-            <LogoTextScene modelPath="models/chalmers.glb" />
-          </View>
-          <View track={educationViewRef3}>
-            <LogoTextScene text="MPSI - MP*" />
-          </View>
+          <Suspense fallback={null}>
+            <View track={educationViewRef1}>
+              <LogoTextScene modelPath="models/centraleSupelec.glb" />
+            </View>
+            <View track={educationViewRef2}>
+              <LogoTextScene modelPath="models/chalmers.glb" />
+            </View>
+            <View track={educationViewRef3}>
+              <LogoTextScene text="MPSI - MP*" />
+            </View>
 
-          <View track={workViewRef1}>
-            <LogoTextScene text="R B" />
-          </View>
-          <View track={workViewRef2}>
-            <LogoTextScene text="BauxRéal" />
-          </View>
-          <View track={workViewRef3}>
-            <LogoTextScene modelPath="models/danone.glb" />
-          </View>
-          <View track={workViewRef4}>
-            <LogoTextScene modelPath="models/safran.glb" />
-          </View>
+            <View track={workViewRef1}>
+              <LogoTextScene text="R B" />
+            </View>
+            <View track={workViewRef2}>
+              <LogoTextScene text="BauxRéal" />
+            </View>
+            <View track={workViewRef3}>
+              <LogoTextScene modelPath="models/danone.glb" />
+            </View>
+            <View track={workViewRef4}>
+              <LogoTextScene modelPath="models/safran.glb" />
+            </View>
 
-          <View track={contactsViewRef1}>
-            <LogoTextScene modelPath="models/email.glb" />
-          </View>
-          <View track={contactsViewRef2}>
-            <LogoTextScene modelPath="models/linkedin.glb" />
-          </View>
-          <View track={contactsViewRef3}>
-            <LogoTextScene modelPath="models/github.glb" />
-          </View>
+            <View track={contactsViewRef1}>
+              <LogoTextScene modelPath="models/email.glb" />
+            </View>
+            <View track={contactsViewRef2}>
+              <LogoTextScene modelPath="models/linkedin.glb" />
+            </View>
+            <View track={contactsViewRef3}>
+              <LogoTextScene modelPath="models/github.glb" />
+            </View>
+          </Suspense>
         </Canvas>
       </main>
     </>

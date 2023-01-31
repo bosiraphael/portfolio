@@ -1,17 +1,9 @@
-import { createRef, useRef, useState } from "react";
+import { createRef } from "react";
 import { Mesh } from "three";
-// import { OrbitControls } from "@react-three/drei";
-// import * as dat from "dat.gui";
-import Hills from "./Hills";
-import Auroras from "./Auroras";
-import Snow from "./Snow";
-import Trees from "./Trees";
-import Forest from "./Forest";
 import { createNoise2D } from "simplex-noise";
 import alea from "alea";
-import Moose from "./Moose";
 import { clamp } from "three/src/math/MathUtils";
-import { OrbitControls } from "@react-three/drei";
+import dynamic from "next/dynamic";
 
 const hillsRef = createRef<Mesh>();
 
@@ -21,10 +13,16 @@ const hillsHeight = (x: any, y: any) => {
   return simplex(x / 16, y / 14) * 1.8 * clamp((y + 30) * 0.1, 0, 1);
 };
 
+const Hills = dynamic(() => import("./Hills"), { ssr: false });
+const Auroras = dynamic(() => import("./Auroras"), { ssr: false });
+const Snow = dynamic(() => import("./Snow"), { ssr: false });
+const Trees = dynamic(() => import("./Trees"), { ssr: false });
+const Forest = dynamic(() => import("./Forest"), { ssr: false });
+const Moose = dynamic(() => import("./Moose"), { ssr: false });
+
 export default function LaplandScene() {
   return (
     <group>
-      {/* <OrbitControls /> */}
       <ambientLight intensity={1} />
 
       <mesh position={[0, -50, 10]} rotation={[0, 0, 0]}>

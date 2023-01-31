@@ -1,4 +1,4 @@
-import CubeScene from "./CubeScene";
+import CubeScene from "./CubeScene/CubeScene";
 
 const WebDevelopmentScene = () => {
   return (

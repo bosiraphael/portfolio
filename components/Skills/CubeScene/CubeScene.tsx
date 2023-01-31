@@ -1,49 +1,14 @@
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { Physics, useBox, useCylinder, usePlane } from "@react-three/cannon";
-import { createRef } from "react";
-import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { LinearFilter, Mesh, Vector3 } from "three";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Physics, useCylinder, usePlane } from "@react-three/cannon";
+import { createRef, Suspense } from "react";
+import { Mesh, Vector3 } from "three";
+import dynamic from "next/dynamic";
 
 interface CubeSceneProps {
   textures: string[];
 }
 
-const boxGeometry_ = <boxGeometry args={[1, 1, 1]} />;
-
-const Boxes = ({ textures }: CubeSceneProps) => {
-  const boxes: JSX.Element[] = [];
-
-  textures.forEach((texture, i) => {
-    boxes.push(
-      <Box
-        key={i}
-        position={[Math.random() * 10 - 5, Math.random() * 10 + 5, 0]}
-        texture={texture}
-      />
-    );
-  });
-  return <>{boxes}</>;
-};
-
-const Box = ({
-  position,
-  texture,
-}: {
-  position: [x: number, y: number, z: number];
-  texture: string;
-}) => {
-  const [ref]: any = useBox(() => ({ mass: 1, position: position }));
-  const colorMap = useLoader(TextureLoader, texture);
-  colorMap.minFilter = LinearFilter;
-  colorMap.magFilter = LinearFilter;
-
-  return (
-    <mesh ref={ref} receiveShadow castShadow>
-      {boxGeometry_}
-      <meshStandardMaterial map={colorMap} metalness={0.9} roughness={0.7} />
-    </mesh>
-  );
-};
+const Boxes = dynamic(() => import("./Boxes"), { ssr: false });
 
 const Plane = () => {
   const [ref]: any = usePlane(() => ({
@@ -116,24 +81,26 @@ export default function CubeScene({ textures }: CubeSceneProps) {
       }}
       dpr={[1, 1]}
     >
-      <ambientLight intensity={2} />
-      <directionalLight
-        position={[0, 1, 1]}
-        intensity={1}
-        castShadow
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
-        shadow-camera-far={10}
-        shadow-camera-left={-10}
-        shadow-camera-right={10}
-        shadow-camera-top={10}
-        shadow-camera-bottom={-10}
-      />
-      <Physics gravity={[0, -9.81, 0]}>
-        <Cursor />
-        <Boxes textures={textures} />
-        <Plane />
-      </Physics>
+      <Suspense fallback={null}>
+        <ambientLight intensity={2} />
+        <directionalLight
+          position={[0, 1, 1]}
+          intensity={1}
+          castShadow
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+          shadow-camera-far={10}
+          shadow-camera-left={-10}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-bottom={-10}
+        />
+        <Physics gravity={[0, -9.81, 0]}>
+          <Cursor />
+          <Boxes textures={textures} />
+          <Plane />
+        </Physics>
+      </Suspense>
     </Canvas>
   );
 }
