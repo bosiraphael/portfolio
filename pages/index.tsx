@@ -15,6 +15,7 @@ import { Preload, View } from "@react-three/drei";
 import { useRef } from "react";
 import LogoTextScene from "../components/LogoTextScene";
 import { Scrollbar } from "smooth-scrollbar-react";
+import { useMediaQuery } from "react-responsive";
 
 const LaplandScene = dynamic(
   () => import("../components/LaplandScene/LaplandScene"),
