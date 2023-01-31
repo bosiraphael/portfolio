@@ -155,7 +155,9 @@
 
 @media screen and (max-width: 1024px) {
   .gridSkills {
-    grid-template-areas: "skillScene1" "skill1" "skillScene2" "skill2" "skillScene3" "skill3" "skillScene4" "skill4";
+    grid-template-areas: "skill1" "skillScene1" "skill2" "skillScene2" "skill3" "skillScene3" "skill4" "skillScene4";
     grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 2rem;
   }
 }
