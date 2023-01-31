@@ -92,7 +92,6 @@ export default function Home() {
                 <h2 className={styles.subheading}>
                   Data Scientist and Developer
                 </h2>
-
                 <DiscoverButton />
               </div>
             </Html>
