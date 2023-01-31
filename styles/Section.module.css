@@ -75,6 +75,16 @@
   place-items: center;
 }
 
+.gridSkills {
+  flex: 1;
+  display: grid;
+  gap: 5rem;
+  grid-template-areas: "skillScene1 skill1" "skill2 skillScene2" "skillScene3 skill3" "skill4 skillScene4";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  place-items: center;
+}
+
 .contact__container {
   position: relative;
   display: flex;
@@ -132,7 +142,7 @@
     gap: 2rem;
   }
   .gridEducationWork div:nth-child(3n + 0) {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
   }
 
   .contactLink {
@@ -140,5 +150,12 @@
   }
   .contact__container {
     padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .gridSkills {
+    grid-template-areas: "skillScene1" "skill1" "skillScene2" "skill2" "skillScene3" "skill3" "skillScene4" "skill4";
+    grid-template-columns: minmax(0, 1fr);
   }
 }
