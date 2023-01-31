@@ -1,6 +1,6 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
-import { BufferAttribute, BufferGeometry, TextureLoader } from "three";
+import { BufferAttribute, TextureLoader } from "three";
 
 export default function SnowParticles() {
   const points = useRef() as any;

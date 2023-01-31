@@ -5,25 +5,18 @@
 }
 
 .heading {
-  position: absolute;
   font-size: 10rem;
   font-weight: 700;
   letter-spacing: 0.2rem;
-  top: 50vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
   color: var(--color-primary);
   text-align: center;
 }
 
 .subheading {
-  position: absolute;
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: 0.2rem;
-  top: 60vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: var(--color-primary);
   text-align: center;
 }

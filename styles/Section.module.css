@@ -154,6 +154,9 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .section {
+    width: 85%;
+  }
   .gridSkills {
     grid-template-areas: "skill1" "skillScene1" "skill2" "skillScene2" "skill3" "skillScene3" "skill4" "skillScene4";
     grid-template-columns: minmax(0, 1fr);

@@ -41,15 +41,6 @@ const Skills = () => {
                   style={{
                     height: "100%",
                     width: "100%",
-                    gridArea: `skillScene${index + 1}`,
-                  }}
-                >
-                  <Scene />
-                </div>
-                <div
-                  style={{
-                    height: "100%",
-                    width: "100%",
                     gridArea: `skill${index + 1}`,
                   }}
                 >
@@ -57,6 +48,15 @@ const Skills = () => {
                     title={skillsTitles[index]}
                     description={skillsDescriptions[index]}
                   />
+                </div>
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    gridArea: `skillScene${index + 1}`,
+                  }}
+                >
+                  <Scene />
                 </div>
               </Fragment>
             );

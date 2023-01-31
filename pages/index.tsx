@@ -11,17 +11,11 @@ import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
 import Work from "../components/Work";
 import FPSStats from "react-fps-stats";
-import { Preload, View } from "@react-three/drei";
+import { Html, Loader, Preload, useProgress, View } from "@react-three/drei";
 import { useRef } from "react";
 import LogoTextScene from "../components/LogoTextScene";
 import { Scrollbar } from "smooth-scrollbar-react";
-
-const LaplandScene = dynamic(
-  () => import("../components/LaplandScene/LaplandScene"),
-  {
-    ssr: false,
-  }
-);
+import LaplandScene from "../components/LaplandScene/LaplandScene";
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -62,14 +56,19 @@ export default function Home() {
           style={{ width: "100%", height: "100vh" }}
         >
           <color attach="background" args={["#ffffff"]} />
-
-          <Scene />
-          <LaplandScene />
+          <Suspense>
+            <Scene />
+            <LaplandScene />
+            <Html center>
+              <h1 className={styles.heading}>Raphaël Bosi</h1>
+              <h2 className={styles.subheading}>
+                Data Scientist and Developer
+              </h2>
+              <DiscoverButton />
+            </Html>
+          </Suspense>
         </Canvas>
-
-        <h1 className={styles.heading}>Raphaël Bosi</h1>
-        <h2 className={styles.subheading}>Data Scientist and Developer</h2>
-        <DiscoverButton />
+        <Loader />
 
         <div
           style={{
@@ -104,53 +103,49 @@ export default function Home() {
           </Scrollbar>
         </div>
 
-        <Suspense fallback={null}>
-          <Canvas
-            eventSource={containerRef}
-            style={{
-              position: "fixed !important",
-              top: "0px",
-              left: "0px",
-              width: "100vw !important",
-              height: "100vh !important",
-            }}
-          >
-            <View track={educationViewRef1}>
-              <LogoTextScene modelPath="models/centraleSupelec.glb" />
-            </View>
-            <View track={educationViewRef2}>
-              <LogoTextScene modelPath="models/chalmers.glb" />
-            </View>
-            <View track={educationViewRef3}>
-              <LogoTextScene text="MPSI - MP*" />
-            </View>
+        <Canvas
+          eventSource={containerRef}
+          style={{
+            position: "fixed !important",
+            top: "0px",
+            left: "0px",
+            width: "100vw !important",
+            height: "100vh !important",
+          }}
+        >
+          <View track={educationViewRef1}>
+            <LogoTextScene modelPath="models/centraleSupelec.glb" />
+          </View>
+          <View track={educationViewRef2}>
+            <LogoTextScene modelPath="models/chalmers.glb" />
+          </View>
+          <View track={educationViewRef3}>
+            <LogoTextScene text="MPSI - MP*" />
+          </View>
 
-            <View track={workViewRef1}>
-              <LogoTextScene text="R B" />
-            </View>
-            <View track={workViewRef2}>
-              <LogoTextScene text="BauxRéal" />
-            </View>
-            <View track={workViewRef3}>
-              <LogoTextScene modelPath="models/danone.glb" />
-            </View>
-            <View track={workViewRef4}>
-              <LogoTextScene modelPath="models/safran.glb" />
-            </View>
+          <View track={workViewRef1}>
+            <LogoTextScene text="R B" />
+          </View>
+          <View track={workViewRef2}>
+            <LogoTextScene text="BauxRéal" />
+          </View>
+          <View track={workViewRef3}>
+            <LogoTextScene modelPath="models/danone.glb" />
+          </View>
+          <View track={workViewRef4}>
+            <LogoTextScene modelPath="models/safran.glb" />
+          </View>
 
-            <View track={contactsViewRef1}>
-              <LogoTextScene modelPath="models/email.glb" />
-            </View>
-            <View track={contactsViewRef2}>
-              <LogoTextScene modelPath="models/linkedin.glb" />
-            </View>
-            <View track={contactsViewRef3}>
-              <LogoTextScene modelPath="models/github.glb" />
-            </View>
-
-            <Preload all />
-          </Canvas>
-        </Suspense>
+          <View track={contactsViewRef1}>
+            <LogoTextScene modelPath="models/email.glb" />
+          </View>
+          <View track={contactsViewRef2}>
+            <LogoTextScene modelPath="models/linkedin.glb" />
+          </View>
+          <View track={contactsViewRef3}>
+            <LogoTextScene modelPath="models/github.glb" />
+          </View>
+        </Canvas>
       </main>
     </>
   );

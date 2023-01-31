@@ -83,12 +83,6 @@ a {
 }
 
 .discover-button {
-  position: absolute;
-  top: 80vh;
-  left: 50%;
-  width: 15rem;
-  height: 15rem;
-  transform: translate(-50%, -50%);
   cursor: pointer;
   color: var(--color-primary);
   border: none;

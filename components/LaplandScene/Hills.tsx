@@ -42,6 +42,7 @@ const Hills = ({
     displacementScale: 0.02,
     displacementBias: -0.02,
   });
+
   useEffect(() => {
     const hillsGeometry = hillsRef.current?.geometry;
     if (!hillsGeometry) return;
