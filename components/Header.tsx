@@ -101,7 +101,7 @@ const Header = () => {
         <motion.h1
           className={styles.heading}
           initial="hidden"
-          animate={"visible"}
+          animate={loaded ? "visible" : "hidden"}
           variants={{
             visible: {
               opacity: 1,
