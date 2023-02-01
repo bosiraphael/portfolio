@@ -83,6 +83,7 @@ a {
   cursor: pointer;
   font-size: inherit;
   color: inherit;
+  font-weight: inherit;
 }
 
 .navbar__links {
