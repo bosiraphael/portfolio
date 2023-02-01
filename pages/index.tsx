@@ -1,43 +1,18 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Suspense, useEffect, useState } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
 import Navbar from "../components/Navbar";
-import DiscoverButton from "../components/DiscoverButton";
 import Skills from "../components/Skills/Skills";
 import Education from "../components/Education";
 import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
 import Work from "../components/Work";
-import { Html, useProgress, View } from "@react-three/drei";
+import { View } from "@react-three/drei";
 import { useRef } from "react";
 import LogoTextScene from "../components/LogoTextScene/LogoTextScene";
 import { Scrollbar } from "smooth-scrollbar-react";
-import LaplandScene from "../components/LaplandScene/LaplandScene";
-
-function Loader() {
-  const { progress } = useProgress();
-
-  return (
-    <Html
-      center
-      style={{
-        height: "100vh",
-        width: "100vw",
-        zIndex: 1000,
-        backgroundColor: "white",
-        textAlign: "center",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "5rem",
-        visibility: progress === 100 ? "hidden" : "visible",
-      }}
-    >
-      {progress.toPrecision(2)} % loaded
-    </Html>
-  );
-}
+import Header from "../components/Header";
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -55,10 +30,6 @@ export default function Home() {
   const contactsViewRef2 = useRef<any>(null);
   const contactsViewRef3 = useRef<any>(null);
 
-  const [loaded, setLoaded] = useState(false);
-
-  console.log(loaded);
-
   return (
     <>
       <Head>
@@ -71,32 +42,7 @@ export default function Home() {
       <main className={styles.main} ref={containerRef}>
         {/* <FPSStats /> */}
 
-        <Canvas
-          shadows
-          camera={{
-            position: [0, 2, 11],
-            far: 100,
-            near: 0.1,
-          }}
-          dpr={[1, 1]}
-          style={{ width: "100%", height: "100vh" }}
-        >
-          <color attach="background" args={["#ffffff"]} />
-          <Suspense fallback={null}>
-            <Scene />
-            <LaplandScene />
-            <Html center>
-              <div className={styles.header}>
-                <h1 className={styles.heading}>Raphaël Bosi</h1>
-                <h2 className={styles.subheading}>
-                  Data Scientist and Developer
-                </h2>
-                <DiscoverButton />
-              </div>
-            </Html>
-          </Suspense>
-          <Loader />
-        </Canvas>
+        <Header />
 
         <div
           style={{
@@ -182,23 +128,3 @@ export default function Home() {
     </>
   );
 }
-
-const Scene = () => {
-  let { viewport, camera } = useThree();
-
-  // Set event listener for scrolling
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const offset = window.scrollY / (window.innerHeight * 4);
-      if (offset < 1 / 4) {
-        camera.position.set(0, 2 - viewport.height * offset, 11);
-      }
-    });
-
-    return () => {
-      window.removeEventListener("scroll", () => {});
-    };
-  }, [camera.position, viewport.height]);
-
-  return <></>;
-};

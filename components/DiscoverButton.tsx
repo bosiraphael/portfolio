@@ -1,9 +1,10 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DiscoverButton = () => {
+const DiscoverButton = ({ loaded }: { loaded: boolean }) => {
   const [hover, setHover] = useState(false);
   return (
-    <button
+    <motion.button
       onClick={() => {
         window.scrollTo({
           top: window.innerHeight,
@@ -13,8 +14,25 @@ const DiscoverButton = () => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       className="discover-button"
+      initial="hidden"
+      animate={loaded ? "visible" : "hidden"}
+      variants={{
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 0.9,
+            duration: 0.5,
+            default: { ease: "easeInOut" },
+          },
+        },
+        hidden: {
+          opacity: 0,
+          y: 20,
+        },
+      }}
     >
-      <span
+      <motion.span
         className="material-symbols-outlined"
         style={{
           fontSize: hover ? "10rem" : "8rem",
@@ -22,8 +40,8 @@ const DiscoverButton = () => {
         }}
       >
         expand_more
-      </span>
-    </button>
+      </motion.span>
+    </motion.button>
   );
 };
 
