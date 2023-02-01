@@ -33,18 +33,58 @@ const Navbar = () => {
       <Link className="navbar__links" href="/">
         Home
       </Link>
-      <Link className="navbar__links" href="/#education">
+      <button
+        className="navbar__links"
+        onClick={() => {
+          const element = document.getElementById("education");
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        }}
+      >
         Education
-      </Link>
-      <Link className="navbar__links" href="/#work">
+      </button>
+      <button
+        className="navbar__links"
+        onClick={() => {
+          const element = document.getElementById("work");
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        }}
+      >
         Work experiences
-      </Link>
-      <Link className="navbar__links" href="/#skills">
+      </button>
+      <button
+        className="navbar__links"
+        onClick={() => {
+          const element = document.getElementById("skills");
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        }}
+      >
         Skills
-      </Link>
-      <Link className="navbar__links" href="/#contacts">
+      </button>
+      <button
+        className="navbar__links"
+        onClick={() => {
+          const element = document.getElementById("contacts");
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        }}
+      >
         Contacts
-      </Link>
+      </button>
     </nav>
   );
 };

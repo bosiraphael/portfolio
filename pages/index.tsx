@@ -9,7 +9,6 @@ import Education from "../components/Education";
 import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
 import Work from "../components/Work";
-import FPSStats from "react-fps-stats";
 import { Html, useProgress, View } from "@react-three/drei";
 import { useRef } from "react";
 import LogoTextScene from "../components/LogoTextScene/LogoTextScene";
@@ -35,7 +34,7 @@ function Loader() {
         visibility: progress === 100 ? "hidden" : "visible",
       }}
     >
-      {progress.toFixed(0)} % loaded
+      {progress.toPrecision(2)} % loaded
     </Html>
   );
 }
@@ -70,7 +69,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className={styles.main} ref={containerRef}>
-        <FPSStats />
+        {/* <FPSStats /> */}
 
         <Canvas
           shadows
@@ -134,13 +133,15 @@ export default function Home() {
 
         <Canvas
           eventSource={containerRef}
-          style={{
-            position: "fixed !important",
-            top: "0px",
-            left: "0px",
-            width: "100vw !important",
-            height: "100vh !important",
-          }}
+          style={
+            {
+              position: "fixed !important",
+              top: "0px",
+              left: "0px",
+              width: "100vw !important",
+              height: "100vh !important",
+            } as any
+          }
         >
           <Suspense fallback={null}>
             <View track={educationViewRef1}>

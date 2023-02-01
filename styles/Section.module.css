@@ -42,7 +42,7 @@
 .subheading {
   font-size: 3rem;
   letter-spacing: 0.1rem;
-  color: var(--color-secondary);
+  color: var(--color-primary);
   text-align: center;
   margin: 2rem auto;
 }
@@ -59,7 +59,7 @@
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.2rem;
-  color: var(--color-secondary);
+  color: var(--color-primary);
   border-right: 1px solid var(--color-gray-500);
   display: flex;
   justify-content: center;
@@ -121,7 +121,7 @@
   transform: scale(1) translateY(0px);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .heading {
     font-size: 3rem;
     margin-bottom: 2rem;
@@ -151,9 +151,7 @@
   .contact__container {
     padding: 2rem;
   }
-}
 
-@media screen and (max-width: 1024px) {
   .section {
     width: 85%;
   }

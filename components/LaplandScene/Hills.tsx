@@ -18,7 +18,7 @@ const Hills = ({
         "textures/Snow_001_SD/Snow_001_ROUGH.jpg",
         "textures/Snow_001_SD/Snow_001_OCC.jpg",
       ],
-      ([colorMap, displacementMap, normalMap, roughnessMap, aoMap]) => {
+      ([colorMap, displacementMap, normalMap, roughnessMap, aoMap]: any) => {
         colorMap.wrapS = colorMap.wrapT = RepeatWrapping;
         displacementMap.wrapS = displacementMap.wrapT = RepeatWrapping;
         normalMap.wrapS = normalMap.wrapT = RepeatWrapping;
