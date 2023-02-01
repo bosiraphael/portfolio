@@ -1,6 +1,6 @@
-import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import { createRef } from "react";
-import { Mesh, TextureLoader, Vector2, Vector3 } from "three";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import { Vector2, Vector3 } from "three";
 
 const vertexShader = `
     varying vec2 vUv;
@@ -80,6 +80,12 @@ const fragmentShader = `
     }
 `;
 
+const uniforms = {
+  uTime: { value: 0 },
+  uAmplitude: { value: 0.5 },
+  uCursorPos: { value: new Vector2(0, 0) },
+};
+
 const Auroras = ({
   planeArgs,
   position,
@@ -87,24 +93,18 @@ const Auroras = ({
   planeArgs: [number, number, number, number];
   position: [number, number, number];
 }) => {
-  const auroraRef = createRef<Mesh>();
+  const auroraRef = useRef<any>();
 
-  useFrame(({ clock }) => {
-    if (!auroraRef.current) return;
-    const material = auroraRef.current.material as any;
-    material.uniforms.uTime.value = clock.getElapsedTime();
-  });
+  useFrame(({ clock, camera, mouse }) => {
+    uniforms.uTime.value = clock.getElapsedTime();
 
-  useFrame(({ camera, mouse }) => {
-    if (!auroraRef.current) return;
     let vector = new Vector3(mouse.x, mouse.y, 0);
     vector.unproject(camera);
     let dir = vector.sub(camera.position).normalize();
     let distance = -(camera.position.z - position[2]) / dir.z;
     let pos = camera.position.clone().add(dir.multiplyScalar(distance));
 
-    const material = auroraRef.current.material as any;
-    material.uniforms.uCursorPos.value = new Vector2(
+    uniforms.uCursorPos.value = new Vector2(
       pos.x / planeArgs[0] + 0.5,
       (pos.y - position[1]) / planeArgs[1] + 0.5
     );
@@ -122,11 +122,7 @@ const Auroras = ({
       <shaderMaterial
         fragmentShader={fragmentShader}
         vertexShader={vertexShader}
-        uniforms={{
-          uTime: { value: 0 },
-          uAmplitude: { value: 0.5 },
-          uCursorPos: { value: new Vector2(0, 0) },
-        }}
+        uniforms={uniforms}
       />
     </mesh>
   );

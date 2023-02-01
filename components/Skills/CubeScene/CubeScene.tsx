@@ -1,7 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Physics, useCylinder, usePlane } from "@react-three/cannon";
-import { createRef, Suspense } from "react";
-import { Mesh, Vector3 } from "three";
+import { useRef, Suspense } from "react";
+import { Vector3 } from "three";
 import dynamic from "next/dynamic";
 
 interface CubeSceneProps {
@@ -27,7 +27,7 @@ const Cursor = () => {
   const radius = 0.2;
   const height = 20;
 
-  const cursor = createRef<Mesh>();
+  const cursor = useRef<any>(null);
   const [cylinder, cylinderApi]: any = useCylinder(
     () => ({
       args: [radius, radius, height],
@@ -38,7 +38,7 @@ const Cursor = () => {
     cursor
   );
 
-  const sphere = createRef<Mesh>();
+  const sphere = useRef<any>(null);
 
   useFrame(({ camera, mouse }) => {
     var vector = new Vector3(mouse.x, mouse.y, 0.5);

@@ -1,11 +1,8 @@
-import { createRef } from "react";
-import { Mesh } from "three";
+import { useRef } from "react";
 import { createNoise2D } from "simplex-noise";
 import alea from "alea";
 import { clamp } from "three/src/math/MathUtils";
 import dynamic from "next/dynamic";
-
-const hillsRef = createRef<Mesh>();
 
 const simplex = createNoise2D(alea("hello"));
 
@@ -21,6 +18,7 @@ const Forest = dynamic(() => import("./Forest"), { ssr: false });
 const Moose = dynamic(() => import("./Moose"), { ssr: false });
 
 export default function LaplandScene() {
+  const hillsRef = useRef<any>(null);
   return (
     <group>
       <ambientLight intensity={1} />
