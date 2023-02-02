@@ -71,9 +71,9 @@ const Cursor = () => {
 
   return (
     <>
-      <mesh ref={cylinder}>
+      <mesh ref={cylinder} visible={false}>
         <cylinderGeometry args={[radius, radius, height, 32, 32]} />
-        <meshBasicMaterial fog={false} transparent opacity={0} />
+        <meshBasicMaterial fog={false} />
       </mesh>
       <mesh ref={sphere}>
         <sphereGeometry args={[radius, 32]} />
