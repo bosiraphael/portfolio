@@ -53,6 +53,7 @@ const Skills = () => {
                   style={{
                     height: "100%",
                     width: "100%",
+                    minHeight: "350px",
                     gridArea: `skillScene${index + 1}`,
                   }}
                 >
