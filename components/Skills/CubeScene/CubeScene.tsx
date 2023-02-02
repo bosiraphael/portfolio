@@ -1,10 +1,12 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Debug, Physics, useCylinder, usePlane } from "@react-three/cannon";
-import { useRef, Suspense } from "react";
+import { useRef, Suspense, useEffect } from "react";
 import { Vector3 } from "three";
 import dynamic from "next/dynamic";
 import { Html, MeshReflectorMaterial } from "@react-three/drei";
 import Skill from "../Skill";
+import { publish, subscribe, unsubscribe } from "../../event";
+import crypto from "crypto";
 
 interface CubeSceneProps {
   textures: string[];
@@ -90,11 +92,11 @@ const Cursor = () => {
 const Borders = () => {
   const [leftPlane]: any = usePlane(() => ({
     rotation: [0, Math.PI / 2, 0],
-    position: [-4, 0, 0],
+    position: [-5, 0, 0],
   }));
   const [rightPlane]: any = usePlane(() => ({
     rotation: [0, -Math.PI / 2, 0],
-    position: [4, 0, 0],
+    position: [5, 0, 0],
   }));
   const [backPlane]: any = usePlane(() => ({
     rotation: [0, 0, 0],
@@ -123,7 +125,19 @@ const Borders = () => {
   );
 };
 
+const explosion = (explosionName: string) => {
+  publish(explosionName, {
+    position: [0, 0, 0],
+    velocity: [0, 0, 0],
+    spread: 10,
+    size: 1,
+    count: 100,
+  });
+};
+
 export default function CubeScene({ textures }: CubeSceneProps) {
+  const uuid = crypto.randomBytes(16).toString("hex");
+  const explosionName = "explosion" + uuid;
   return (
     <Canvas
       shadows
@@ -155,11 +169,12 @@ export default function CubeScene({ textures }: CubeSceneProps) {
               title="Data Science"
               description="I have experience with Python, R, PyTorch, TensorFlow, Keras, Scikit-Learn, Pandas, Numpy, Matplotlib, and Seaborn."
             />
+            <button onClick={() => explosion(explosionName)}>Explosion</button>
           </div>
         </Html>
         <Physics gravity={[0, -9.81, 0]}>
           <Cursor />
-          <Boxes textures={textures} />
+          <Boxes textures={textures} explosionName={explosionName} />
           <Plane />
           <Borders />
         </Physics>

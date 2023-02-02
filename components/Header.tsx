@@ -15,7 +15,6 @@ function Loader({ setLoaded }: { setLoaded: any }) {
       setLoaded(true);
     }
   }, [progress]);
-  console.log(progress);
 
   return (
     <>
@@ -64,7 +63,7 @@ const Scene = () => {
   return <></>;
 };
 
-const LaplandCanvas = ({ headerRef }) => {
+const LaplandCanvas = ({ headerRef }: { headerRef: any }) => {
   return (
     <Canvas
       shadows
