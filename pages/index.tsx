@@ -91,13 +91,16 @@ export default function Home() {
         >
           <Suspense fallback={null}>
             <View track={educationViewRef1}>
-              <LogoTextScene modelPath="models/centraleSupelec.glb" />
+              <LogoTextScene
+                modelPath="models/centraleSupelec.glb"
+                scale={1.5}
+              />
             </View>
             <View track={educationViewRef2}>
               <LogoTextScene modelPath="models/chalmers.glb" />
             </View>
             <View track={educationViewRef3}>
-              <LogoTextScene text="MPSI - MP*" />
+              <LogoTextScene text="MPSI - MP*" scale={2} />
             </View>
 
             <View track={workViewRef1}>
@@ -107,10 +110,10 @@ export default function Home() {
               <LogoTextScene text="BauxRéal" />
             </View>
             <View track={workViewRef3}>
-              <LogoTextScene modelPath="models/danone.glb" />
+              <LogoTextScene modelPath="models/danone.glb" scale={1.2} />
             </View>
             <View track={workViewRef4}>
-              <LogoTextScene modelPath="models/safran.glb" />
+              <LogoTextScene modelPath="models/safran.glb" scale={2} />
             </View>
 
             <View track={contactsViewRef1}>

@@ -7,9 +7,11 @@ const TextModel = dynamic(() => import("./TextModel"), { ssr: false });
 export default function LogoTextScene({
   modelPath,
   text,
+  scale,
 }: {
   modelPath?: string;
   text?: string;
+  scale?: number;
 }) {
   return (
     <>
@@ -18,9 +20,9 @@ export default function LogoTextScene({
 
       <PerspectiveCamera makeDefault fov={75} position={[0, 0, 5]} />
 
-      {text ? <TextModel text={text} /> : <></>}
+      {text ? <TextModel text={text} scale={scale} /> : <></>}
 
-      {modelPath ? <Model modelPath={modelPath} /> : <></>}
+      {modelPath ? <Model modelPath={modelPath} scale={scale} /> : <></>}
     </>
   );
 }

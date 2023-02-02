@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { Vector3 } from "three";
 
-const TextModel = ({ text }: { text: string }) => {
+const TextModel = ({ text, scale }: { text: string; scale?: number }) => {
   const modelRef = useRef<any>();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const TextModel = ({ text }: { text: string }) => {
     const time = state.clock.getElapsedTime();
 
     if (modelRef.current) {
-      modelRef.current.rotation.y = Math.sin(time * 0.5) * Math.PI * 0.2;
+      modelRef.current.rotation.y = Math.sin(time * 0.8) * Math.PI * 0.05;
     }
   });
   return (
@@ -33,7 +33,7 @@ const TextModel = ({ text }: { text: string }) => {
       position={[0, 0, 0]}
       font={"typefaces/PlayfairDisplay_Regular.json"}
       height={0.1}
-      size={0.5}
+      size={scale ? 0.5 * scale : 0.5}
     >
       <meshStandardMaterial color="#2e2e2d" metalness={0.7} roughness={0.5} />
       {text}
