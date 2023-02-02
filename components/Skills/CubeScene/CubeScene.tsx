@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Physics, useCylinder, usePlane } from "@react-three/cannon";
+import { Debug, Physics, useCylinder, usePlane } from "@react-three/cannon";
 import { useRef, Suspense } from "react";
 import { Vector3 } from "three";
 import dynamic from "next/dynamic";
@@ -40,7 +40,7 @@ const Plane = () => {
 };
 
 const Cursor = () => {
-  const radius = 0.2;
+  const radius = 0.4;
   const height = 20;
 
   const cursor = useRef<any>(null);
@@ -75,7 +75,7 @@ const Cursor = () => {
         <cylinderGeometry args={[radius, radius, height, 32, 32]} />
       </mesh>
       <mesh ref={sphere}>
-        <sphereGeometry args={[radius, 32]} />
+        <sphereGeometry args={[radius / 2, 32]} />
         <meshBasicMaterial
           fog={false}
           depthTest={false}
@@ -90,15 +90,15 @@ const Cursor = () => {
 const Borders = () => {
   const [leftPlane]: any = usePlane(() => ({
     rotation: [0, Math.PI / 2, 0],
-    position: [-5, 0, 0],
+    position: [-4, 0, 0],
   }));
   const [rightPlane]: any = usePlane(() => ({
     rotation: [0, -Math.PI / 2, 0],
-    position: [5, 0, 0],
+    position: [4, 0, 0],
   }));
   const [backPlane]: any = usePlane(() => ({
     rotation: [0, 0, 0],
-    position: [0, 0, -5],
+    position: [0, 0, -4],
   }));
   const [frontPlane]: any = usePlane(() => ({
     rotation: [Math.PI, 0, 0],
