@@ -1,12 +1,13 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Debug, Physics, useCylinder, usePlane } from "@react-three/cannon";
-import { useRef, Suspense, useEffect } from "react";
+import { Physics, useCylinder, usePlane } from "@react-three/cannon";
+import { useRef, Suspense, useState, useMemo } from "react";
 import { Vector3 } from "three";
 import dynamic from "next/dynamic";
 import { Html, MeshReflectorMaterial } from "@react-three/drei";
 import Skill from "../Skill";
-import { publish, subscribe, unsubscribe } from "../../event";
+import { publish } from "../../event";
 import crypto from "crypto";
+import styles from "../../../styles/Section.module.css";
 
 interface CubeSceneProps {
   textures: string[];
@@ -136,8 +137,9 @@ const explosion = (explosionName: string) => {
 };
 
 export default function CubeScene({ textures }: CubeSceneProps) {
-  const uuid = crypto.randomBytes(16).toString("hex");
+  const uuid = useMemo(() => crypto.randomBytes(16).toString("hex"), []);
   const explosionName = "explosion" + uuid;
+  const [buttonHovered, setButtonHovered] = useState(false);
   return (
     <Canvas
       shadows
@@ -169,7 +171,14 @@ export default function CubeScene({ textures }: CubeSceneProps) {
               title="Data Science"
               description="I have experience with Python, R, PyTorch, TensorFlow, Keras, Scikit-Learn, Pandas, Numpy, Matplotlib, and Seaborn."
             />
-            <button onClick={() => explosion(explosionName)}>Explosion</button>
+            <button
+              className={styles.boomButton}
+              onClick={() => explosion(explosionName)}
+              onMouseEnter={() => setButtonHovered(true)}
+              onMouseLeave={() => setButtonHovered(false)}
+            >
+              Boom {buttonHovered ? "💥" : "💣"}
+            </button>
           </div>
         </Html>
         <Physics gravity={[0, -9.81, 0]}>

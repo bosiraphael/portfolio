@@ -45,7 +45,7 @@ const Box = ({
   useEffect(() => {
     const listener = () => {
       console.log(refAPI);
-      refAPI.applyImpulse([0, 10, 0], [0, 0, 0]);
+      refAPI.applyImpulse([0, 15, 0], [0, 0, 0]);
     };
     subscribe(explosionName, listener);
 

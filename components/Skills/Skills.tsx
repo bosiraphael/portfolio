@@ -32,12 +32,12 @@ const Skills = () => {
   return (
     <section id="skills" className={styles.section}>
       <h1 className={styles.heading}>Skills</h1>
-      <div style={{ position: "relative" }}>
+      <div className={styles.skills}>
         {
           // Map the skills
           skillsScenes.map((Scene, index) => {
             return (
-              <div key={index} style={{ height: "100vh" }}>
+              <div key={index} className={styles.skill}>
                 <Scene />
               </div>
             );

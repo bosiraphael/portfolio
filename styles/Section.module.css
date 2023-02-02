@@ -75,14 +75,35 @@
   place-items: center;
 }
 
-.gridSkills {
-  flex: 1;
-  display: grid;
-  gap: 5rem;
-  grid-template-areas: "skillScene1 skill1" "skill2 skillScene2" "skillScene3 skill3" "skill4 skillScene4";
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  place-items: center;
+.skill {
+  height: 80vh;
+  margin-bottom: 10rem;
+}
+
+.boomButton {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  color: var(--color-gray-900);
+  background: none;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 0 8px 32px 0 var(--color-gray-400);
+  border-radius: 10px;
+  transition: all 0.1s ease-in-out;
+}
+
+.boomButton:hover {
+  transform: scale(1.05) translateY(-2px) translateX(-48.5%);
+}
+
+.boomButton:active {
+  transform: scale(1) translateY(0px) translateX(-48.5%);
 }
 
 .contact__container {
