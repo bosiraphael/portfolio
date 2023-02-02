@@ -1,4 +1,4 @@
-import { Fragment, useRef } from "react";
+import { Fragment } from "react";
 import styles from "../../styles/Section.module.css";
 import DataScienceScene from "./DataScienceScene";
 import DevelopmentScene from "./DevelopmentScene";
@@ -28,18 +28,38 @@ const skillsDescriptions = [
 ];
 
 const Skills = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
   return (
     <section id="skills" className={styles.section}>
       <h1 className={styles.heading}>Skills</h1>
-      <div style={{ position: "relative" }}>
+      <div className={styles.gridSkills} style={{ gridTemplateRows: "1fr" }}>
         {
           // Map the skills
           skillsScenes.map((Scene, index) => {
             return (
-              <div key={index} style={{ height: "100vh" }}>
-                <Scene />
-              </div>
+              <Fragment key={index}>
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    gridArea: `skill${index + 1}`,
+                  }}
+                >
+                  <Skill
+                    title={skillsTitles[index]}
+                    description={skillsDescriptions[index]}
+                  />
+                </div>
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    minHeight: "350px",
+                    gridArea: `skillScene${index + 1}`,
+                  }}
+                >
+                  <Scene />
+                </div>
+              </Fragment>
             );
           })
         }
