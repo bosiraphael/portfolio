@@ -73,7 +73,6 @@ const Cursor = () => {
     <>
       <mesh ref={cylinder} visible={false}>
         <cylinderGeometry args={[radius, radius, height, 32, 32]} />
-        <meshBasicMaterial fog={false} />
       </mesh>
       <mesh ref={sphere}>
         <sphereGeometry args={[radius, 32]} />
@@ -83,6 +82,42 @@ const Cursor = () => {
           transparent
           opacity={0.8}
         />
+      </mesh>
+    </>
+  );
+};
+
+const Borders = () => {
+  const [leftPlane]: any = usePlane(() => ({
+    rotation: [0, Math.PI / 2, 0],
+    position: [-5, 0, 0],
+  }));
+  const [rightPlane]: any = usePlane(() => ({
+    rotation: [0, -Math.PI / 2, 0],
+    position: [5, 0, 0],
+  }));
+  const [backPlane]: any = usePlane(() => ({
+    rotation: [0, 0, 0],
+    position: [0, 0, -5],
+  }));
+  const [frontPlane]: any = usePlane(() => ({
+    rotation: [Math.PI, 0, 0],
+    position: [0, 0, 3],
+  }));
+
+  return (
+    <>
+      <mesh ref={leftPlane} visible={false}>
+        <planeGeometry args={[100, 100]} />
+      </mesh>
+      <mesh ref={rightPlane} visible={false}>
+        <planeGeometry args={[100, 100]} />
+      </mesh>
+      <mesh ref={backPlane} visible={false}>
+        <planeGeometry args={[100, 100]} />
+      </mesh>
+      <mesh ref={frontPlane} visible={false}>
+        <planeGeometry args={[100, 100]} />
       </mesh>
     </>
   );
@@ -126,6 +161,7 @@ export default function CubeScene({ textures }: CubeSceneProps) {
           <Cursor />
           <Boxes textures={textures} />
           <Plane />
+          <Borders />
         </Physics>
       </Suspense>
     </Canvas>
