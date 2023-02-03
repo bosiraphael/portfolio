@@ -137,7 +137,7 @@ const explosion = (explosionName: string) => {
 
   setTimeout(() => {
     publish("end" + explosionName, {});
-  }, 1000);
+  }, 2000);
 };
 
 export default function CubeScene({ textures }: CubeSceneProps) {

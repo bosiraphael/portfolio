@@ -28,7 +28,7 @@ const Boxes = ({ textures, explosionName }: CubeSceneProps) => {
   return (
     <>
       {boxes}
-      <Bomb position={[0, 5, 0]} explosionName={explosionName} />
+      <Bomb position={[0, 100, 0]} explosionName={explosionName} />
     </>
   );
 };
@@ -70,7 +70,7 @@ const Box = ({
     subscribe("end" + explosionName, listener);
 
     return () => {
-      unsubscribe("end" + explosionName, () => listener);
+      unsubscribe("end" + explosionName, listener);
     };
   }, [ref, api]);
 
@@ -98,10 +98,19 @@ const Bomb = ({
   const [explosionState, setExplosionState] = useState("notExploded");
 
   useEffect(() => {
+    api.sleep();
     const startListener = () => {
       setExplosionState("exploding");
+      api.position.set(0, 5, 0);
+      api.wakeUp();
     };
     const endListener = () => {
+      api.position.set(0, 100, 0);
+      api.velocity.set(0, 0, 0);
+      api.angularVelocity.set(0, 0, 0);
+      api.sleep();
+      ref.current.material.color = new Color(0x000000);
+
       setExplosionState("exploded");
     };
 
@@ -109,7 +118,7 @@ const Bomb = ({
     subscribe("end" + explosionName, endListener);
 
     return () => {
-      unsubscribe("start" + explosionName, () => startListener);
+      unsubscribe("start" + explosionName, startListener);
       unsubscribe("end" + explosionName, endListener);
     };
   }, []);
@@ -131,12 +140,10 @@ const Bomb = ({
 
   return (
     <>
-      {explosionState === "exploded" ? null : (
-        <mesh ref={ref} receiveShadow castShadow>
-          <sphereGeometry args={[0.5, 32, 32]} />
-          <meshStandardMaterial color="black" />
-        </mesh>
-      )}
+      <mesh ref={ref} receiveShadow castShadow>
+        <sphereGeometry args={[0.5, 32, 32]} />
+        <meshStandardMaterial color="black" />
+      </mesh>
     </>
   );
 };
