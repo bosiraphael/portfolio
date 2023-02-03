@@ -127,13 +127,17 @@ const Borders = () => {
 };
 
 const explosion = (explosionName: string) => {
-  publish(explosionName, {
+  publish("start" + explosionName, {
     position: [0, 0, 0],
     velocity: [0, 0, 0],
     spread: 10,
     size: 1,
     count: 100,
   });
+
+  setTimeout(() => {
+    publish("end" + explosionName, {});
+  }, 1000);
 };
 
 export default function CubeScene({ textures }: CubeSceneProps) {

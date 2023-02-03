@@ -1,9 +1,9 @@
-import { useLoader } from "@react-three/fiber";
-import { useBox } from "@react-three/cannon";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { useBox, useSphere } from "@react-three/cannon";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { LinearFilter } from "three";
+import { Color, LinearFilter } from "three";
 import { subscribe, unsubscribe } from "../../event";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface CubeSceneProps {
   textures: string[];
@@ -25,7 +25,12 @@ const Boxes = ({ textures, explosionName }: CubeSceneProps) => {
       />
     );
   });
-  return <>{boxes}</>;
+  return (
+    <>
+      {boxes}
+      <Bomb position={[0, 5, 0]} explosionName={explosionName} />
+    </>
+  );
 };
 
 const Box = ({
@@ -62,10 +67,10 @@ const Box = ({
       console.log(distanceToCenter);
       api.applyImpulse(impulse, [0, 0, 0]);
     };
-    subscribe(explosionName, listener);
+    subscribe("end" + explosionName, listener);
 
     return () => {
-      unsubscribe(explosionName, () => listener);
+      unsubscribe("end" + explosionName, () => listener);
     };
   }, [ref, api]);
 
@@ -74,6 +79,65 @@ const Box = ({
       {boxGeometry_}
       <meshStandardMaterial map={colorMap} metalness={0.9} roughness={0.7} />
     </mesh>
+  );
+};
+
+const Bomb = ({
+  position,
+  explosionName,
+}: {
+  position: [x: number, y: number, z: number];
+  explosionName: string;
+}) => {
+  const [ref, api]: any = useSphere(() => ({
+    mass: 1,
+    position: position,
+    args: [0.5],
+  }));
+
+  const [explosionState, setExplosionState] = useState("notExploded");
+
+  useEffect(() => {
+    const startListener = () => {
+      setExplosionState("exploding");
+    };
+    const endListener = () => {
+      setExplosionState("exploded");
+    };
+
+    subscribe("start" + explosionName, startListener);
+    subscribe("end" + explosionName, endListener);
+
+    return () => {
+      unsubscribe("start" + explosionName, () => startListener);
+      unsubscribe("end" + explosionName, endListener);
+    };
+  }, []);
+
+  useFrame(({ clock }) => {
+    if (explosionState === "exploding") {
+      //change color every 0.2 seconds
+      if (clock.getElapsedTime() % 0.2 < 0.1) {
+        ref.current.material.emissive = new Color(0xff0000);
+        ref.current.material.emissiveIntensity = 0.5;
+        ref.current.material.color = new Color(0xff0000);
+      } else {
+        ref.current.material.emissive = new Color(0x000000);
+        ref.current.material.emissiveIntensity = 0;
+        ref.current.material.color = new Color(0x000000);
+      }
+    }
+  });
+
+  return (
+    <>
+      {explosionState === "exploded" ? null : (
+        <mesh ref={ref} receiveShadow castShadow>
+          <sphereGeometry args={[0.5, 32, 32]} />
+          <meshStandardMaterial color="black" />
+        </mesh>
+      )}
+    </>
   );
 };
 
