@@ -14,6 +14,18 @@ const boxGeometry_ = <boxGeometry args={[1, 1, 1]} />;
 
 const Boxes = ({ textures, explosionName }: CubeSceneProps) => {
   const boxes: JSX.Element[] = [];
+  const [bombRef, bombApi]: any = useSphere(() => ({
+    mass: 1,
+    position: [0, 100, 0],
+    args: [0.5],
+  }));
+
+  const bombPosition = useRef([0, 0, 0]);
+  useEffect(
+    () =>
+      bombApi.position.subscribe((v: number[]) => (bombPosition.current = v)),
+    []
+  );
 
   textures.forEach((texture, i) => {
     boxes.push(
@@ -21,6 +33,7 @@ const Boxes = ({ textures, explosionName }: CubeSceneProps) => {
         key={i}
         position={[Math.random() * 10 - 5, Math.random() * 10 + 5, 0]}
         texture={texture}
+        bombPosition={bombPosition}
         explosionName={explosionName}
       />
     );
@@ -28,7 +41,7 @@ const Boxes = ({ textures, explosionName }: CubeSceneProps) => {
   return (
     <>
       {boxes}
-      <Bomb position={[0, 100, 0]} explosionName={explosionName} />
+      <Bomb bombRef={bombRef} bombApi={bombApi} explosionName={explosionName} />
     </>
   );
 };
@@ -36,10 +49,12 @@ const Boxes = ({ textures, explosionName }: CubeSceneProps) => {
 const Box = ({
   position,
   texture,
+  bombPosition,
   explosionName,
 }: {
   position: [x: number, y: number, z: number];
   texture: string;
+  bombPosition: any;
   explosionName: string;
 }) => {
   const [ref, api]: any = useBox(() => ({ mass: 1, position: position }));
@@ -48,23 +63,31 @@ const Box = ({
   colorMap.magFilter = LinearFilter;
 
   const pos = useRef([0, 0, 0]);
-  useEffect(() => api.position.subscribe((v) => (pos.current = v)), []);
+  useEffect(
+    () => api.position.subscribe((v: number[]) => (pos.current = v)),
+    []
+  );
 
   useEffect(() => {
     const listener = () => {
-      console.log(pos);
-
-      const distanceToCenter = Math.sqrt(
-        Math.pow(pos.current[0], 2) +
-          Math.pow(pos.current[1], 2) +
-          Math.pow(pos.current[2], 2)
-      );
-      const impulse = [
-        (pos.current[0] * 30) / distanceToCenter,
-        (pos.current[1] * 30) / distanceToCenter,
-        (pos.current[2] * 30) / distanceToCenter,
+      const vectorFromBomb = [
+        pos.current[0] - bombPosition.current[0],
+        pos.current[1] - bombPosition.current[1],
+        pos.current[2] - bombPosition.current[2],
       ];
-      console.log(distanceToCenter);
+
+      const distanceToBomb = Math.sqrt(
+        Math.pow(vectorFromBomb[0], 2) +
+          Math.pow(vectorFromBomb[1], 2) +
+          Math.pow(vectorFromBomb[2], 2)
+      );
+
+      const impulse = [
+        (vectorFromBomb[0] * 30) / distanceToBomb + Math.random() * 2 - 1,
+        (vectorFromBomb[1] * 30) / distanceToBomb + 1,
+        (vectorFromBomb[2] * 30) / distanceToBomb + Math.random() * 2 - 1,
+      ];
+      console.log(distanceToBomb);
       api.applyImpulse(impulse, [0, 0, 0]);
     };
     subscribe("end" + explosionName, listener);
@@ -83,34 +106,36 @@ const Box = ({
 };
 
 const Bomb = ({
-  position,
+  bombRef,
+  bombApi,
   explosionName,
 }: {
-  position: [x: number, y: number, z: number];
+  bombRef: any;
+  bombApi: any;
   explosionName: string;
 }) => {
-  const [ref, api]: any = useSphere(() => ({
-    mass: 1,
-    position: position,
-    args: [0.5],
-  }));
-
   const [explosionState, setExplosionState] = useState("notExploded");
 
   useEffect(() => {
-    api.sleep();
+    bombApi.sleep();
     const startListener = () => {
       setExplosionState("exploding");
       const randomPosition = [Math.random() * 10 - 5, 5, Math.random() * 6 - 3];
-      api.position.set(randomPosition[0], randomPosition[1], randomPosition[2]);
-      api.wakeUp();
+      bombApi.position.set(
+        randomPosition[0],
+        randomPosition[1],
+        randomPosition[2]
+      );
+      bombApi.wakeUp();
     };
     const endListener = () => {
-      api.position.set(0, 100, 0);
-      api.velocity.set(0, 0, 0);
-      api.angularVelocity.set(0, 0, 0);
-      api.sleep();
-      ref.current.material.color = new Color(0x000000);
+      bombApi.position.set(0, 100, 0);
+      bombApi.velocity.set(0, 0, 0);
+      bombApi.angularVelocity.set(0, 0, 0);
+      bombApi.sleep();
+      bombRef.current.material.color = new Color(0x000000);
+      bombRef.current.material.emissive = new Color(0x000000);
+      bombRef.current.material.emissiveIntensity = 0;
 
       setExplosionState("exploded");
     };
@@ -128,20 +153,20 @@ const Bomb = ({
     if (explosionState === "exploding") {
       //change color every 0.2 seconds
       if (clock.getElapsedTime() % 0.2 < 0.1) {
-        ref.current.material.emissive = new Color(0xff0000);
-        ref.current.material.emissiveIntensity = 0.5;
-        ref.current.material.color = new Color(0xff0000);
+        bombRef.current.material.emissive = new Color(0xff0000);
+        bombRef.current.material.emissiveIntensity = 0.5;
+        bombRef.current.material.color = new Color(0xff0000);
       } else {
-        ref.current.material.emissive = new Color(0x000000);
-        ref.current.material.emissiveIntensity = 0;
-        ref.current.material.color = new Color(0x000000);
+        bombRef.current.material.emissive = new Color(0x000000);
+        bombRef.current.material.emissiveIntensity = 0;
+        bombRef.current.material.color = new Color(0x000000);
       }
     }
   });
 
   return (
     <>
-      <mesh ref={ref} receiveShadow castShadow>
+      <mesh ref={bombRef} receiveShadow castShadow>
         <sphereGeometry args={[0.5, 32, 32]} />
         <meshStandardMaterial color="black" />
       </mesh>
