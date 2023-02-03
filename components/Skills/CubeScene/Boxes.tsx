@@ -3,7 +3,7 @@ import { useBox } from "@react-three/cannon";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { LinearFilter } from "three";
 import { subscribe, unsubscribe } from "../../event";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface CubeSceneProps {
   textures: string[];
@@ -37,22 +37,37 @@ const Box = ({
   texture: string;
   explosionName: string;
 }) => {
-  const [ref, refAPI]: any = useBox(() => ({ mass: 1, position: position }));
+  const [ref, api]: any = useBox(() => ({ mass: 1, position: position }));
   const colorMap = useLoader(TextureLoader, texture);
   colorMap.minFilter = LinearFilter;
   colorMap.magFilter = LinearFilter;
 
+  const pos = useRef([0, 0, 0]);
+  useEffect(() => api.position.subscribe((v) => (pos.current = v)), []);
+
   useEffect(() => {
     const listener = () => {
-      console.log(refAPI);
-      refAPI.applyImpulse([0, 15, 0], [0, 0, 0]);
+      console.log(pos);
+
+      const distanceToCenter = Math.sqrt(
+        Math.pow(pos.current[0], 2) +
+          Math.pow(pos.current[1], 2) +
+          Math.pow(pos.current[2], 2)
+      );
+      const impulse = [
+        (pos.current[0] * 30) / distanceToCenter,
+        (pos.current[1] * 30) / distanceToCenter,
+        (pos.current[2] * 30) / distanceToCenter,
+      ];
+      console.log(distanceToCenter);
+      api.applyImpulse(impulse, [0, 0, 0]);
     };
     subscribe(explosionName, listener);
 
     return () => {
       unsubscribe(explosionName, () => listener);
     };
-  }, [refAPI]);
+  }, [ref, api]);
 
   return (
     <mesh ref={ref} receiveShadow castShadow>
