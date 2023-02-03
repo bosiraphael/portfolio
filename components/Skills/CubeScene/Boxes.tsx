@@ -101,7 +101,8 @@ const Bomb = ({
     api.sleep();
     const startListener = () => {
       setExplosionState("exploding");
-      api.position.set(0, 5, 0);
+      const randomPosition = [Math.random() * 10 - 5, 5, Math.random() * 6 - 3];
+      api.position.set(randomPosition[0], randomPosition[1], randomPosition[2]);
       api.wakeUp();
     };
     const endListener = () => {
