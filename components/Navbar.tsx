@@ -1,25 +1,26 @@
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const Navbar = () => {
-  const isBlack = () => {
-    if (typeof window === "undefined") {
-      return false;
-    }
-    return window.scrollY > window.innerHeight / 2;
-  };
+  const [isBlack, setIsBlack] = useState(false);
 
   const navbarRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", () => {
-        const navbar = navbarRef.current;
-        if (navbar) {
-          navbar.style.color = isBlack() ? "black" : "white";
-        }
-      });
+  const listener = () => {
+    if (navbarRef.current) {
+      const b = window.scrollY > window.innerHeight / 2;
+
+      setIsBlack(b);
     }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", listener);
+
+    return () => {
+      window.removeEventListener("scroll", listener);
+    };
   }, []);
 
   return (
@@ -27,11 +28,17 @@ const Navbar = () => {
       className="navbar"
       ref={navbarRef}
       style={{
-        color: isBlack() ? "black" : "white",
+        color: isBlack ? "black" : "white",
       }}
     >
       <Link className="navbar__links" href="/">
-        Home
+        <Image
+          src={isBlack ? "/rb.svg" : "/rbwhite.svg"}
+          alt="Raphaël Bosi's logo"
+          width={40}
+          height={40}
+          className="navbar__logo"
+        />
       </Link>
       <button
         className="navbar__links"

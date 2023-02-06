@@ -44,7 +44,7 @@ export default function Home() {
       <main className={styles.main} ref={containerRef}>
         {/* <FPSStats /> */}
 
-        {/* <Header /> */}
+        <Header />
 
         <div
           style={{
