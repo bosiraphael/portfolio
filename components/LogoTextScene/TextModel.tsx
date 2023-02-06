@@ -35,7 +35,7 @@ const TextModel = ({ text, scale }: { text: string; scale?: number }) => {
       height={0.1}
       size={scale ? 0.5 * scale : 0.5}
     >
-      <meshStandardMaterial color="#2e2e2d" metalness={0.7} roughness={0.5} />
+      <meshStandardMaterial color="#424242" metalness={0.5} roughness={0.3} />
       {text}
     </Text3D>
   );

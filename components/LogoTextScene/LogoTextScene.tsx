@@ -15,8 +15,8 @@ export default function LogoTextScene({
 }) {
   return (
     <>
-      <ambientLight intensity={2} />
-      <directionalLight position={[0, 2, 5]} intensity={1} />
+      <ambientLight intensity={1} />
+      <directionalLight position={[0, 1, 5]} intensity={0.5} />
 
       <PerspectiveCamera makeDefault fov={75} position={[0, 0, 5]} />
 

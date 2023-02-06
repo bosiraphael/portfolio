@@ -12,9 +12,9 @@ const Model = ({ modelPath, scale }: { modelPath: string; scale?: number }) => {
     // @ts-ignore
     if (child.isMesh) {
       // @ts-ignore
-      child.material.metalness = 0.7;
+      child.material.metalness = 0.5;
       // @ts-ignore
-      child.material.roughness = 0.5;
+      child.material.roughness = 0.3;
     }
   });
 

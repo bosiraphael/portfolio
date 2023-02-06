@@ -109,7 +109,7 @@ export default function Home() {
             </View>
 
             <View track={workViewRef1}>
-              <LogoTextScene text="R B" />
+              <LogoTextScene modelPath="models/rbLogo.glb" />
             </View>
             <View track={workViewRef2}>
               <LogoTextScene text="BauxRéal" />
