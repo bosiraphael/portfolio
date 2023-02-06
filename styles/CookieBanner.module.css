@@ -1,0 +1,14 @@
+.acceptButton {
+  background: "#183f1b";
+  color: "#ffffff";
+  font-size: "1.6rem";
+  border-radius: "0.5rem";
+}
+
+.declineButton {
+  background: "#ffffff";
+  color: "#616161";
+  border: "1px solid #616161";
+  font-size: "1.6rem";
+  border-radius: "0.5rem";
+}

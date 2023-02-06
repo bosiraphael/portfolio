@@ -13,7 +13,7 @@ import { useRef } from "react";
 import LogoTextScene from "../components/LogoTextScene/LogoTextScene";
 import { Scrollbar } from "smooth-scrollbar-react";
 import Header from "../components/Header";
-import Script from "next/script";
+import CookieBanner from "../components/CookieBanner";
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -37,12 +37,15 @@ export default function Home() {
         <title>Raphaël Bosi&apos;s Portfolio</title>
         <meta name="description" content="Raphaël Bosi's Portfolio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/rb.svg" />
       </Head>
 
       <Navbar />
+
       <main className={styles.main} ref={containerRef}>
         {/* <FPSStats /> */}
+
+        <CookieBanner />
 
         <Header />
 
