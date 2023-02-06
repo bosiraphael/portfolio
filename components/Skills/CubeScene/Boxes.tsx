@@ -87,7 +87,6 @@ const Box = ({
         (vectorFromBomb[1] * 30) / distanceToBomb + 1,
         (vectorFromBomb[2] * 30) / distanceToBomb + Math.random() * 2 - 1,
       ];
-      console.log(distanceToBomb);
       api.applyImpulse(impulse, [0, 0, 0]);
     };
     subscribe("end" + explosionName, listener);
