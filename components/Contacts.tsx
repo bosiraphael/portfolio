@@ -1,12 +1,7 @@
 import styles from "../styles/Section.module.css";
+import LogoTextScene from "./LogoTextScene/LogoTextScene";
 
-interface ContactsProps {
-  viewRef1: any;
-  viewRef2: any;
-  viewRef3: any;
-}
-
-const Contacts = ({ viewRef1, viewRef2, viewRef3 }: ContactsProps) => {
+const Contacts = () => {
   return (
     <section id="contacts" className={styles.section}>
       <h1 className={styles.heading}>Contacts</h1>
@@ -27,7 +22,7 @@ const Contacts = ({ viewRef1, viewRef2, viewRef3 }: ContactsProps) => {
             className={styles.contactLink}
           >
             <h2>Email</h2>
-            <div ref={viewRef1} style={{ width: "100%", height: "100%" }} />
+            <LogoTextScene modelPath="models/email.glb" />
           </a>
           <a
             href="https://www.linkedin.com/in/rapha%C3%ABl-bosi-8b704a173/"
@@ -36,7 +31,7 @@ const Contacts = ({ viewRef1, viewRef2, viewRef3 }: ContactsProps) => {
             className={styles.contactLink}
           >
             <h2>LinkedIn</h2>
-            <div ref={viewRef2} style={{ width: "100%", height: "100%" }} />
+            <LogoTextScene modelPath="models/linkedin.glb" />
           </a>
           <a
             href="https://github.com/bosiraphael"
@@ -46,7 +41,7 @@ const Contacts = ({ viewRef1, viewRef2, viewRef3 }: ContactsProps) => {
           >
             <h2>Github</h2>
 
-            <div ref={viewRef3} style={{ width: "100%", height: "100%" }} />
+            <LogoTextScene modelPath="models/github.glb" />
           </a>
         </div>
       </div>

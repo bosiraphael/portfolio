@@ -1,4 +1,5 @@
 import { PerspectiveCamera } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import dynamic from "next/dynamic";
 
 const Model = dynamic(() => import("./Model"), { ssr: false });
@@ -14,7 +15,7 @@ export default function LogoTextScene({
   scale?: number;
 }) {
   return (
-    <>
+    <Canvas>
       <ambientLight intensity={1} />
       <directionalLight position={[0, 1, 5]} intensity={0.5} />
 
@@ -23,6 +24,6 @@ export default function LogoTextScene({
       {text ? <TextModel text={text} scale={scale} /> : <></>}
 
       {modelPath ? <Model modelPath={modelPath} scale={scale} /> : <></>}
-    </>
+    </Canvas>
   );
 }

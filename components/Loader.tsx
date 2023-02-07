@@ -2,7 +2,7 @@ import { useProgress } from "@react-three/drei";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const ProgressBar = ({ percentage }) => {
+const ProgressBar = ({ percentage }: { percentage: number }) => {
   return (
     <div
       style={{

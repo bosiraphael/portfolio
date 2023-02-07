@@ -14,22 +14,10 @@ import LogoTextScene from "../components/LogoTextScene/LogoTextScene";
 import { Scrollbar } from "smooth-scrollbar-react";
 import Header from "../components/Header";
 import CookieBanner from "../components/CookieBanner";
+import FPSStats from "react-fps-stats";
 
 export default function Home() {
   const containerRef = useRef<any>(null);
-
-  const educationViewRef1 = useRef<any>(null);
-  const educationViewRef2 = useRef<any>(null);
-  const educationViewRef3 = useRef<any>(null);
-
-  const workViewRef1 = useRef<any>(null);
-  const workViewRef2 = useRef<any>(null);
-  const workViewRef3 = useRef<any>(null);
-  const workViewRef4 = useRef<any>(null);
-
-  const contactsViewRef1 = useRef<any>(null);
-  const contactsViewRef2 = useRef<any>(null);
-  const contactsViewRef3 = useRef<any>(null);
 
   return (
     <>
@@ -43,7 +31,7 @@ export default function Home() {
       <Navbar />
 
       <main className={styles.main} ref={containerRef}>
-        {/* <FPSStats /> */}
+        <FPSStats />
 
         <CookieBanner />
 
@@ -57,81 +45,17 @@ export default function Home() {
           }}
         >
           <Scrollbar damping={0.1} thumbMinSize={50}>
-            <Education
-              viewRef1={educationViewRef1}
-              viewRef2={educationViewRef2}
-              viewRef3={educationViewRef3}
-            />
+            <Education />
 
-            <Work
-              viewRef1={workViewRef1}
-              viewRef2={workViewRef2}
-              viewRef3={workViewRef3}
-              viewRef4={workViewRef4}
-            />
+            <Work />
 
             <Skills />
 
-            <Contacts
-              viewRef1={contactsViewRef1}
-              viewRef2={contactsViewRef2}
-              viewRef3={contactsViewRef3}
-            />
+            <Contacts />
 
             <Footer />
           </Scrollbar>
         </div>
-
-        <Canvas
-          eventSource={containerRef}
-          style={
-            {
-              position: "fixed !important",
-              top: "0px",
-              left: "0px",
-              width: "100vw !important",
-              height: "100vh !important",
-            } as any
-          }
-        >
-          <Suspense fallback={null}>
-            <View track={educationViewRef1}>
-              <LogoTextScene
-                modelPath="models/centraleSupelec.glb"
-                scale={1.5}
-              />
-            </View>
-            <View track={educationViewRef2}>
-              <LogoTextScene modelPath="models/chalmers.glb" />
-            </View>
-            <View track={educationViewRef3}>
-              <LogoTextScene text="MPSI - MP*" scale={2} />
-            </View>
-
-            <View track={workViewRef1}>
-              <LogoTextScene modelPath="models/rbLogo.glb" />
-            </View>
-            <View track={workViewRef2}>
-              <LogoTextScene text="BauxRéal" />
-            </View>
-            <View track={workViewRef3}>
-              <LogoTextScene modelPath="models/danone.glb" scale={1.2} />
-            </View>
-            <View track={workViewRef4}>
-              <LogoTextScene modelPath="models/safran.glb" scale={2} />
-            </View>
-
-            <View track={contactsViewRef1}>
-              <LogoTextScene modelPath="models/email.glb" />
-            </View>
-            <View track={contactsViewRef2}>
-              <LogoTextScene modelPath="models/linkedin.glb" />
-            </View>
-            <View track={contactsViewRef3}>
-              <LogoTextScene modelPath="models/github.glb" />
-            </View>
-          </Suspense>
-        </Canvas>
       </main>
     </>
   );
