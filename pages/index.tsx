@@ -1,16 +1,12 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
 import Navbar from "../components/Navbar";
 import Skills from "../components/Skills/Skills";
 import Education from "../components/Education";
 import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
 import Work from "../components/Work";
-import { View } from "@react-three/drei";
 import { useRef } from "react";
-import LogoTextScene from "../components/LogoTextScene/LogoTextScene";
 import { Scrollbar } from "smooth-scrollbar-react";
 import Header from "../components/Header";
 import CookieBanner from "../components/CookieBanner";
