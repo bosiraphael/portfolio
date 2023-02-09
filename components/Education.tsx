@@ -13,7 +13,6 @@ const Education = () => {
           <p>2018 - 2022</p>
         </div>
 
-        {/* <LogoTextScene modelPath="models/centraleSupelec.glb" scale={1.5} /> */}
         <Image
           src="/centralesupelec.webp"
           alt="CentraleSupélec"
@@ -29,7 +28,12 @@ const Education = () => {
           <p>2020</p>
         </div>
 
-        <LogoTextScene modelPath="models/chalmers.glb" />
+        <Image
+          src="/chalmers.webp"
+          alt="CentraleSupélec"
+          width={300}
+          height={300}
+        />
         <Skill
           title="Chalmers University of Technology"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."

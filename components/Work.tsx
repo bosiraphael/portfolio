@@ -1,6 +1,7 @@
 import styles from "../styles/Section.module.css";
 import LogoTextScene from "./LogoTextScene/LogoTextScene";
 import Skill from "./Skills/Skill";
+import Image from "next/image";
 
 const Work = () => {
   return (
@@ -11,7 +12,7 @@ const Work = () => {
         <div className={styles.educationDate}>
           <p>2023</p>
         </div>
-        <LogoTextScene modelPath="models/rbLogo.glb" />
+        <Image src="/rb.webp" alt="RB logo" width={300} height={300} />
         <Skill
           title="Freelance developer"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
