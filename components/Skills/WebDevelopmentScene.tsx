@@ -3,6 +3,8 @@ import CubeScene from "./CubeScene/CubeScene";
 const WebDevelopmentScene = () => {
   return (
     <CubeScene
+      title="Web Development"
+      description="html, css, javascript, typescript, react, next, nodejs, sass, firebase, threejs"
       textures={[
         "logos/html.png",
         "logos/css.png",

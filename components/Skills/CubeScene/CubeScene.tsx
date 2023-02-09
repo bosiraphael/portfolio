@@ -11,6 +11,8 @@ import styles from "../../../styles/Section.module.css";
 
 interface CubeSceneProps {
   textures: string[];
+  title: string;
+  description: string;
 }
 
 const Boxes = dynamic(() => import("./Boxes"), { ssr: false });
@@ -140,7 +142,11 @@ const explosion = (explosionName: string) => {
   }, 2000);
 };
 
-export default function CubeScene({ textures }: CubeSceneProps) {
+export default function CubeScene({
+  textures,
+  title,
+  description,
+}: CubeSceneProps) {
   const uuid = useMemo(() => crypto.randomBytes(16).toString("hex"), []);
   const explosionName = "explosion" + uuid;
   const [buttonHovered, setButtonHovered] = useState(false);
@@ -171,10 +177,7 @@ export default function CubeScene({ textures }: CubeSceneProps) {
         />
         <Html fullscreen zIndexRange={[100, 0]}>
           <div style={{ width: "100%", textAlign: "center" }}>
-            <Skill
-              title="Data Science"
-              description="I have experience with Python, R, PyTorch, TensorFlow, Keras, Scikit-Learn, Pandas, Numpy, Matplotlib, and Seaborn."
-            />
+            <Skill title={title} description={description} />
             <button
               className={styles.boomButton}
               onClick={() => explosion(explosionName)}

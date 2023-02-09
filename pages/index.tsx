@@ -47,7 +47,7 @@ export default function Home() {
 
             <Skills />
 
-            {/* <Contacts /> */}
+            <Contacts />
 
             <Footer />
           </Scrollbar>

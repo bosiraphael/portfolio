@@ -3,6 +3,8 @@ import CubeScene from "./CubeScene/CubeScene";
 const DataScienceScene = () => {
   return (
     <CubeScene
+      title="Data Science"
+      description="python, R, pytorch, tensorflow, keras, sklearn, pandas, numpy, matplotlib, seaborn"
       textures={[
         "logos/python.png",
         "logos/R.png",
