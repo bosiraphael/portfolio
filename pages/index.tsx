@@ -1,37 +1,12 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Navbar from "../components/Navbar";
 import Skills from "../components/Skills/Skills";
 import Education from "../components/Education";
 import Contacts from "../components/Contacts";
-import Footer from "../components/Footer";
 import Work from "../components/Work";
 import { useRef } from "react";
 import { Scrollbar } from "smooth-scrollbar-react";
 import Header from "../components/Header";
-import CookieBanner from "../components/CookieBanner";
-import FPSStats from "react-fps-stats";
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-
-const translationsEn = {};
-const translationsFr = {};
-
-i18n.use(initReactI18next).init({
-  resources: {
-    en: {
-      translation: translationsEn,
-    },
-    fr: {
-      translation: translationsFr,
-    },
-  },
-  lng: "en",
-  fallbackLng: "en",
-  interpolation: {
-    escapeValue: false,
-  },
-});
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -45,13 +20,7 @@ export default function Home() {
         <link rel="icon" href="/rb.svg" />
       </Head>
 
-      <Navbar />
-
       <main className={styles.main} ref={containerRef}>
-        <FPSStats />
-
-        <CookieBanner />
-
         <Header />
 
         <div
@@ -72,8 +41,6 @@ export default function Home() {
             <Skills />
 
             <Contacts />
-
-            <Footer />
           </Scrollbar>
         </div>
       </main>

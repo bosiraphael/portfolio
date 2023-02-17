@@ -87,12 +87,12 @@ a {
 }
 
 .navbar select {
-  background-color: #fff;
+  background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
   font-size: inherit;
-  color: var(--color-gray-900);
+  color: inherit;
   font-weight: inherit;
   padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
@@ -103,7 +103,11 @@ a {
 }
 
 .navbar select:hover {
-  background-color: var(--color-gray-100);
+  background-color: #fff;
+  color: #000;
+
+  transform: scale(1.1) translateY(-0.1rem);
+  transition: all 0.2s ease-out;
 }
 
 .navbar__links {
