@@ -4,11 +4,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import translationsEn from "../translations/en.json";
+import translationsFr from "../translations/fr.json";
 import CookieBanner from "../components/CookieBanner";
 import FPSStats from "react-fps-stats";
-
-const translationsEn = {};
-const translationsFr = {};
 
 i18n.use(initReactI18next).init({
   resources: {

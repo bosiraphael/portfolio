@@ -3,9 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import LanguageSelect from "./LanguageSelect";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const router = useRouter();
+
+  const { t } = useTranslation();
 
   const [isBlack, setIsBlack] = useState(false);
 
@@ -49,45 +52,15 @@ const Navbar = () => {
           className="navbar__logo"
         />
       </Link>
-      <button
-        className="navbar__links"
-        onClick={() => {
-          const element = document.getElementById("education");
-          if (element) {
-            element.scrollIntoView({
-              behavior: "smooth",
-            });
-          }
-        }}
-      >
-        Education
-      </button>
-      <button
-        className="navbar__links"
-        onClick={() => {
-          const element = document.getElementById("work");
-          if (element) {
-            element.scrollIntoView({
-              behavior: "smooth",
-            });
-          }
-        }}
-      >
-        Work experiences
-      </button>
-      <button
-        className="navbar__links"
-        onClick={() => {
-          const element = document.getElementById("skills");
-          if (element) {
-            element.scrollIntoView({
-              behavior: "smooth",
-            });
-          }
-        }}
-      >
-        Skills
-      </button>
+      <Link className="navbar__links" href="/education-work">
+        {t("educationWork")}
+      </Link>
+      <Link className="navbar__links" href="/skills">
+        {t("skills")}
+      </Link>
+      <Link className="navbar__links" href="/projects">
+        {t("projects")}
+      </Link>
       <button
         className="navbar__links"
         onClick={() => {
@@ -99,7 +72,7 @@ const Navbar = () => {
           }
         }}
       >
-        Contacts
+        {t("contact")}
       </button>
       <LanguageSelect />
     </nav>
