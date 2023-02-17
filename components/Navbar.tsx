@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import LanguageSelect from "./LanguageSelect";
 
 const Navbar = () => {
   const [isBlack, setIsBlack] = useState(false);
@@ -92,6 +93,7 @@ const Navbar = () => {
       >
         Contacts
       </button>
+      <LanguageSelect />
     </nav>
   );
 };

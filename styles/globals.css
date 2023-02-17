@@ -86,6 +86,26 @@ a {
   font-weight: inherit;
 }
 
+.navbar select {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: inherit;
+  color: var(--color-gray-900);
+  font-weight: inherit;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.navbar select:focus {
+  outline: none;
+}
+
+.navbar select:hover {
+  background-color: var(--color-gray-100);
+}
+
 .navbar__links {
   transition: all 0.2s ease-out;
 }

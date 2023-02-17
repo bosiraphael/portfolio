@@ -11,6 +11,27 @@ import { Scrollbar } from "smooth-scrollbar-react";
 import Header from "../components/Header";
 import CookieBanner from "../components/CookieBanner";
 import FPSStats from "react-fps-stats";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+const translationsEn = {};
+const translationsFr = {};
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: {
+      translation: translationsEn,
+    },
+    fr: {
+      translation: translationsFr,
+    },
+  },
+  lng: "en",
+  fallbackLng: "en",
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -36,11 +57,14 @@ export default function Home() {
         <div
           style={{
             position: "absolute",
+            display: "flex",
+            flexDirection: "column",
+
             top: "100vh",
             width: "100%",
           }}
         >
-          <Scrollbar damping={0.1} thumbMinSize={50}>
+          <Scrollbar damping={0.1} thumbMinSize={20}>
             <Education />
 
             <Work />

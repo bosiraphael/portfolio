@@ -42,11 +42,11 @@ const Education = () => {
           <p>2016-2018</p>
         </div>
 
-        <LogoTextScene text="MPSI - MP*" scale={2} />
+        {/* <LogoTextScene text="MPSI - MP*" scale={2} />
         <Skill
           title="MPSI - MP*"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
-        />
+        /> */}
       </div>
     </section>
   );
