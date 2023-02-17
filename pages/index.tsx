@@ -34,12 +34,6 @@ export default function Home() {
           }}
         >
           <Scrollbar damping={0.1} thumbMinSize={20}>
-            <Education />
-
-            <Work />
-
-            <Skills />
-
             <Contacts />
           </Scrollbar>
         </div>

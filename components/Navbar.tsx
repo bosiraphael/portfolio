@@ -2,8 +2,11 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import LanguageSelect from "./LanguageSelect";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
+
   const [isBlack, setIsBlack] = useState(false);
 
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -17,12 +20,17 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", listener);
+    if (router.pathname === "/") {
+      setIsBlack(false);
+      window.addEventListener("scroll", listener);
 
-    return () => {
-      window.removeEventListener("scroll", listener);
-    };
-  }, []);
+      return () => {
+        window.removeEventListener("scroll", listener);
+      };
+    } else {
+      setIsBlack(true);
+    }
+  }, [router.pathname]);
 
   return (
     <nav

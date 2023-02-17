@@ -103,7 +103,7 @@ const Header = () => {
             },
           }}
         >
-          Data Scientist and Developer
+          Freelance Developer
         </motion.h2>
 
         <DiscoverButton loaded={loaded} />
