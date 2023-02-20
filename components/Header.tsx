@@ -6,6 +6,7 @@ import { useRef } from "react";
 import LaplandScene from "../components/LaplandScene/LaplandScene";
 import { motion } from "framer-motion";
 import Loader from "../components/Loader";
+import { useTranslation } from "react-i18next";
 
 const Scene = () => {
   let { viewport, camera } = useThree();
@@ -50,6 +51,8 @@ const LaplandCanvas = ({ headerRef }: { headerRef: any }) => {
 };
 
 const Header = () => {
+  const { t } = useTranslation();
+
   const headerRef = useRef<any>(null);
 
   const [loaded, setLoaded] = useState(false);
@@ -103,7 +106,7 @@ const Header = () => {
             },
           }}
         >
-          Freelance Developer
+          {t("header.subheading")}
         </motion.h2>
 
         <DiscoverButton loaded={loaded} />

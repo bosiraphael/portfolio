@@ -22,6 +22,7 @@ export default function CookieBanner() {
       buttonText="Accept"
       cookieName="myAwesomeCookieName2"
       style={{
+        height: "10rem",
         background: "#ffffff",
         color: "#121212",
         fontSize: "1.6rem",

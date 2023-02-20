@@ -25,14 +25,20 @@
 
 html,
 body {
-  font-size: 62.5%;
   max-width: 100vw;
   overflow-x: hidden;
 }
 
 html {
+  font-size: 62.5%;
   --scroll-behavior: smooth !important;
   scroll-behavior: smooth !important;
+}
+
+body {
+  font-size: 1.6rem;
+  color: var(--color-gray-900);
+  background-color: var(--color-gray-100);
 }
 
 html,

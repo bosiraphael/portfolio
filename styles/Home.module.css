@@ -1,3 +1,8 @@
+.main {
+  position: relative;
+  width: 100%;
+}
+
 .header {
   position: absolute;
   top: 0;
@@ -28,6 +33,26 @@
   color: var(--color-primary);
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.section {
+  position: relative;
+  width: 90%;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 2rem 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section h1 {
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  color: var(--color-primary);
+
+  margin-bottom: 1rem;
 }
 
 .content_container {
