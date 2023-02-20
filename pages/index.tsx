@@ -4,6 +4,8 @@ import { Suspense, useRef } from "react";
 import Header from "../components/Header";
 import { Canvas } from "@react-three/fiber";
 import MacBookPro from "../components/MacBookPro";
+import { Html, MeshReflectorMaterial, OrbitControls } from "@react-three/drei";
+import Auroras from "../components/LaplandScene/Auroras";
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -20,36 +22,108 @@ export default function Home() {
       <main className={styles.main} ref={containerRef}>
         <Header />
 
-        <div className={styles.section}>
-          <h1>Who am I?</h1>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-            quasi quod ullam placeat ipsum eligendi fugit nemo repudiandae
-            doloribus in natus libero, aspernatur temporibus, reprehenderit
-            eveniet dolores vitae alias sequi omnis delectus. Aperiam qui
-            eveniet quisquam explicabo soluta illum amet sunt nisi architecto
-            minus. Iste dignissimos iure adipisci dolorum, sunt velit ipsam
-            dolorem cumque corporis similique molestiae beatae eius quisquam
-            earum? Quae ullam saepe officiis quam maiores dolorem consequatur
-            voluptas et recusandae assumenda consectetur ex soluta temporibus
-            est possimus, iusto eum laudantium dolores corporis necessitatibus
-            non ipsum. Harum eaque voluptatibus iusto deleniti unde pariatur
-            saepe, sit placeat a praesentium quas!
-          </p>
+        {/* <div
+          className={styles.section}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+          }}
+        >
+          <div>
+            <h1>Who am I?</h1>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Asperiores quasi quod ullam placeat ipsum eligendi fugit nemo
+              repudiandae doloribus in natus libero, aspernatur temporibus,
+              reprehenderit eveniet dolores vitae alias sequi omnis delectus.
+              Aperiam qui eveniet quisquam explicabo soluta illum amet sunt nisi
+              architecto minus. Iste dignissimos iure adipisci dolorum, sunt
+              velit ipsam dolorem cumque corporis similique molestiae beatae
+              eius quisquam earum? Quae ullam saepe officiis quam maiores
+              dolorem consequatur voluptas et recusandae assumenda consectetur
+              ex soluta temporibus est possimus, iusto eum laudantium dolores
+              corporis necessitatibus non ipsum. Harum eaque voluptatibus iusto
+              deleniti unde pariatur saepe, sit placeat a praesentium quas!
+            </p>
+          </div> */}
+        <div style={{ width: "100%", height: "100vh" }}>
           <Suspense fallback={null}>
             <Canvas>
-              <ambientLight intensity={0.5} />
-              <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-              <spotLight
-                position={[-10, -10, -10]}
-                angle={0.15}
-                penumbra={1}
-                castShadow
-              />
+              <Html
+                style={{
+                  width: "100vw",
+                  height: "100vh",
+                }}
+                center
+              >
+                <div
+                  style={{
+                    width: "50%",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    padding: "0 5rem",
+                    color: "white",
+                    background: "rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  <h1
+                    style={{
+                      marginBottom: "2rem",
+                    }}
+                  >
+                    Who am I?
+                  </h1>
+                  <p
+                    style={{
+                      color: "white",
+                    }}
+                  >
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Asperiores quasi quod ullam placeat ipsum eligendi fugit
+                    nemo repudiandae doloribus in natus libero, aspernatur
+                    temporibus, reprehenderit eveniet dolores vitae alias sequi
+                    omnis delectus. Aperiam qui eveniet quisquam explicabo
+                    soluta illum amet sunt nisi architecto minus. Iste
+                    dignissimos iure adipisci dolorum, sunt velit ipsam dolorem
+                    cumque corporis similique molestiae beatae eius quisquam
+                    earum? Quae ullam saepe officiis quam maiores dolorem
+                    consequatur voluptas et recusandae assumenda consectetur ex
+                    soluta temporibus est possimus, iusto eum laudantium dolores
+                    corporis necessitatibus non ipsum. Harum eaque voluptatibus
+                    iusto deleniti unde pariatur saepe, sit placeat a
+                    praesentium quas!
+                  </p>
+                </div>
+              </Html>
+              <ambientLight intensity={1} />
+              <pointLight position={[0, 10, 0]} intensity={2} />
+              <pointLight position={[-10, -10, -10]} intensity={1} />
               <MacBookPro />
+              <Auroras planeArgs={[100, 20, 1, 1]} position={[0, 1.5, -5]} />
+
+              {/* <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+                <planeGeometry args={[100, 100]} />
+                <MeshReflectorMaterial
+                  color="#050505"
+                  roughness={1}
+                  metalness={0.5}
+                  blur={[100, 100]}
+                  resolution={128} // Blur ground reflections (width, height), 0 skips blur
+                  mixBlur={1} // How much blur mixes with surface roughness (default = 1)
+                  mixStrength={50} // Strength of the reflections
+                  mixContrast={1} // Contrast of the reflections
+                  mirror={0} // Mirror environment, 0 = texture colors, 1 = pick up env colors
+                  depthScale={0} // Scale the depth factor (0 = no depth, default = 0)
+                  minDepthThreshold={0.4} // Lower edge for the depthTexture interpolation (default = 0)
+                  maxDepthThreshold={1.4} // Upper edge for the depthTexture interpolation (default = 0)
+                />
+              </mesh> */}
             </Canvas>
           </Suspense>
         </div>
+
         <div className={styles.section}>
           <h1>You have a project in mind?</h1>
           <h1>Contact me</h1>
