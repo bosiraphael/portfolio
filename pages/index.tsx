@@ -48,13 +48,21 @@ export default function Home() {
           </div> */}
         <div style={{ width: "100%", height: "100vh" }}>
           <Suspense fallback={null}>
-            <Canvas>
+            <Canvas
+              camera={{
+                fov: 45,
+                position: [0, 0, 10],
+                near: 0.1,
+                far: 100,
+              }}
+            >
               <Html
                 style={{
                   width: "100vw",
                   height: "100vh",
                 }}
                 center
+                zIndexRange={[100, 0]}
               >
                 <div
                   style={{
@@ -101,25 +109,7 @@ export default function Home() {
               <pointLight position={[0, 10, 0]} intensity={2} />
               <pointLight position={[-10, -10, -10]} intensity={1} />
               <MacBookPro />
-              <Auroras planeArgs={[100, 20, 1, 1]} position={[0, 1.5, -5]} />
-
-              {/* <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[100, 100]} />
-                <MeshReflectorMaterial
-                  color="#050505"
-                  roughness={1}
-                  metalness={0.5}
-                  blur={[100, 100]}
-                  resolution={128} // Blur ground reflections (width, height), 0 skips blur
-                  mixBlur={1} // How much blur mixes with surface roughness (default = 1)
-                  mixStrength={50} // Strength of the reflections
-                  mixContrast={1} // Contrast of the reflections
-                  mirror={0} // Mirror environment, 0 = texture colors, 1 = pick up env colors
-                  depthScale={0} // Scale the depth factor (0 = no depth, default = 0)
-                  minDepthThreshold={0.4} // Lower edge for the depthTexture interpolation (default = 0)
-                  maxDepthThreshold={1.4} // Upper edge for the depthTexture interpolation (default = 0)
-                />
-              </mesh> */}
+              <Auroras planeArgs={[100, 20, 1, 1]} position={[0, 0, -5]} />
             </Canvas>
           </Suspense>
         </div>
