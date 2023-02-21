@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Navbar />
-      <FPSStats />
+      {/* <FPSStats /> */}
       <Component {...pageProps} />
       <CookieBanner />
       <Footer />

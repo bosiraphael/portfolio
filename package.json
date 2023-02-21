@@ -23,6 +23,7 @@
     "dat.gui": "^0.7.9",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
+    "flubber": "^0.4.2",
     "framer-motion": "^8.5.5",
     "i18next": "^22.4.9",
     "next": "13.1.1",

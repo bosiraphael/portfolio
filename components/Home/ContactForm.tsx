@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../styles/ContactForm.module.css";
+import styles from "../../styles/ContactForm.module.css";
 import { Button, Stack, TextField, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 

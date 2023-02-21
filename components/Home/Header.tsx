@@ -1,11 +1,11 @@
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import { Suspense, useEffect, useState } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
-import DiscoverButton from "../components/DiscoverButton";
+import DiscoverButton from "./DiscoverButton";
 import { useRef } from "react";
-import LaplandScene from "../components/LaplandScene/LaplandScene";
+import LaplandScene from "../LaplandScene/LaplandScene";
 import { motion } from "framer-motion";
-import Loader from "../components/Loader";
+import Loader from "../Loader";
 import { useTranslation } from "react-i18next";
 
 const Scene = () => {

@@ -68,11 +68,8 @@ a {
   align-items: center;
   letter-spacing: 0.1rem;
   padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 5px 20px 0 rgba(167, 167, 167, 0.37);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #fff;
+  color: var(--color-gray-900);
 }
 
 .navbar button {
@@ -140,16 +137,16 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-  /* .navbar {
+  .navbar {
     flex-direction: column;
     height: 100%;
     justify-content: center;
     align-items: center;
-  } */
+  }
 
-  /* .navbar__links {
+  .navbar__links {
     margin: 1rem 0;
-  } */
+  }
 
   .discover-button {
     top: 90vh;
