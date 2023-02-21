@@ -1,12 +1,13 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Suspense, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import Header from "../components/Header";
 import { Canvas } from "@react-three/fiber";
 import MacBookPro from "../components/MacBookPro";
 import { Html } from "@react-three/drei";
 import Auroras from "../components/LaplandScene/Auroras";
 import ContactForm from "../components/ContactForm";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -92,32 +93,69 @@ export default function Home() {
           </Suspense>
         </div>
 
-        <div
-          style={{
-            width: "100vw",
-            height: "100vh",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            background: "url(lapland.jpeg) no-repeat center center/cover",
-          }}
-        >
-          <div
-            style={{
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              padding: "0 5%",
-              color: "white",
-              background: "rgba(0, 0, 0, 0.5)",
-            }}
-          >
-            <h1>A project in mind?</h1>
-            <h1>Contact me</h1>
-          </div>
-          <ContactForm />
-        </div>
+        <ContactSection />
       </main>
     </>
   );
+}
+
+const ContactSection = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll();
+  const y = useParallax(scrollYProgress, 500);
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100vw",
+        height: "100vh",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        overflow: "hidden",
+      }}
+    >
+      <motion.div
+        ref={ref}
+        style={{
+          position: "absolute",
+          height: "100%",
+          width: "100%",
+          zIndex: -1,
+        }}
+      >
+        <motion.img
+          src="lapland.jpeg"
+          alt="Lapland"
+          style={{
+            position: "absolute",
+            top: "-100vh",
+            objectFit: "cover",
+            width: "100%",
+            y,
+          }}
+        />
+      </motion.div>
+      <div
+        ref={ref}
+        style={{
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "0 5%",
+          color: "white",
+          background: "rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        <h1>A project in mind?</h1>
+        <h1>Contact me</h1>
+      </div>
+      <ContactForm />
+    </div>
+  );
+};
+
+function useParallax(value: MotionValue<number>, distance: number) {
+  return useTransform(value, [0, 1], [-distance, distance]);
 }
