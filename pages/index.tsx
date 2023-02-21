@@ -117,6 +117,7 @@ const ContactSection = () => {
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
         overflow: "hidden",
+        placeItems: "center",
       }}
     >
       <div
@@ -143,6 +144,7 @@ const ContactSection = () => {
         ref={ref}
         style={{
           height: "100%",
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -154,6 +156,7 @@ const ContactSection = () => {
         <h1>A project in mind?</h1>
         <h1>Contact me</h1>
       </div>
+
       <ContactForm />
     </div>
   );
