@@ -105,7 +105,7 @@ const ContactSection = () => {
     target: ref,
     offset: ["start end", "end end"],
   });
-  const y = useMemo(() => useParallax(scrollYProgress, 300), [scrollYProgress]);
+  const y = useMemo(() => useParallax(scrollYProgress, 200), [scrollYProgress]);
 
   return (
     <div

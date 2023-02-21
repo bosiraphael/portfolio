@@ -34,7 +34,13 @@ const ContactForm = () => {
   };
 
   return (
-    <form className={styles.contactForm} onSubmit={handleSubmit}>
+    <form
+      className={styles.contactForm}
+      onSubmit={handleSubmit}
+      name="contact"
+      method="POST"
+      data-netlify="true"
+    >
       <ThemeProvider theme={theme}>
         <Stack spacing={2} style={{ width: "100%" }}>
           <TextField
@@ -43,6 +49,7 @@ const ContactForm = () => {
             style={{
               width: "100%",
             }}
+            onChange={handleChange}
           />
 
           <TextField
@@ -51,6 +58,7 @@ const ContactForm = () => {
             style={{
               width: "100%",
             }}
+            onChange={handleChange}
           />
 
           <TextField
@@ -61,6 +69,7 @@ const ContactForm = () => {
             style={{
               width: "100%",
             }}
+            onChange={handleChange}
           />
 
           <Button
@@ -69,6 +78,7 @@ const ContactForm = () => {
             style={{
               width: "100%",
             }}
+            type="submit"
           >
             Send
           </Button>
