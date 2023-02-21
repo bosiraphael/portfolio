@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useMemo, useRef } from "react";
 import Header from "../components/Header";
 import { Canvas } from "@react-three/fiber";
 import MacBookPro from "../components/MacBookPro";
@@ -101,11 +101,15 @@ export default function Home() {
 
 const ContactSection = () => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll();
-  const y = useParallax(scrollYProgress, 500);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+  const y = useMemo(() => useParallax(scrollYProgress, 300), [scrollYProgress]);
 
   return (
     <div
+      ref={ref}
       style={{
         position: "relative",
         width: "100vw",
@@ -115,8 +119,7 @@ const ContactSection = () => {
         overflow: "hidden",
       }}
     >
-      <motion.div
-        ref={ref}
+      <div
         style={{
           position: "absolute",
           height: "100%",
@@ -135,7 +138,7 @@ const ContactSection = () => {
             y,
           }}
         />
-      </motion.div>
+      </div>
       <div
         ref={ref}
         style={{
