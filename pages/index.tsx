@@ -92,9 +92,29 @@ export default function Home() {
           </Suspense>
         </div>
 
-        <div className={styles.section}>
-          <h1>A project in mind?</h1>
-          <h1>Contact me</h1>
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            background: "url(lapland.jpeg) no-repeat center center/cover",
+          }}
+        >
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              padding: "0 5%",
+              color: "white",
+              background: "rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            <h1>A project in mind?</h1>
+            <h1>Contact me</h1>
+          </div>
           <ContactForm />
         </div>
       </main>
