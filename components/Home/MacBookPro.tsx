@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { MathUtils } from "three";
 
-const MacBookPro = () => {
+const MacBookPro = ({ position }) => {
   const macBookPro = useGLTF("models/macBookPro.glb");
   const group = useRef<any>();
 
@@ -32,7 +32,9 @@ const MacBookPro = () => {
   });
 
   return (
-    <group ref={group} position={[3, -1, 0]}>
+    <group ref={group} position={position}>
+      <pointLight position={[-2, 3, 0.5]} intensity={1} />
+      <pointLight position={[0, 3, 0.5]} intensity={1} color="#3b9642" />
       <primitive object={macBookPro.scene} scale={1} />
     </group>
   );

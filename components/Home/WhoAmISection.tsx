@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import MacBookPro from "./MacBookPro";
 import { Html } from "@react-three/drei";
 import Auroras from "../LaplandScene/Auroras";
+import { Vector3 } from "three";
 
 const WhoAmISection = () => {
   const containerRef = useRef<any>(null);
@@ -67,9 +68,7 @@ const WhoAmISection = () => {
             </div>
           </Html>
           <ambientLight intensity={1} />
-          <pointLight position={[0, 10, 0]} intensity={2} />
-          <pointLight position={[-10, -10, -10]} intensity={1} />
-          <MacBookPro />
+          <MacBookPro position={[3, -1, 0]} />
           <Auroras planeArgs={[100, 20, 1, 1]} position={[0, 0, -5]} />
         </Canvas>
       </Suspense>
