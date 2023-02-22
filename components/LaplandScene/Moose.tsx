@@ -21,7 +21,7 @@ const Moose = ({
   useFrame((state, delta) => {
     mixer?.update(delta);
 
-    moose.scene.position.x = ((-state.clock.elapsedTime * 0.5) % 24) + 12;
+    moose.scene.position.x = ((-state.clock.elapsedTime * 0.5) % 40) + 20;
     moose.scene.position.y = hillsHeight(
       moose.scene.position.x,
       -moose.scene.position.z - 20
