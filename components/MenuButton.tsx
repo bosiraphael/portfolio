@@ -1,24 +1,12 @@
-import { interpolate } from "flubber";
-import {
-  motion,
-  useMotionValue,
-  MotionValue,
-  useTransform,
-  animate,
-} from "framer-motion";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useFlubber } from "../utils/useFlubber";
 
-const paths = [
+const paths: [string, string] = [
   "M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z",
   "m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z",
 ];
 const colors = ["#ffffff", "#000000"];
-
-function useFlubber(progress: MotionValue<number>) {
-  return useTransform(progress, [0, 1], paths, {
-    mixer: (a, b) => interpolate(a, b),
-  });
-}
 
 const MenuButton = ({
   isOpened,
@@ -30,7 +18,7 @@ const MenuButton = ({
   const [pathIndex, setPathIndex] = useState(0);
   const progress = useMotionValue(pathIndex);
   const fill = useTransform(progress, [0, 1], colors);
-  const path = useFlubber(progress);
+  const path = useFlubber(progress, paths);
 
   useEffect(() => {
     const animation = animate(progress, isOpened ? 1 : 0, {

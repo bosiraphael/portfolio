@@ -14,3 +14,48 @@
   border-radius: var(--border-radius);
   margin: 0 auto;
 }
+
+.contactForm h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+  pointer-events: none;
+}
+
+.messageSent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 5px 20px 0 rgba(167, 167, 167, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  height: min-content;
+  padding: 4rem 2rem;
+  border-radius: var(--border-radius);
+  margin: 0 auto;
+}
+
+.messageSent h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+  pointer-events: none;
+}
+
+.messageSent p {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-gray-900);
+  text-align: center;
+}
