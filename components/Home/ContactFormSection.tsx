@@ -1,6 +1,7 @@
 import { useMemo, useRef } from "react";
 import ContactForm from "./ContactForm";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import styles from "../../styles/Home.module.css";
 
 const ContactFormSection = () => {
   const ref = useRef(null);
@@ -56,8 +57,25 @@ const ContactFormSection = () => {
           background: "rgba(0, 0, 0, 0.5)",
         }}
       >
-        <h1>A project in mind?</h1>
-        <h1>Contact me</h1>
+        <h1 className={styles.sectionTitle} style={{ marginBottom: 0 }}>
+          A project in mind?
+        </h1>
+        <h1 className={styles.sectionTitle}>Contact me</h1>
+        <p className={styles.sectionText}>
+          If you have a website project in mind for your company, you're in the
+          right place. I can help you build a website that will help you grow
+          your business. Just fill out the form and I'll get back to you.
+          Otherwise, you can contact me at{" "}
+          <a
+            href="mailto:contact@raphaelbosi.dev"
+            style={{
+              textDecoration: "underline",
+            }}
+          >
+            contact@raphaelbosi.dev
+          </a>{" "}
+          .
+        </p>
       </div>
 
       <ContactForm />
