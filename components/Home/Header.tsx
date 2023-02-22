@@ -11,19 +11,20 @@ import { useTranslation } from "react-i18next";
 const Scene = () => {
   let { viewport, camera } = useThree();
 
-  // Set event listener for scrolling
+  const listener = () => {
+    const offset = window.scrollY / (window.innerHeight * 3);
+    if (offset < 1 / 3) {
+      camera.position.set(0, 2 - viewport.height * offset, 11);
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const offset = window.scrollY / (window.innerHeight * 4);
-      if (offset < 1 / 4) {
-        camera.position.set(0, 2 - viewport.height * offset, 11);
-      }
-    });
+    window.addEventListener("scroll", listener);
 
     return () => {
-      window.removeEventListener("scroll", () => {});
+      window.removeEventListener("scroll", listener);
     };
-  }, [camera.position, viewport.height]);
+  }, [viewport.height]);
 
   return <></>;
 };

@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Header from "../components/Home/Header";
 import ContactFormSection from "../components/Home/ContactFormSection";
 import WhoAmISection from "../components/Home/WhoAmISection";
+import { Scrollbar } from "smooth-scrollbar-react";
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -20,9 +21,11 @@ export default function Home() {
       <main className={styles.main} ref={containerRef}>
         <Header />
 
-        <WhoAmISection />
+        <Scrollbar damping={0.05}>
+          <WhoAmISection />
 
-        <ContactFormSection />
+          <ContactFormSection />
+        </Scrollbar>
       </main>
     </>
   );
