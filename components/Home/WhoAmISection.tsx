@@ -8,7 +8,10 @@ import { Vector3 } from "three";
 const WhoAmISection = () => {
   const containerRef = useRef<any>(null);
   return (
-    <div ref={containerRef} style={{ width: "100%", height: "100vh" }}>
+    <div
+      ref={containerRef}
+      style={{ width: "100%", height: "100vh", position: "relative" }}
+    >
       <Suspense fallback={null}>
         <Canvas
           camera={{
@@ -36,6 +39,7 @@ const WhoAmISection = () => {
                 padding: "0 5%",
                 color: "white",
                 background: "rgba(0, 0, 0, 0.5)",
+                pointerEvents: "none",
               }}
             >
               <h1

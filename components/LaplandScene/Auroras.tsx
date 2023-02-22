@@ -111,13 +111,7 @@ const Auroras = ({
   });
 
   return (
-    <mesh
-      ref={auroraRef}
-      receiveShadow
-      castShadow
-      rotation={[0, 0, 0]}
-      position={position}
-    >
+    <mesh ref={auroraRef} rotation={[0, 0, 0]} position={position}>
       <planeGeometry args={planeArgs} />
       <shaderMaterial
         fragmentShader={fragmentShader}

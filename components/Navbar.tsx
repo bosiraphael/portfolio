@@ -23,7 +23,7 @@ const Navbar = () => {
     <>
       {isMobile && <MenuButton isOpened={isOpened} setIsOpened={setIsOpened} />}
       <AnimatePresence>
-        {isOpened && (
+        {(!isMobile || isOpened) && (
           <motion.nav
             className="navbar"
             ref={navbarRef}
