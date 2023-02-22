@@ -35,7 +35,6 @@ const ContactFormSection = () => {
       }}
     >
       <div
-        ref={ref}
         style={{
           position: "absolute",
           height: "100%",
@@ -44,7 +43,8 @@ const ContactFormSection = () => {
         }}
       >
         <img
-          src="lapland.jpeg"
+          ref={ref}
+          src="lapland.webp"
           alt="Lapland"
           style={{
             position: "absolute",

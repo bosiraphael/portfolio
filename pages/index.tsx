@@ -18,10 +18,14 @@ export default function Home() {
         <link rel="icon" href="/rb.svg" />
       </Head>
 
-      <main className={styles.main} ref={containerRef}>
-        <Header />
+      <main
+        className={styles.main}
+        ref={containerRef}
+        style={{ display: "flex" }}
+      >
+        <Scrollbar damping={0.1} thumbMinSize={10}>
+          <Header />
 
-        <Scrollbar damping={0.05}>
           <WhoAmISection />
 
           <ContactFormSection />
