@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import MacBookPro from "./MacBookPro";
 import { Html } from "@react-three/drei";
 import Auroras from "../LaplandScene/Auroras";
-import { Vector3 } from "three";
+import styles from "../../styles/Home.module.css";
 
 const WhoAmISection = () => {
   const containerRef = useRef<any>(null);
@@ -43,31 +43,53 @@ const WhoAmISection = () => {
               }}
             >
               <h1
+                className={styles.sectionTitle}
                 style={{
                   marginBottom: "2rem",
                 }}
               >
                 Who am I?
               </h1>
-              <p
-                style={{
-                  color: "white",
-                  textAlign: "justify",
-                }}
-              >
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Asperiores quasi quod ullam placeat ipsum eligendi fugit nemo
-                repudiandae doloribus in natus libero, aspernatur temporibus,
-                reprehenderit eveniet dolores vitae alias sequi omnis delectus.
-                Aperiam qui eveniet quisquam explicabo soluta illum amet sunt
-                nisi architecto minus. Iste dignissimos iure adipisci dolorum,
-                sunt velit ipsam dolorem cumque corporis similique molestiae
-                beatae eius quisquam earum? Quae ullam saepe officiis quam
-                maiores dolorem consequatur voluptas et recusandae assumenda
-                consectetur ex soluta temporibus est possimus, iusto eum
-                laudantium dolores corporis necessitatibus non ipsum. Harum
-                eaque voluptatibus iusto deleniti unde pariatur saepe, sit
-                placeat a praesentium quas!
+              <p className={styles.sectionText}>
+                I'm a french 24 years old freelance frontend developer based
+                near Paris. I'm passionate about Web Development and AI. I
+                graduated from{" "}
+                <a
+                  href="https://www.centralesupelec.fr/en/"
+                  style={{
+                    pointerEvents: "all",
+                    color: "white",
+                    textDecoration: "underline",
+                  }}
+                >
+                  CentraleSupélec
+                </a>{" "}
+                in 2022 with a master's degree with a specialization in
+                artificial intelligence. You can find more details about my
+                education on the{" "}
+                <a
+                  href="/education-work"
+                  style={{
+                    pointerEvents: "all",
+                    color: "white",
+                    textDecoration: "underline",
+                  }}
+                >
+                  education page
+                </a>
+                . I'm specialized in React, Next.js, Three.js and Python, but
+                you can see all my other skills on the{" "}
+                <a
+                  href="/skills"
+                  style={{
+                    pointerEvents: "all",
+                    color: "white",
+                    textDecoration: "underline",
+                  }}
+                >
+                  skills page
+                </a>
+                .
               </p>
             </div>
           </Html>

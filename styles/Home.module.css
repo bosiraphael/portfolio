@@ -37,24 +37,20 @@
   pointer-events: none;
 }
 
-.section {
-  position: relative;
-  width: 90%;
-  height: 100vh;
-  margin: 0 auto;
-  padding: 2rem 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.section h1 {
+.sectionTitle {
   font-size: 5rem;
   font-weight: 700;
   letter-spacing: 0.2rem;
-  color: var(--color-primary);
-
+  color: #fff;
   margin-bottom: 1rem;
+}
+
+.sectionText {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  text-align: justify;
 }
 
 .content_container {
