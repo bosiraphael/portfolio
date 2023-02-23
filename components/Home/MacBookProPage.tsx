@@ -28,12 +28,19 @@ const MacBookProPage = () => {
       >
         <div
           style={{
-            width: "50%",
-            height: "50%",
-            background: "red",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <p>Like</p>
+          <p
+            style={{
+              marginBottom: 5,
+            }}
+          >
+            Do you like my website?
+          </p>
           <LikeButton />
         </div>
       </div>

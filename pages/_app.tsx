@@ -7,6 +7,7 @@ import { initReactI18next } from "react-i18next";
 import translationsEn from "../translations/en.json";
 import translationsFr from "../translations/fr.json";
 import CookieBanner from "../components/CookieBanner";
+import { Toaster } from "react-hot-toast";
 import FPSStats from "react-fps-stats";
 
 i18n.use(initReactI18next).init({
@@ -28,6 +29,20 @@ i18n.use(initReactI18next).init({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Toaster
+        containerStyle={{
+          top: "7rem",
+          zIndex: 9999,
+        }}
+        toastOptions={{
+          style: {
+            position: "relative",
+            background: "#fff",
+            color: "#000",
+          },
+        }}
+      />
+
       <Navbar />
       {/* <FPSStats /> */}
       <Component {...pageProps} />
