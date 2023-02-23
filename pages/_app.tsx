@@ -42,12 +42,13 @@ export default function App({ Component, pageProps }: AppProps) {
           },
         }}
       />
-
-      <Navbar />
-      {/* <FPSStats /> */}
-      <Component {...pageProps} />
+      <div className="app">
+        <Navbar />
+        {/* <FPSStats /> */}
+        <Component {...pageProps} />
+        <Footer />
+      </div>
       <CookieBanner />
-      <Footer />
     </>
   );
 }

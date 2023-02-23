@@ -3,15 +3,17 @@ import LogoTextScene from "./LogoTextScene/LogoTextScene";
 
 const Contacts = () => {
   return (
-    <section id="contacts" className={styles.section}>
+    <div id="contacts" className={styles.section} style={{ height: "100%" }}>
       <h1 className={styles.heading}>Contacts</h1>
       <div className={styles.contact__container}>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+            gridTemplateRows: "1fr",
             placeItems: "center",
             width: "100%",
+            height: "100%",
             gap: "5rem",
           }}
         >
@@ -19,7 +21,7 @@ const Contacts = () => {
             href="mailto:contact@raphaelbosi.dev"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.contactLink}
+            className={styles.contact__link}
           >
             <h2>Email</h2>
             <LogoTextScene modelPath="models/email.glb" />
@@ -28,7 +30,7 @@ const Contacts = () => {
             href="https://www.linkedin.com/in/rapha%C3%ABl-bosi-8b704a173/"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.contactLink}
+            className={styles.contact__link}
           >
             <h2>LinkedIn</h2>
             <LogoTextScene modelPath="models/linkedin.glb" />
@@ -37,7 +39,7 @@ const Contacts = () => {
             href="https://github.com/bosiraphael"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.contactLink}
+            className={styles.contact__link}
           >
             <h2>Github</h2>
 
@@ -45,7 +47,7 @@ const Contacts = () => {
           </a>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

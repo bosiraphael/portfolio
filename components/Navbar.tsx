@@ -66,19 +66,9 @@ const NavBarContent = ({
       <Link className="navbar__links" href="/projects">
         {t("projects")}
       </Link>
-      <button
-        className="navbar__links"
-        onClick={() => {
-          const element = document.getElementById("contacts");
-          if (element) {
-            element.scrollIntoView({
-              behavior: "smooth",
-            });
-          }
-        }}
-      >
+      <Link className="navbar__links" href="/contact">
         {t("contact")}
-      </button>
+      </Link>
       <LanguageSelect />
     </>
   );

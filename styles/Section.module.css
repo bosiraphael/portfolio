@@ -1,5 +1,5 @@
 .main {
-  margin-top: 3rem;
+  margin-top: 6rem;
 }
 
 .section {
@@ -113,15 +113,15 @@
 .contact__container {
   position: relative;
   display: flex;
+  height: 100%;
   width: 100%;
   padding: 5rem;
   align-items: center;
   justify-content: center;
 }
 
-.contactLink {
+.contact__link {
   height: 20rem;
-  width: 100%;
 
   color: var(--color-secondary);
 
@@ -137,12 +137,12 @@
   text-align: center;
 }
 
-.contactLink:hover {
+.contact__link:hover {
   transform: scale(1.05) translateY(-5px);
   transition: all 0.3s ease-in-out;
 }
 
-.contactLink:active {
+.contact__link:active {
   transform: scale(1) translateY(0px);
 }
 
@@ -170,7 +170,7 @@
     margin-bottom: 3rem;
   }
 
-  .contactLink {
+  .contact__link {
     font-size: 1.5rem;
   }
   .contact__container {
