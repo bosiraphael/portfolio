@@ -1,10 +1,11 @@
-import { useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { MathUtils } from "three";
+import MacBookProModel from "./MacBookProModel";
 
-const MacBookPro = ({ position }) => {
-  const macBookPro = useGLTF("models/macBookPro.glb");
+const MacBookPro = ({ position }: { position: [number, number, number] }) => {
+  const { nodes, materials } = useGLTF("models/macBookPro.glb");
   const group = useRef<any>();
 
   useFrame((state) => {
@@ -30,12 +31,14 @@ const MacBookPro = ({ position }) => {
       0.1
     );
   });
+  console.log(nodes);
+  console.log(materials);
 
   return (
     <group ref={group} position={position}>
       <pointLight position={[-2, 3, 0.5]} intensity={1} />
       <pointLight position={[0, 3, 0.5]} intensity={1} color="#3b9642" />
-      <primitive object={macBookPro.scene} scale={1} />
+      <MacBookProModel />
     </group>
   );
 };

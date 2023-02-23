@@ -177,3 +177,19 @@ a {
   font-size: "1.6rem";
   border-radius: "0.5rem";
 }
+
+.content {
+  width: 82px;
+  height: 58px;
+  background: #ed0000;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.wrapper {
+  padding: 10px;
+  width: 82px;
+  height: 58px;
+  transform: scale(0.5);
+  transform-origin: top left;
+}
