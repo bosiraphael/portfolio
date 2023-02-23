@@ -70,50 +70,52 @@ a {
   padding: 1rem 2rem;
   background: #fff;
   color: var(--color-gray-900);
-}
+  border-bottom: 1px solid var(--color-gray-300);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 
-.navbar button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: inherit;
-  color: inherit;
-  font-weight: inherit;
-}
+  & button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+  }
 
-.navbar select {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: inherit;
-  color: inherit;
-  font-weight: inherit;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.5rem;
-  text-align: center;
-}
+  & select {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
 
-.navbar select:focus {
-  outline: none;
-}
+    &:focus {
+      outline: none;
+    }
 
-.navbar select:hover {
-  color: #000;
+    &:hover {
+      color: #000;
 
-  transform: scale(1.1) translateY(-0.1rem);
-  transition: all 0.2s ease-out;
-}
+      transform: scale(1.1) translateY(-0.1rem);
+      transition: all 0.2s ease-out;
+    }
+  }
 
-.navbar__links {
-  transition: all 0.2s ease-out;
-}
+  &__links {
+    transition: all 0.2s ease-out;
 
-.navbar__links:hover {
-  color: var(--color-primary);
-  transform: scale(1.1) translateY(-0.1rem);
-  transition: all 0.2s ease-out;
+    &:hover {
+      color: var(--color-primary);
+      transform: scale(1.1) translateY(-0.1rem);
+      transition: all 0.2s ease-out;
+    }
+  }
 }
 
 .discover-button {
