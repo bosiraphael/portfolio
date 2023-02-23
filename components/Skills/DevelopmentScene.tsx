@@ -6,16 +6,16 @@ const DevelopmentScene = () => {
       title="Development"
       description="c, c++, c#, java, matlab, sql, vscode, android studio, docker, github"
       textures={[
-        "logos/c.png",
-        "logos/cplusplus.png",
-        "logos/csharp.png",
-        "logos/java.png",
-        "logos/matlab.png",
-        "logos/sql.png",
-        "logos/vscode.png",
-        "logos/androidstudio.png",
-        "logos/docker.png",
-        "logos/github.png",
+        "logos/skills/c.png",
+        "logos/skills/cplusplus.png",
+        "logos/skills/csharp.png",
+        "logos/skills/java.png",
+        "logos/skills/matlab.png",
+        "logos/skills/sql.png",
+        "logos/skills/vscode.png",
+        "logos/skills/androidstudio.png",
+        "logos/skills/docker.png",
+        "logos/skills/github.png",
       ]}
     />
   );

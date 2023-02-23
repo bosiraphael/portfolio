@@ -6,16 +6,16 @@ const DataScienceScene = () => {
       title="Data Science"
       description="python, R, pytorch, tensorflow, keras, sklearn, pandas, numpy, matplotlib, seaborn"
       textures={[
-        "logos/python.png",
-        "logos/R.png",
-        "logos/pytorch.png",
-        "logos/tensorflow.png",
-        "logos/keras.png",
-        "logos/sklearn.png",
-        "logos/pandas.png",
-        "logos/numpy.png",
-        "logos/matplotlib.png",
-        "logos/seaborn.png",
+        "logos/skills/python.png",
+        "logos/skills/R.png",
+        "logos/skills/pytorch.png",
+        "logos/skills/tensorflow.png",
+        "logos/skills/keras.png",
+        "logos/skills/sklearn.png",
+        "logos/skills/pandas.png",
+        "logos/skills/numpy.png",
+        "logos/skills/matplotlib.png",
+        "logos/skills/seaborn.png",
       ]}
     />
   );
