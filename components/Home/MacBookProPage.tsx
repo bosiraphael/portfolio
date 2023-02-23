@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const MacBookProPage = () => {
   return (
     <div style={{ width: "100%", height: "100%", fontSize: "4px" }}>
@@ -10,7 +12,7 @@ const MacBookProPage = () => {
           justifyContent: "space-around",
         }}
       >
-        <img src="rb.svg" alt="Raphaël Bosi's logo" height={6} width={6} />
+        <Image src="rb.svg" alt="Raphaël Bosi's logo" height={6} width={6} />
         <p>Hello</p>
         <p>World</p>
       </div>
