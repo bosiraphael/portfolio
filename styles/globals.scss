@@ -134,8 +134,13 @@ a {
   display: grid;
   place-items: center;
   grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--color-gray-300);
 
   &__copywrite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
     font-size: 1.4rem;
   }
 
@@ -146,6 +151,11 @@ a {
     justify-content: center;
     align-items: center;
     gap: 4rem;
+
+    & a:hover {
+      transform: scale(1.1) translateY(-0.1rem);
+      transition: all 0.2s ease-out;
+    }
   }
 }
 

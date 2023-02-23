@@ -13,12 +13,7 @@ const Education = () => {
           <p>2018 - 2022</p>
         </div>
 
-        <Image
-          src="/centralesupelec.webp"
-          alt="CentraleSupélec"
-          width={300}
-          height={300}
-        />
+        <LogoTextScene modelPath="models/centralesupelec.glb" scale={2} />
         <Skill
           title="CentraleSupélec"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
@@ -28,12 +23,7 @@ const Education = () => {
           <p>2020</p>
         </div>
 
-        <Image
-          src="/chalmers.webp"
-          alt="CentraleSupélec"
-          width={300}
-          height={300}
-        />
+        <LogoTextScene modelPath="models/chalmers.glb" scale={1} />
         <Skill
           title="Chalmers University of Technology"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
@@ -42,11 +32,11 @@ const Education = () => {
           <p>2016-2018</p>
         </div>
 
-        {/* <LogoTextScene text="MPSI - MP*" scale={2} />
+        <LogoTextScene text="MPSI - MP*" scale={2} />
         <Skill
           title="MPSI - MP*"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
-        /> */}
+        />
       </div>
     </section>
   );
