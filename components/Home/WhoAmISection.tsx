@@ -4,6 +4,7 @@ import MacBookPro from "./MacBookPro";
 import { Html } from "@react-three/drei";
 import Auroras from "../LaplandScene/Auroras";
 import styles from "../../styles/Home.module.css";
+import dynamic from "next/dynamic";
 
 const WhoAmISection = () => {
   const containerRef = useRef<any>(null);

@@ -34,6 +34,7 @@
     "react-i18next": "^12.1.5",
     "react-responsive": "^9.0.2",
     "react-scroll": "^1.8.9",
+    "sass": "^1.58.3",
     "simplex-noise": "^4.0.1",
     "smooth-scrollbar": "^8.8.1",
     "smooth-scrollbar-react": "^2.4.1",

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import LikeButton from "./LikeButton";
 
 const MacBookProPage = () => {
   return (
@@ -32,7 +33,8 @@ const MacBookProPage = () => {
             background: "red",
           }}
         >
-          <p>Content</p>
+          <p>Like</p>
+          <LikeButton />
         </div>
       </div>
     </div>
