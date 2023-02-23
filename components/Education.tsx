@@ -1,7 +1,6 @@
 import styles from "../styles/Section.module.css";
 import LogoTextScene from "./LogoTextScene/LogoTextScene";
 import Skill from "./Skills/Skill";
-import Image from "next/image";
 
 const Education = () => {
   return (
@@ -16,7 +15,27 @@ const Education = () => {
         <LogoTextScene modelPath="models/centralesupelec.glb" scale={2} />
         <Skill
           title="CentraleSupélec"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
+          description={
+            <>
+              I graduated from CentraleSupélec in 2022 with a Master's degree in
+              Engineering. I specialized in Artificial Intelligence and Machine
+              Learning. The last year I took an Entrepreneurship class with the
+              goal of creating my company. I also took courses in Computer
+              Vision, Data Science, Software Engineering. You can see a list of
+              all the courses I took on my{" "}
+              <a
+                href="https://www.linkedin.com/in/rapha%C3%ABl-bosi-8b704a173/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                LinkedIn
+              </a>
+              .
+            </>
+          }
         />
 
         <div className={styles.educationDate}>
@@ -26,7 +45,7 @@ const Education = () => {
         <LogoTextScene modelPath="models/chalmers.glb" scale={1} />
         <Skill
           title="Chalmers University of Technology"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
+          description="I did an exchange semester at Chalmers University of Technology in Gothenburg, Sweden. I took courses in Computer Science, Biology, Media Compression, and Telecommunications."
         />
         <div className={styles.educationDate}>
           <p>2016-2018</p>
@@ -35,7 +54,7 @@ const Education = () => {
         <LogoTextScene text="MPSI - MP*" scale={2} />
         <Skill
           title="MPSI - MP*"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eius consequatur doloremque fugit expedita eos numquam dolores suscipit et facilis. Saepe accusamus optio doloribus nesciunt? Quam voluptate pariatur, itaque illo exercitationem temporibus rerum accusantium praesentium sapiente nisi qui recusandae odit sed quidem deleniti dicta explicabo quisquam vitae ipsam id fugit."
+          description="MPSI and MP* are two classes of the French preparatory classes for the Grandes Écoles. I took courses in Mathematics, Physics, Chemistry, and Computer Science."
         />
       </div>
     </section>

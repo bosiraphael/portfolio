@@ -5,7 +5,7 @@ const Skill = ({
   description,
 }: {
   title: string;
-  description: string;
+  description: string | JSX.Element;
 }) => {
   return (
     <div
