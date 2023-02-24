@@ -6,7 +6,7 @@ import { useRef } from "react";
 import LaplandScene from "../LaplandScene/LaplandScene";
 import { motion } from "framer-motion";
 import Loader from "../Loader";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 const Scene = () => {
   let { viewport, camera } = useThree();
@@ -52,7 +52,7 @@ const LaplandCanvas = ({ headerRef }: { headerRef: any }) => {
 };
 
 const Header = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   const headerRef = useRef<any>(null);
 

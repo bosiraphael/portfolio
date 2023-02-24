@@ -4,7 +4,6 @@ import CookieConsent from "react-cookie-consent";
 export default function CookieBanner() {
   useEffect(() => {
     const acceptButton = document.getElementById("accept");
-    console.log(acceptButton);
 
     acceptButton?.addEventListener("mouseenter", () => {
       acceptButton.style.background = "#ffffff";

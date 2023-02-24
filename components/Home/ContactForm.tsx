@@ -33,7 +33,6 @@ const ContactForm = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log(formState);
     setMessageSent(true);
   };
 

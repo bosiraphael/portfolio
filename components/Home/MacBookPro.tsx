@@ -31,8 +31,6 @@ const MacBookPro = ({ position }: { position: [number, number, number] }) => {
       0.1
     );
   });
-  console.log(nodes);
-  console.log(materials);
 
   return (
     <group ref={group} position={position}>

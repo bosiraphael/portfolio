@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import LanguageSelect from "./LanguageSelect";
 import { useRouter } from "next/router";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuButton from "./MenuButton";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const isMobile = useMediaQuery("(max-width:1000px)");
 
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   const [isOpened, setIsOpened] = useState(false);
 

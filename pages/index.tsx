@@ -5,6 +5,7 @@ import Header from "../components/Home/Header";
 import ContactFormSection from "../components/Home/ContactFormSection";
 import WhoAmISection from "../components/Home/WhoAmISection";
 import { Scrollbar } from "smooth-scrollbar-react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function Home() {
   const containerRef = useRef<any>(null);
@@ -34,3 +35,9 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ["common", "navbar", "footer"])),
+  },
+});

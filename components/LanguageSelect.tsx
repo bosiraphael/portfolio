@@ -1,10 +1,11 @@
-import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 
 const LanguageSelect = () => {
-  const { i18n } = useTranslation();
+  const router = useRouter();
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+  const changeLanguage = (newLocale: string) => {
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, asPath, { locale: newLocale });
   };
 
   return (
