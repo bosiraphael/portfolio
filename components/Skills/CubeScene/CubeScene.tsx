@@ -1,9 +1,9 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Physics, useCylinder, usePlane } from "@react-three/cannon";
-import { useRef, Suspense, useState, useMemo } from "react";
+import { useRef, useState, useMemo, Suspense } from "react";
 import { Vector3 } from "three";
 import dynamic from "next/dynamic";
-import { Html, MeshReflectorMaterial } from "@react-three/drei";
+import { Html, MeshReflectorMaterial, Preload } from "@react-three/drei";
 import Skill from "../Skill";
 import { publish } from "../../event";
 import crypto from "crypto";
@@ -158,23 +158,23 @@ export default function CubeScene({
       }}
       dpr={[1, 1]}
     >
-      <Suspense fallback={null}>
-        <color attach="background" args={["#ffffff"]} />
-        <fog attach="fog" args={["#ffffff", 5, 20]} />
+      <color attach="background" args={["#ffffff"]} />
+      <fog attach="fog" args={["#ffffff", 5, 20]} />
 
-        <ambientLight intensity={2} />
-        <directionalLight
-          position={[0, 1, 1]}
-          intensity={1}
-          castShadow
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          shadow-camera-far={10}
-          shadow-camera-left={-10}
-          shadow-camera-right={10}
-          shadow-camera-top={10}
-          shadow-camera-bottom={-10}
-        />
+      <ambientLight intensity={2} />
+      <directionalLight
+        position={[0, 1, 1]}
+        intensity={1}
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        shadow-camera-far={10}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
+      />
+      <Suspense fallback={null}>
         <Html fullscreen zIndexRange={[100, 0]}>
           <div style={{ width: "100%", textAlign: "center" }}>
             <Skill title={title} description={description} />
@@ -195,6 +195,8 @@ export default function CubeScene({
           <Borders />
         </Physics>
       </Suspense>
+
+      <Preload all />
     </Canvas>
   );
 }

@@ -8,7 +8,6 @@ import Snow from "./Snow";
 import Trees from "./Trees";
 import Forest from "./Forest";
 import Moose from "./Moose";
-import { Preload } from "@react-three/drei";
 
 const simplex = createNoise2D(alea("hello"));
 
@@ -32,8 +31,6 @@ export default function LaplandScene() {
       <Trees hillsHeight={hillsHeight} count={3} />
       <Forest hillsHeight={hillsHeight} />
       <Moose hillsHeight={hillsHeight} />
-
-      <Preload all />
     </group>
   );
 }

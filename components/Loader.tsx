@@ -1,6 +1,6 @@
 import { useProgress } from "@react-three/drei";
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const ProgressBar = ({ percentage }: { percentage: number }) => {
   return (
@@ -42,19 +42,15 @@ const pathVariants = {
   },
 };
 
-function Loader({ setLoaded }: { setLoaded: any }) {
+function Loader() {
   const { progress } = useProgress();
-  const [maxProgress, setMaxProgress] = useState(0);
   const ref = useRef<any>(null);
 
   useEffect(() => {
-    if (progress > maxProgress + 5) {
-      setMaxProgress(progress);
-    }
     if (progress === 100) {
       ref.current.style.display = "none";
-      setLoaded(true);
     }
+    console.log("progress", progress);
   }, [progress]);
 
   return (
@@ -109,8 +105,8 @@ function Loader({ setLoaded }: { setLoaded: any }) {
           variants={pathVariants}
         />
       </svg>
-      <ProgressBar percentage={maxProgress} />
-      <span>{maxProgress.toPrecision(2)} % loaded</span>
+      <ProgressBar percentage={progress} />
+      <span>{progress.toPrecision(2)} % loaded</span>
     </div>
   );
 }

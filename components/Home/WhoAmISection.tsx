@@ -1,10 +1,9 @@
 import { Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import MacBookPro from "./MacBookPro";
-import { Html } from "@react-three/drei";
+import { Html, Preload } from "@react-three/drei";
 import Auroras from "../LaplandScene/Auroras";
 import styles from "../../styles/Home.module.css";
-import dynamic from "next/dynamic";
 
 const WhoAmISection = () => {
   const containerRef = useRef<any>(null);
@@ -13,15 +12,15 @@ const WhoAmISection = () => {
       ref={containerRef}
       style={{ width: "100%", height: "100vh", position: "relative" }}
     >
-      <Suspense fallback={null}>
-        <Canvas
-          camera={{
-            fov: 45,
-            position: [0, 0, 10],
-            near: 0.1,
-            far: 100,
-          }}
-        >
+      <Canvas
+        camera={{
+          fov: 45,
+          position: [0, 0, 10],
+          near: 0.1,
+          far: 100,
+        }}
+      >
+        <Suspense fallback={null}>
           <Html
             style={{
               width: "100vw",
@@ -97,8 +96,9 @@ const WhoAmISection = () => {
           <ambientLight intensity={1} />
           <MacBookPro position={[3, -1, 0]} />
           <Auroras planeArgs={[100, 20, 1, 1]} position={[0, 0, -5]} />
-        </Canvas>
-      </Suspense>
+        </Suspense>
+        <Preload all />
+      </Canvas>
     </div>
   );
 };

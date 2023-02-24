@@ -1,12 +1,12 @@
 import styles from "../../styles/Home.module.css";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import DiscoverButton from "./DiscoverButton";
 import { useRef } from "react";
 import LaplandScene from "../LaplandScene/LaplandScene";
 import { motion } from "framer-motion";
-import Loader from "../Loader";
 import { useTranslation } from "next-i18next";
+import { Loader, Preload } from "@react-three/drei";
 
 const Scene = () => {
   let { viewport, camera } = useThree();
@@ -43,9 +43,13 @@ const LaplandCanvas = ({ headerRef }: { headerRef: any }) => {
       eventSource={headerRef}
     >
       <color attach="background" args={["#ffffff"]} />
+
       <Suspense fallback={null}>
         <Scene />
+
         <LaplandScene />
+
+        <Preload all />
       </Suspense>
     </Canvas>
   );
@@ -56,19 +60,15 @@ const Header = () => {
 
   const headerRef = useRef<any>(null);
 
-  const [loaded, setLoaded] = useState(false);
-
   return (
     <header ref={headerRef}>
-      <Loader setLoaded={setLoaded} />
-
       <LaplandCanvas headerRef={headerRef} />
 
-      <motion.div className={styles.header}>
+      <div className={styles.header}>
         <motion.h1
           className={styles.heading}
           initial="hidden"
-          animate={loaded ? "visible" : "hidden"}
+          animate="visible"
           variants={{
             visible: {
               opacity: 1,
@@ -90,7 +90,7 @@ const Header = () => {
         <motion.h2
           className={styles.subheading}
           initial="hidden"
-          animate={loaded ? "visible" : "hidden"}
+          animate="visible"
           variants={{
             visible: {
               opacity: 1,
@@ -110,8 +110,8 @@ const Header = () => {
           {t("header.subheading")}
         </motion.h2>
 
-        <DiscoverButton loaded={loaded} />
-      </motion.div>
+        <DiscoverButton />
+      </div>
     </header>
   );
 };

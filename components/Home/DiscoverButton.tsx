@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DiscoverButton = ({ loaded }: { loaded: boolean }) => {
+const DiscoverButton = () => {
   const [hover, setHover] = useState(false);
   return (
     <motion.button
@@ -15,7 +15,7 @@ const DiscoverButton = ({ loaded }: { loaded: boolean }) => {
       onMouseLeave={() => setHover(false)}
       className="discover-button"
       initial="hidden"
-      animate={loaded ? "visible" : "hidden"}
+      animate="visible"
       variants={{
         visible: {
           opacity: 1,
