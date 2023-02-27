@@ -47,7 +47,7 @@ const NavBarContent = ({
     <>
       <Link className="navbar__links" href="/">
         <Image
-          src="icons/rb.svg"
+          src="/icons/rb.svg"
           alt="Raphaël Bosi's logo"
           width={isMobile ? 80 : 40}
           height={isMobile ? 80 : 40}
