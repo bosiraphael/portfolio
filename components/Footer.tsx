@@ -15,7 +15,12 @@ const Footer = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <Image src="socials/mail.svg" alt="Mail" width={40} height={40} />
+          <Image
+            src="icons/socials/mail.svg"
+            alt="Mail"
+            width={40}
+            height={40}
+          />
         </a>
         <a
           href="https://www.linkedin.com/in/rapha%C3%ABl-bosi-8b704a173/"
@@ -23,7 +28,7 @@ const Footer = () => {
           rel="noreferrer"
         >
           <Image
-            src="socials/linkedin.svg"
+            src="icons/socials/linkedin.svg"
             alt="LinkedIn"
             width={40}
             height={40}
@@ -35,14 +40,19 @@ const Footer = () => {
           rel="noreferrer"
         >
           <Image
-            src="socials/github.svg"
+            src="icons/socials/github.svg"
             alt="LinkedIn"
             width={40}
             height={40}
           />
         </a>
         <a href="https://www.malt.fr/profile/raphaelbosi">
-          <Image src="socials/malt.svg" alt="Malt" width={40} height={40} />
+          <Image
+            src="icons/socials/malt.svg"
+            alt="Malt"
+            width={40}
+            height={40}
+          />
         </a>
       </div>
     </footer>

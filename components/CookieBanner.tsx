@@ -19,7 +19,7 @@ export default function CookieBanner() {
       enableDeclineButton
       location="bottom"
       buttonText="Accept"
-      cookieName="myAwesomeCookieName2"
+      cookieName="testCookie"
       style={{
         height: "10rem",
         background: "#ffffff",

@@ -1,7 +1,6 @@
 import styles from "../styles/Section.module.css";
 import LogoTextScene from "./LogoTextScene/LogoTextScene";
 import Skill from "./Skills/Skill";
-import Image from "next/image";
 
 const Work = () => {
   return (

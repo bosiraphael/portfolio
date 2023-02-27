@@ -6,7 +6,6 @@ import ContactFormSection from "../components/Home/ContactFormSection";
 import WhoAmISection from "../components/Home/WhoAmISection";
 import { Scrollbar } from "smooth-scrollbar-react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-//import { Loader } from "@react-three/drei";
 import dynamic from "next/dynamic";
 
 const Loader = dynamic(() => import("../components/Loader"), {
@@ -42,7 +41,7 @@ export default function Home() {
   );
 }
 
-export const getServerSideProps = async ({ locale }) => ({
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
     ...(await serverSideTranslations(locale, ["common", "navbar", "footer"])),
   },
