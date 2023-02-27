@@ -13,7 +13,12 @@ const MacBookProPage = () => {
           justifyContent: "space-around",
         }}
       >
-        <Image src="rb.svg" alt="Raphaël Bosi's logo" height={6} width={6} />
+        <Image
+          src="icons/rb.svg"
+          alt="Raphaël Bosi's logo"
+          height={6}
+          width={6}
+        />
         <p>Hello</p>
         <p>World</p>
       </div>

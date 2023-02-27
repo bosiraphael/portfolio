@@ -44,7 +44,7 @@ const ContactFormSection = () => {
       >
         <img
           ref={ref}
-          src="lapland.webp"
+          src="images/lapland.webp"
           alt="Lapland"
           style={{
             position: "absolute",

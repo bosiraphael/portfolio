@@ -2,18 +2,15 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import Image from "next/image";
 import LanguageSelect from "./LanguageSelect";
-import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuButton from "./MenuButton";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
-  const router = useRouter();
+  const isMobile = useMediaQuery("(max-width:1024px)");
 
-  const isMobile = useMediaQuery("(max-width:1000px)");
-
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("navbar");
 
   const [isOpened, setIsOpened] = useState(false);
 
@@ -50,7 +47,7 @@ const NavBarContent = ({
     <>
       <Link className="navbar__links" href="/">
         <Image
-          src="/rb.svg"
+          src="icons/rb.svg"
           alt="Raphaël Bosi's logo"
           width={isMobile ? 80 : 40}
           height={isMobile ? 80 : 40}

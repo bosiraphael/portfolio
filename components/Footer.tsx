@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__copywrite">
-        <Image src="rb.svg" alt="LinkedIn" width={40} height={40} />
+        <Image src="icons/rb.svg" alt="LinkedIn" width={40} height={40} />
         <span>
           &copy; {new Date().getFullYear()} Raphaël Bosi. ALL RIGHTS RESERVED.
         </span>
