@@ -31,7 +31,7 @@ const TextModel = ({ text, scale }: { text: string; scale?: number }) => {
     <Text3D
       ref={modelRef}
       position={[0, 0, 0]}
-      font={"typefaces/PlayfairDisplay_Regular.json"}
+      font={"/typefaces/PlayfairDisplay_Regular.json"}
       height={0.1}
       size={scale ? 0.5 * scale : 0.5}
     >

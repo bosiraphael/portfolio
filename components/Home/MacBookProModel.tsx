@@ -7,7 +7,7 @@ import { Html, useGLTF } from "@react-three/drei";
 import MacBookProPage from "./MacBookProPage";
 
 export default function MacBookProModel(props: any) {
-  const { nodes, materials } = useGLTF("models/macBookPro.glb");
+  const { nodes, materials } = useGLTF("/models/macBookPro.glb");
   return (
     <group {...props} dispose={null}>
       <group rotation={[Math.PI, 0, Math.PI]} scale={[1.57, 0.03, 1.43]}>
@@ -126,4 +126,4 @@ export default function MacBookProModel(props: any) {
   );
 }
 
-useGLTF.preload("models/macBookPro.glb");
+useGLTF.preload("/models/macBookPro.glb");

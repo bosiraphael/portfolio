@@ -12,7 +12,7 @@ const Education = () => {
           <p>2018 - 2022</p>
         </div>
 
-        <LogoTextScene modelPath="models/centralesupelec.glb" scale={2} />
+        <LogoTextScene modelPath="/models/centralesupelec.glb" scale={2} />
         <Skill
           title="CentraleSupélec"
           description={
@@ -42,7 +42,7 @@ const Education = () => {
           <p>2020</p>
         </div>
 
-        <LogoTextScene modelPath="models/chalmers.glb" scale={1} />
+        <LogoTextScene modelPath="/models/chalmers.glb" scale={1} />
         <Skill
           title="Chalmers University of Technology"
           description="I did an exchange semester at Chalmers University of Technology in Gothenburg, Sweden. I took courses in Computer Science, Biology, Media Compression, and Telecommunications."

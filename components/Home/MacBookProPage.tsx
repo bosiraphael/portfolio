@@ -14,7 +14,7 @@ const MacBookProPage = () => {
         }}
       >
         <Image
-          src="icons/rb.svg"
+          src="/icons/rb.svg"
           alt="Raphaël Bosi's logo"
           height={6}
           width={6}

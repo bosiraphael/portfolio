@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__copywrite">
-        <Image src="icons/rb.svg" alt="LinkedIn" width={40} height={40} />
+        <Image src="/icons/rb.svg" alt="LinkedIn" width={40} height={40} />
         <span>
           &copy; {new Date().getFullYear()} Raphaël Bosi. ALL RIGHTS RESERVED.
         </span>
@@ -16,7 +16,7 @@ const Footer = () => {
           rel="noreferrer"
         >
           <Image
-            src="icons/socials/mail.svg"
+            src="/icons/socials/mail.svg"
             alt="Mail"
             width={40}
             height={40}
@@ -28,7 +28,7 @@ const Footer = () => {
           rel="noreferrer"
         >
           <Image
-            src="icons/socials/linkedin.svg"
+            src="/icons/socials/linkedin.svg"
             alt="LinkedIn"
             width={40}
             height={40}
@@ -40,7 +40,7 @@ const Footer = () => {
           rel="noreferrer"
         >
           <Image
-            src="icons/socials/github.svg"
+            src="/icons/socials/github.svg"
             alt="LinkedIn"
             width={40}
             height={40}
@@ -48,7 +48,7 @@ const Footer = () => {
         </a>
         <a href="https://www.malt.fr/profile/raphaelbosi">
           <Image
-            src="icons/socials/malt.svg"
+            src="/icons/socials/malt.svg"
             alt="Malt"
             width={40}
             height={40}

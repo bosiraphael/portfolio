@@ -24,7 +24,7 @@ const Contacts = () => {
             className={styles.contact__link}
           >
             <h2>Email</h2>
-            <LogoTextScene modelPath="models/email.glb" />
+            <LogoTextScene modelPath="/models/email.glb" />
           </a>
           <a
             href="https://www.linkedin.com/in/rapha%C3%ABl-bosi-8b704a173/"
@@ -33,7 +33,7 @@ const Contacts = () => {
             className={styles.contact__link}
           >
             <h2>LinkedIn</h2>
-            <LogoTextScene modelPath="models/linkedin.glb" />
+            <LogoTextScene modelPath="/models/linkedin.glb" />
           </a>
           <a
             href="https://github.com/bosiraphael"
@@ -43,7 +43,7 @@ const Contacts = () => {
           >
             <h2>Github</h2>
 
-            <LogoTextScene modelPath="models/github.glb" />
+            <LogoTextScene modelPath="/models/github.glb" />
           </a>
         </div>
       </div>
