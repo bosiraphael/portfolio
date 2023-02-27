@@ -6,11 +6,11 @@ const OthersScene = () => {
       title="Others"
       description="blender, photoshop, lightroom, premiere pro, microsoft office"
       textures={[
-        "logos/skills/blender.png",
-        "logos/skills/photoshop.png",
-        "logos/skills/lightroom.png",
-        "logos/skills/premierepro.png",
-        "logos/skills/microsoftoffice.png",
+        "/logos/skills/blender.png",
+        "/logos/skills/photoshop.png",
+        "/logos/skills/lightroom.png",
+        "/logos/skills/premierepro.png",
+        "/logos/skills/microsoftoffice.png",
       ]}
     />
   );
