@@ -4,9 +4,25 @@ import MacBookPro from "./MacBookPro";
 import { Preload } from "@react-three/drei";
 import Auroras from "../LaplandScene/Auroras";
 import styles from "../../styles/Home.module.scss";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const WhoAmISection = () => {
   const containerRef = useRef<any>(null);
+
+  const isMobile = useMediaQuery("(max-width:1024px)");
+
+  const macBookPosition: [number, number, number] = isMobile
+    ? [0, -1.2, -1]
+    : [3, 0, 0];
+
+  const macBookScale: [number, number, number] = isMobile
+    ? [0.5, 0.5, 0.5]
+    : [1, 1, 1];
+
+  const macBookRotation: [number, number, number] = isMobile
+    ? [0.1, -0.2, 0]
+    : [0.25, -1, 0];
+
   return (
     <div ref={containerRef} className={styles.sectionContainer}>
       <div className={styles.whoAmISection}>
@@ -68,7 +84,11 @@ const WhoAmISection = () => {
       >
         <Suspense fallback={null}>
           <ambientLight intensity={1} />
-          <MacBookPro position={[3, -1, 0]} />
+          <MacBookPro
+            position={macBookPosition}
+            scale={macBookScale}
+            rotation={macBookRotation}
+          />
           <Auroras planeArgs={[100, 20, 1, 1]} position={[0, 0, -5]} />
         </Suspense>
         <Preload all />
