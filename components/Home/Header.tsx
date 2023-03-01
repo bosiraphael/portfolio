@@ -1,4 +1,4 @@
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Home.module.scss";
 import { Suspense, useEffect } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import DiscoverButton from "./DiscoverButton";

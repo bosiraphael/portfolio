@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import { useRef } from "react";
 import Header from "../components/Home/Header";
 import ContactFormSection from "../components/Home/ContactFormSection";

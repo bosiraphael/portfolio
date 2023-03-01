@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import ContactForm from "./ContactForm";
 import { MotionValue, useTransform } from "framer-motion";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Home.module.scss";
 
 const ContactFormSection = () => {
   const ref = useRef(null);
@@ -23,17 +23,7 @@ const ContactFormSection = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100vw",
-        height: "100vh",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        overflow: "hidden",
-        placeItems: "center",
-      }}
-    >
+    <div className={styles.contactSectionContainer}>
       <div
         style={{
           position: "absolute",
@@ -54,18 +44,7 @@ const ContactFormSection = () => {
           }}
         />
       </div>
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "0 5%",
-          color: "white",
-          background: "rgba(0, 0, 0, 0.5)",
-        }}
-      >
+      <div className={styles.section}>
         <h1 className={styles.sectionTitle} style={{ marginBottom: 0 }}>
           A project in mind?
         </h1>
