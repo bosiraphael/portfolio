@@ -36,12 +36,7 @@ const ContactFormSection = () => {
           ref={ref}
           src="images/lapland.webp"
           alt="Lapland"
-          style={{
-            position: "absolute",
-            top: "-100vh",
-            objectFit: "cover",
-            width: "100%",
-          }}
+          className={styles.contactSectionImage}
         />
       </div>
       <div className={styles.section}>

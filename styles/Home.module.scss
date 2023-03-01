@@ -73,6 +73,13 @@
   place-items: center;
 }
 
+.contactSectionImage {
+  position: absolute;
+  top: -100vh;
+  object-fit: cover;
+  width: 100%;
+}
+
 .sectionTitle {
   font-size: 4rem;
   font-weight: 700;
@@ -126,12 +133,15 @@
     font-size: 1.5rem;
   }
 
-  .sectionContainer {
+  .contactSectionContainer {
     height: 200vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 
-  .contactSectionContainer {
-    grid-template-columns: 1fr;
+  .contactSectionImage {
+    height: 150%;
+    width: none;
   }
 
   .whoAmISection {
