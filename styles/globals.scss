@@ -190,6 +190,26 @@ a {
 
   .footer {
     font-size: 1.2rem;
+    height: 20rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    padding: 4rem 2rem;
+
+    &__copywrite {
+      grid-column: 1 / -1;
+      grid-row: 2 / 2;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    &__socials {
+      grid-column: 1 / -1;
+      grid-row: 1 / 2;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
   }
 }
 
