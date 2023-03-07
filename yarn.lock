@@ -2513,6 +2513,11 @@ react-fps-stats@^0.3.1:
   resolved "https://registry.yarnpkg.com/react-fps-stats/-/react-fps-stats-0.3.1.tgz#8fde25fd633c9c50a28abc2fe6a19587e8dfa23d"
   integrity sha512-SwjJd8eK6XQseXF0DjOv0PotfzSkIm9yhqsggEaJHhPgKq0P7QcL5xuLy/UlOFGjFbRMHRp1w8b8wJfoWNR3uA==
 
+react-ga4@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-ga4/-/react-ga4-2.1.0.tgz#56601f59d95c08466ebd6edfbf8dede55c4678f9"
+  integrity sha512-ZKS7PGNFqqMd3PJ6+C2Jtz/o1iU9ggiy8Y8nUeksgVuvNISbmrQtJiZNvC/TjDsqD0QlU5Wkgs7i+w9+OjHhhQ==
+
 react-hot-toast@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-hot-toast/-/react-hot-toast-2.4.0.tgz#b91e7a4c1b6e3068fc599d3d83b4fb48668ae51d"

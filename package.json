@@ -32,6 +32,7 @@
     "react-cookie-consent": "^8.0.1",
     "react-dom": "18.2.0",
     "react-fps-stats": "^0.3.1",
+    "react-ga4": "^2.1.0",
     "react-hot-toast": "^2.4.0",
     "react-i18next": "^12.1.5",
     "react-responsive": "^9.0.2",
