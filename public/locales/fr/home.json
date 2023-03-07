@@ -3,5 +3,12 @@
   "whoAmIText": "Je suis un developpeur frontend en freelance de 24 ans, situé à Orsay. Je suis passioné par le développement web et l'IA. Je suis ingénieur diplomé de <a href='https://www.centralesupelec.fr/' target='_blank'>CentraleSupélec</a> depuis 2022. J'ai suivi la mention Intelligence Artificielle ainsi que la filière entrepreneuriat. Vous pouvez retrouver plus de détails sur mon parcours sur la page <a href='/education-work'>education</a>. Je suis spécialisé en React, Next.js, Three.js et Python, mais vous pouvez retrouver toutes mes compétences sur la page <a href='/skills'>compétences</a>.",
   "aProjectInMind": "Un projet en tête ?",
   "contactMe": "Contactez-moi !",
-  "contactMeText": "Vous avez un projet en tête pour vous ou votre entreprise ? Je peux créer un site web qui vous aidera à faire croître votre business. Vous avez juste à remplir le questionnaire ci-dessous et je reviendrai vers vous. Autrement, vous pouvez me contacter à l'adresse suivante : <a href='mailto:contact@raphaelbosi.dev' style={{ textDecoration: 'underline'}}>contact@raphaelbosi.dev</a>."
+  "contactMeText": "Vous avez un projet en tête pour vous ou votre entreprise ? Je peux créer un site web qui vous aidera à faire croître votre business. Vous avez juste à remplir le questionnaire ci-dessous et je reviendrai vers vous. Autrement, vous pouvez me contacter à l'adresse suivante : <a href='mailto:contact@raphaelbosi.dev'>contact@raphaelbosi.dev</a>.",
+  "getInTouch": "Contactez-moi !",
+  "name": "Nom",
+  "email": "Email",
+  "message": "Message",
+  "send": "Envoyer",
+  "messageSent": "Message envoyé !",
+  "messageSentText": "Merci pour votre message. Je reviendrai vers vous dans les plus brefs délais."
 }

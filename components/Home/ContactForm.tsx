@@ -3,8 +3,11 @@ import styles from "../../styles/ContactForm.module.css";
 import { Button, Stack, TextField, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 
 const ContactForm = () => {
+  const { t } = useTranslation("home");
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -39,7 +42,7 @@ const ContactForm = () => {
   return (
     <>
       {messageSent ? (
-        <MessageSent />
+        <MessageSent t={t} />
       ) : (
         <form
           className={styles.contactForm}
@@ -48,11 +51,12 @@ const ContactForm = () => {
           method="POST"
           data-netlify="true"
         >
-          <h1>Get in touch</h1>
+          <h1>{t("getInTouch")}</h1>
           <ThemeProvider theme={theme}>
             <Stack spacing={2} style={{ width: "100%" }}>
               <TextField
-                label="Name"
+                label={t("name")}
+                name="name"
                 variant="outlined"
                 style={{
                   width: "100%",
@@ -61,7 +65,8 @@ const ContactForm = () => {
               />
 
               <TextField
-                label="Email"
+                label={t("email")}
+                name="email"
                 variant="outlined"
                 style={{
                   width: "100%",
@@ -70,7 +75,8 @@ const ContactForm = () => {
               />
 
               <TextField
-                label="Message"
+                label={t("message")}
+                name="message"
                 multiline
                 rows={4}
                 variant="outlined"
@@ -88,7 +94,7 @@ const ContactForm = () => {
                 }}
                 type="submit"
               >
-                Send
+                {t("send")}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="20"
@@ -120,7 +126,7 @@ const animation = {
   },
 };
 
-const MessageSent = () => {
+const MessageSent = ({ t }: { t: (arg0: string) => any }) => {
   return (
     <div className={styles.messageSent}>
       <motion.svg
@@ -136,10 +142,8 @@ const MessageSent = () => {
         <path d="M633 976 472 815l43-43 118 118 244-244 43 43-287 287ZM478 529l334-213H144l334 213Zm0 60L140 372v452h256l60 60H140q-24 0-42-18t-18-42V316q0-24 18-42t42-18h677q24 0 42 18t18 42v244l-60 60V372L478 589Zm1 9Zm-1-69Zm1 60Z" />
       </motion.svg>
 
-      <h1>Message sent!</h1>
-      <p>
-        Thank you for your message, I will get back to you as soon as possible.
-      </p>
+      <h1>{t("messageSent")}</h1>
+      <p>{t("messageSentText")}</p>
     </div>
   );
 };
