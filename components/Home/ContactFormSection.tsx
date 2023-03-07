@@ -2,9 +2,11 @@ import { useEffect, useRef } from "react";
 import ContactForm from "./ContactForm";
 import { MotionValue, useTransform } from "framer-motion";
 import styles from "../../styles/Home.module.scss";
+import { Trans, useTranslation } from "next-i18next";
 
 const ContactFormSection = () => {
   const ref = useRef(null);
+  const { t } = useTranslation("home");
 
   useEffect(() => {
     const listener = () => {
@@ -41,11 +43,26 @@ const ContactFormSection = () => {
       </div>
       <div className={styles.section}>
         <h1 className={styles.sectionTitle} style={{ marginBottom: 0 }}>
-          A project in mind?
+          {t("aProjectInMind")}
         </h1>
-        <h1 className={styles.sectionTitle}>Contact me</h1>
+        <h1 className={styles.sectionTitle}>{t("contactMe")}</h1>
         <p className={styles.sectionText}>
-          If you have a website project in mind for your company, you're in the
+          <Trans
+            i18nKey="contactMeText"
+            t={t}
+            components={{
+              a: (
+                <a
+                  style={{
+                    pointerEvents: "all",
+                    color: "white",
+                    textDecoration: "underline",
+                  }}
+                />
+              ),
+            }}
+          />
+          {/* If you have a website project in mind for your company, you're in the
           right place. I can help you build a website that will help you grow
           your business. Just fill out the form and I'll get back to you.
           Otherwise, you can contact me at{" "}
@@ -57,7 +74,7 @@ const ContactFormSection = () => {
           >
             contact@raphaelbosi.dev
           </a>{" "}
-          .
+          . */}
         </p>
       </div>
 
