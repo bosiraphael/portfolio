@@ -1,12 +1,15 @@
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation("footer");
   return (
     <footer className="footer">
       <div className="footer__copywrite">
         <Image src="/icons/rb.svg" alt="LinkedIn" width={40} height={40} />
         <span>
-          &copy; {new Date().getFullYear()} Raphaël Bosi. ALL RIGHTS RESERVED.
+          &copy; {new Date().getFullYear()} Raphaël Bosi.{" "}
+          {t("allRightsReserved")}.
         </span>
       </div>
       <div className="footer__socials">
