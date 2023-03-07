@@ -1,7 +1,16 @@
 import { useEffect } from "react";
-import CookieConsent from "react-cookie-consent";
+import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
+import ReactGA from "react-ga4";
 
 export default function CookieBanner() {
+  const handleAcceptCookie = () => {
+    ReactGA.initialize([
+      {
+        trackingId: "G-T5KZEQ07BN",
+      },
+    ]);
+  };
+
   useEffect(() => {
     const acceptButton = document.getElementById("accept");
 
@@ -13,13 +22,20 @@ export default function CookieBanner() {
       acceptButton.style.background = "#183f1b";
       acceptButton.style.color = "#ffffff";
     });
+
+    const isConsent = getCookieConsentValue();
+    if (isConsent === "true") {
+      handleAcceptCookie();
+    }
   }, []);
+
   return (
     <CookieConsent
       enableDeclineButton
       location="bottom"
       buttonText="Accept"
-      cookieName="testCookie"
+      onAccept={handleAcceptCookie}
+      onDecline={() => {}}
       style={{
         height: "10rem",
         background: "#ffffff",
