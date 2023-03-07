@@ -1,0 +1,7 @@
+{
+  "whoAmI": "Qui suis-je ?",
+  "whoAmIText": "Je suis un developpeur frontend en freelance de 24 ans, situé à Orsay. Je suis passioné par le développement web et l'IA. Je suis ingénieur diplomé de <a href='https://www.centralesupelec.fr/' target='_blank'>CentraleSupélec</a> depuis 2022. J'ai suivi la mention Intelligence Artificielle ainsi que la filière entrepreneuriat. Vous pouvez retrouver plus de détails sur mon parcours sur la page <a href='/education-work'>education</a>. Je suis spécialisé en React, Next.js, Three.js et Python, mais vous pouvez retrouver toutes mes compétences sur la page <a href='/skills'>compétences</a>.",
+  "aProjectInMind": "Un projet en tête ?",
+  "contactMe": "Contactez-moi !",
+  "contactMeText": ""
+}

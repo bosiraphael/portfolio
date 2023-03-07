@@ -5,9 +5,11 @@ import { Preload } from "@react-three/drei";
 import Auroras from "../LaplandScene/Auroras";
 import styles from "../../styles/Home.module.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Trans, useTranslation } from "next-i18next";
 
 const WhoAmISection = () => {
   const containerRef = useRef<any>(null);
+  const { t } = useTranslation("home");
 
   const isMobile = useMediaQuery("(max-width:1024px)");
 
@@ -32,46 +34,24 @@ const WhoAmISection = () => {
             marginBottom: "2rem",
           }}
         >
-          Who am I?
+          {t("whoAmI")}
         </h1>
         <p className={styles.sectionText}>
-          I'm a french 24 years old freelance frontend developer based near
-          Paris. I'm passionate about Web Development and AI. I graduated from{" "}
-          <a
-            href="https://www.centralesupelec.fr/en/"
-            style={{
-              pointerEvents: "all",
-              color: "white",
-              textDecoration: "underline",
+          <Trans
+            i18nKey="whoAmIText"
+            t={t}
+            components={{
+              a: (
+                <a
+                  style={{
+                    pointerEvents: "all",
+                    color: "white",
+                    textDecoration: "underline",
+                  }}
+                />
+              ),
             }}
-          >
-            CentraleSupélec
-          </a>{" "}
-          in 2022 with a master's degree with a specialization in artificial
-          intelligence. You can find more details about my education on the{" "}
-          <a
-            href="/education-work"
-            style={{
-              pointerEvents: "all",
-              color: "white",
-              textDecoration: "underline",
-            }}
-          >
-            education page
-          </a>
-          . I'm specialized in React, Next.js, Three.js and Python, but you can
-          see all my other skills on the{" "}
-          <a
-            href="/skills"
-            style={{
-              pointerEvents: "all",
-              color: "white",
-              textDecoration: "underline",
-            }}
-          >
-            skills page
-          </a>
-          .
+          />
         </p>
       </div>
       <Canvas
