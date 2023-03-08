@@ -43,7 +43,7 @@ const Education = () => {
         <LogoTextScene modelPath="/models/chalmers.glb" scale={1} />
         <Skill
           title="Chalmers University of Technology"
-          description="I did an exchange semester at Chalmers University of Technology in Gothenburg, Sweden. I took courses in Computer Science, Biology, Media Compression, and Telecommunications."
+          description={t("chalmersDescription") as string}
         />
         <div className={styles.educationDate}>
           <p>2016-2018</p>
@@ -51,7 +51,7 @@ const Education = () => {
 
         <LogoTextScene text="MPSI - MP*" scale={2} />
         <Skill
-          title="MPSI - MP*"
+          title="MPSI - MP* - Lycée Blaise Pascal (Orsay)"
           description="MPSI and MP* are two classes of the French preparatory classes for the Grandes Écoles. I took courses in Mathematics, Physics, Chemistry, and Computer Science."
         />
       </div>
