@@ -52,7 +52,7 @@ const Education = () => {
         <LogoTextScene text="MPSI - MP*" scale={2} />
         <Skill
           title="MPSI - MP* - Lycée Blaise Pascal (Orsay)"
-          description="MPSI and MP* are two classes of the French preparatory classes for the Grandes Écoles. I took courses in Mathematics, Physics, Chemistry, and Computer Science."
+          description={t("preparatoryClassDescription") as string}
         />
       </div>
     </section>
