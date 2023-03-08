@@ -1,8 +1,11 @@
 import styles from "../styles/Section.module.css";
 import LogoTextScene from "./LogoTextScene/LogoTextScene";
 import Skill from "./Skills/Skill";
+import { useTranslation, Trans } from "next-i18next";
 
 const Education = () => {
+  const { t } = useTranslation("educationWork");
+
   return (
     <section id="education" className={styles.section}>
       <h1 className={styles.heading}>Education</h1>
@@ -16,25 +19,20 @@ const Education = () => {
         <Skill
           title="CentraleSupélec"
           description={
-            <>
-              I graduated from CentraleSupélec in 2022 with a Master's degree in
-              Engineering. I specialized in Artificial Intelligence and Machine
-              Learning. The last year I took an Entrepreneurship class with the
-              goal of creating my company. I also took courses in Computer
-              Vision, Data Science, Software Engineering. You can see a list of
-              all the courses I took on my{" "}
-              <a
-                href="https://www.linkedin.com/in/rapha%C3%ABl-bosi-8b704a173/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  textDecoration: "underline",
-                }}
-              >
-                LinkedIn
-              </a>
-              .
-            </>
+            <Trans
+              i18nKey="centraleSupelecDescription"
+              t={t}
+              components={{
+                a: (
+                  <a
+                    style={{
+                      pointerEvents: "all",
+                      textDecoration: "underline",
+                    }}
+                  />
+                ),
+              }}
+            />
           }
         />
 

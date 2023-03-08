@@ -14,7 +14,12 @@ const EducationWorkPage = () => {
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ["common", "navbar", "footer"])),
+    ...(await serverSideTranslations(locale, [
+      "educationWork",
+      "common",
+      "navbar",
+      "footer",
+    ])),
   },
 });
 
