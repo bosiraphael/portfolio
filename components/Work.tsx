@@ -1,8 +1,10 @@
 import styles from "../styles/Section.module.css";
 import LogoTextScene from "./LogoTextScene/LogoTextScene";
 import Skill from "./Skills/Skill";
+import { useTranslation } from "next-i18next";
 
 const Work = () => {
+  const { t } = useTranslation("educationWork");
   return (
     <section id="work" className={styles.section}>
       <h1 className={styles.heading}>Work experiences</h1>
@@ -13,8 +15,8 @@ const Work = () => {
         </div>
         <LogoTextScene modelPath="/models/rbLogo.glb" scale={1.5} />
         <Skill
-          title="Freelance developer"
-          description="I am currently a freelance developer. If you have a project idea for you or your business, do not hesitate to contact me."
+          title={t("freelanceTitle") as string}
+          description={t("freelanceDescription") as string}
         />
 
         <div className={styles.educationDate}>
