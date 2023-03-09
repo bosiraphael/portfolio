@@ -4,7 +4,7 @@ import { useRef, useState, useMemo, Suspense } from "react";
 import { Vector3 } from "three";
 import dynamic from "next/dynamic";
 import { Html, MeshReflectorMaterial, Preload } from "@react-three/drei";
-import Skill from "../Skill";
+import Skill from "../../EducationWorkItem";
 import { publish } from "../../event";
 import crypto from "crypto";
 import styles from "../../../styles/Section.module.css";
