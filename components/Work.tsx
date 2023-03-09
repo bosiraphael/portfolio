@@ -6,7 +6,11 @@ import { useTranslation } from "next-i18next";
 const Work = () => {
   const { t } = useTranslation("educationWork");
   return (
-    <section id="work" className={styles.section}>
+    <section
+      id="work"
+      className={styles.section}
+      style={{ marginBottom: "5rem" }}
+    >
       <h1 className={styles.heading}>Work experiences</h1>
 
       <div className={styles.gridEducationWork}>

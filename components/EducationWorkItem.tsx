@@ -23,7 +23,7 @@ const EducationWorkItem = ({
         <motion.p
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           {date}
@@ -34,7 +34,7 @@ const EducationWorkItem = ({
         style={{ height: "100%", width: "100%" }}
         initial={{ opacity: 0, x: 20 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
         viewport={{ once: true }}
       >
         <LogoTextScene
