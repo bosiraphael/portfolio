@@ -1,39 +1,14 @@
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import LanguageSelect from "./LanguageSelect";
 import { useTranslation } from "next-i18next";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuButton from "./MenuButton";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/router";
 
 const Navbar = () => {
   const isMobile = useMediaQuery("(max-width:1024px)");
-
-  const router = useRouter();
-
-  const [bigNavbar, setBigNavbar] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (router.pathname === "/") {
-        if (window.scrollY > window.innerHeight) {
-          setBigNavbar(false);
-        } else {
-          setBigNavbar(true);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  console.log(bigNavbar);
 
   const { t } = useTranslation("navbar");
 
@@ -47,7 +22,7 @@ const Navbar = () => {
       <AnimatePresence>
         {(!isMobile || isOpened) && (
           <motion.nav
-            className={`navbar ${bigNavbar ? "navbar--big" : ""}`}
+            className="navbar"
             ref={navbarRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

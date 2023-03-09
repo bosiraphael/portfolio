@@ -6,6 +6,7 @@ import Auroras from "../LaplandScene/Auroras";
 import styles from "../../styles/Home.module.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Trans, useTranslation } from "next-i18next";
+import { motion } from "framer-motion";
 
 const WhoAmISection = () => {
   const containerRef = useRef<any>(null);
@@ -28,8 +29,22 @@ const WhoAmISection = () => {
   return (
     <div ref={containerRef} className={styles.sectionContainer}>
       <div className={styles.whoAmISection}>
-        <h1 className={styles.sectionTitle}>{t("whoAmI")}</h1>
-        <p className={styles.sectionText}>
+        <motion.h1
+          className={styles.sectionTitle}
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          {t("whoAmI")}
+        </motion.h1>
+        <motion.p
+          className={styles.sectionText}
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <Trans
             i18nKey="whoAmIText"
             t={t}
@@ -45,7 +60,7 @@ const WhoAmISection = () => {
               ),
             }}
           />
-        </p>
+        </motion.p>
       </div>
       <Canvas
         camera={{

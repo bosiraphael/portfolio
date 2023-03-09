@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import ContactForm from "./ContactForm";
 import styles from "../../styles/Home.module.scss";
 import { Trans, useTranslation } from "next-i18next";
+import { motion } from "framer-motion";
 
 const ContactFormSection = () => {
   const ref = useRef(null);
@@ -41,8 +42,22 @@ const ContactFormSection = () => {
         />
       </div>
       <div className={styles.section}>
-        <h1 className={styles.sectionTitle}>{t("aProjectInMind")}</h1>
-        <p className={styles.sectionText}>
+        <motion.h1
+          className={styles.sectionTitle}
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          {t("aProjectInMind")}
+        </motion.h1>
+        <motion.p
+          className={styles.sectionText}
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <Trans
             i18nKey="contactMeText"
             t={t}
@@ -58,7 +73,7 @@ const ContactFormSection = () => {
               ),
             }}
           />
-        </p>
+        </motion.p>
       </div>
 
       <ContactForm />
