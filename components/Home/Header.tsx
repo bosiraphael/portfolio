@@ -7,6 +7,7 @@ import LaplandScene from "../LaplandScene/LaplandScene";
 import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import { Preload } from "@react-three/drei";
+import Typewriter from "typewriter-effect";
 
 const Scene = () => {
   let { viewport, camera } = useThree();
@@ -65,6 +66,28 @@ const Header = () => {
       <LaplandCanvas headerRef={headerRef} />
 
       <div className={styles.header}>
+        <div
+          style={{
+            fontSize: "5rem",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1000,
+            textAlign: "center",
+            color: "white",
+            textShadow: "0 0 10px rgba(255,255,255,0.5)",
+            width: "100%",
+          }}
+        >
+          <Typewriter
+            options={{
+              strings: ["Hello", "World"],
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </div>
         <div
           style={{
             display: "grid",
