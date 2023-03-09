@@ -6,7 +6,7 @@ import { useRef } from "react";
 import LaplandScene from "../LaplandScene/LaplandScene";
 import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
-import { Loader, Preload } from "@react-three/drei";
+import { Preload } from "@react-three/drei";
 
 const Scene = () => {
   let { viewport, camera } = useThree();
@@ -85,7 +85,7 @@ const Header = () => {
             },
           }}
         >
-          Raphaël Bosi
+          RAPHAEL BOSI
         </motion.h1>
         <motion.h2
           className={styles.subheading}
@@ -107,7 +107,7 @@ const Header = () => {
             },
           }}
         >
-          {t("header.subheading")}
+          {t("header.subheading").toUpperCase()}
         </motion.h2>
 
         <DiscoverButton />
