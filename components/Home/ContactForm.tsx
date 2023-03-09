@@ -44,12 +44,22 @@ const ContactForm = () => {
       {messageSent ? (
         <MessageSent t={t} />
       ) : (
-        <form
+        <motion.form
           className={styles.contactForm}
           onSubmit={handleSubmit}
           name="contact"
           method="POST"
           data-netlify="true"
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 0.5,
+            },
+          }}
+          viewport={{ once: true }}
         >
           <h1>{t("getInTouch")}</h1>
           <ThemeProvider theme={theme}>
@@ -110,7 +120,7 @@ const ContactForm = () => {
               </Button>
             </Stack>
           </ThemeProvider>
-        </form>
+        </motion.form>
       )}
     </>
   );
