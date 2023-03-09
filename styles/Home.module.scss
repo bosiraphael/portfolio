@@ -13,27 +13,26 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .heading {
-  margin-top: 20vh;
-  font-size: 10rem;
+  font-size: 6rem;
+  margin: 0;
   font-weight: 400;
   letter-spacing: 0.2rem;
   color: var(--color-primary);
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   pointer-events: none;
 }
 
 .subheading {
-  font-size: rem;
+  font-size: 3rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
+
   color: var(--color-primary);
   text-align: center;
-  margin-bottom: 2rem;
   pointer-events: none;
 }
 

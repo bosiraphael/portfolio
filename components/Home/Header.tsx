@@ -65,52 +65,72 @@ const Header = () => {
       <LaplandCanvas headerRef={headerRef} />
 
       <div className={styles.header}>
-        <motion.h1
-          className={styles.heading}
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                delay: 0.5,
-                duration: 0.5,
-                default: { ease: "easeInOut" },
-              },
-            },
-            hidden: {
-              opacity: 0,
-              y: 20,
-            },
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "5fr 1fr 5fr",
+            alignItems: "center",
+            padding: "0 10rem",
+            width: "100%",
+            height: "20%",
+            position: "absolute",
+            bottom: 0,
+            textShadow: "0 0 10px rgba(255,255,255,0.5)",
           }}
         >
-          RAPHAEL BOSI
-        </motion.h1>
-        <motion.h2
-          className={styles.subheading}
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                delay: 0.7,
-                duration: 0.5,
-                default: { ease: "easeInOut" },
+          <motion.h1
+            className={styles.heading}
+            style={{
+              justifySelf: "start",
+            }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.5,
+                  duration: 0.5,
+                  default: { ease: "easeInOut" },
+                },
               },
-            },
-            hidden: {
-              opacity: 0,
-              y: 20,
-            },
-          }}
-        >
-          {t("header.subheading").toUpperCase()}
-        </motion.h2>
+              hidden: {
+                opacity: 0,
+                y: 20,
+              },
+            }}
+          >
+            RAPHAEL BOSI
+          </motion.h1>
+          <DiscoverButton />
 
-        <DiscoverButton />
+          <motion.h2
+            className={styles.subheading}
+            style={{
+              justifySelf: "end",
+            }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.7,
+                  duration: 0.5,
+                  default: { ease: "easeInOut" },
+                },
+              },
+              hidden: {
+                opacity: 0,
+                y: 20,
+              },
+            }}
+          >
+            {t("header.subheading").toUpperCase()}
+          </motion.h2>
+        </div>
       </div>
     </header>
   );
