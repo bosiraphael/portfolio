@@ -28,14 +28,7 @@ const WhoAmISection = () => {
   return (
     <div ref={containerRef} className={styles.sectionContainer}>
       <div className={styles.whoAmISection}>
-        <h1
-          className={styles.sectionTitle}
-          style={{
-            marginBottom: "2rem",
-          }}
-        >
-          {t("whoAmI")}
-        </h1>
+        <h1 className={styles.sectionTitle}>{t("whoAmI")}</h1>
         <p className={styles.sectionText}>
           <Trans
             i18nKey="whoAmIText"

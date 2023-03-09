@@ -41,10 +41,7 @@ const ContactFormSection = () => {
         />
       </div>
       <div className={styles.section}>
-        <h1 className={styles.sectionTitle} style={{ marginBottom: 0 }}>
-          {t("aProjectInMind")}
-        </h1>
-        <h1 className={styles.sectionTitle}>{t("contactMe")}</h1>
+        <h1 className={styles.sectionTitle}>{t("aProjectInMind")}</h1>
         <p className={styles.sectionText}>
           <Trans
             i18nKey="contactMeText"
