@@ -66,6 +66,9 @@ const NavBarContent = ({
       <Link className="navbar__links" href="/contact">
         {t("contact")}
       </Link>
+      <Link className="navbar__links" href="/credits">
+        {t("credits")}
+      </Link>
       <LanguageSelect />
     </>
   );
