@@ -1,6 +1,6 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Physics, useCylinder, usePlane } from "@react-three/cannon";
-import { useRef, useState, useMemo, Suspense } from "react";
+import { useRef, useState, useMemo, Suspense, useEffect } from "react";
 import { Vector3 } from "three";
 import dynamic from "next/dynamic";
 import { Html, MeshReflectorMaterial, Preload } from "@react-three/drei";
@@ -8,6 +8,17 @@ import Skill from "../Skill";
 import { publish } from "../../event";
 import crypto from "crypto";
 import styles from "../../../styles/Section.module.css";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  MotionValue,
+} from "framer-motion";
+
+function useParallax(value: MotionValue<number>, distance: number) {
+  return useTransform(value, [0, 1], [-distance, distance]);
+}
 
 interface CubeSceneProps {
   textures: string[];
@@ -163,6 +174,10 @@ export default function CubeScene({
   const explosionName = "explosion" + uuid;
   const [buttonHovered, setButtonHovered] = useState(false);
   const [hovered, setHovered] = useState(false);
+
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useParallax(scrollYProgress, 300);
 
   return (
     <Canvas

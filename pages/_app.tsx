@@ -5,8 +5,12 @@ import Footer from "../components/Footer";
 import { appWithTranslation } from "next-i18next";
 import CookieBanner from "../components/CookieBanner";
 import { Toaster } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const pathName = router.pathname;
+
   return (
     <>
       <Toaster
@@ -26,7 +30,7 @@ function App({ Component, pageProps }: AppProps) {
         <Navbar />
         {/* <FPSStats /> */}
         <Component {...pageProps} />
-        <Footer />
+        {pathName !== "/skills" && <Footer />}
       </div>
       <CookieBanner />
     </>

@@ -13,21 +13,40 @@ const skillsScenes = [
 
 const Skills = () => {
   return (
-    <section id="skills" className={styles.section} style={{ width: "100vw" }}>
-      <h1 className={styles.heading}>Skills</h1>
-      <div className={styles.skills}>
-        {
-          // Map the skills
-          skillsScenes.map((Scene, index) => {
-            return (
-              <div key={index} className={styles.skill}>
-                <Scene />
-              </div>
-            );
-          })
-        }
-      </div>
-    </section>
+    <div
+      className={styles.skills}
+      style={{
+        height: "100vh",
+        scrollSnapType: "y mandatory",
+        scrollMarginTop: "6rem",
+        overflowY: "scroll",
+      }}
+    >
+      {/* <h1
+        className={styles.heading}
+        style={{
+          scrollSnapAlign: "start",
+        }}
+      >
+        Skills
+      </h1> */}
+      {
+        // Map the skills
+        skillsScenes.map((Scene, index) => {
+          return (
+            <div
+              key={index}
+              className={styles.skill}
+              style={{
+                scrollSnapAlign: "center",
+              }}
+            >
+              <Scene />
+            </div>
+          );
+        })
+      }
+    </div>
   );
 };
 

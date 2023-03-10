@@ -82,7 +82,9 @@
 }
 
 .skill {
-  height: 90vh;
+  height: 80%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .boomButton {
