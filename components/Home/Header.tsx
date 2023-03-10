@@ -77,7 +77,7 @@ const Header = () => {
             fontWeight: 400,
             textAlign: "center",
             color: "white",
-            textShadow: "0 0 10px rgba(0,0,0,0.3)",
+            textShadow: "0 0 40px rgba(0,0,0,0.9)",
             width: "100%",
           }}
         >
