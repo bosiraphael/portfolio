@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import styles from "../../styles/Section.module.css";
 import DataScienceScene from "./DataScienceScene";
 import DevelopmentScene from "./DevelopmentScene";

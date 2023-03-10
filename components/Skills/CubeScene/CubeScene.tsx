@@ -4,7 +4,7 @@ import { useRef, useState, useMemo, Suspense } from "react";
 import { Vector3 } from "three";
 import dynamic from "next/dynamic";
 import { Html, MeshReflectorMaterial, Preload } from "@react-three/drei";
-import Skill from "../../EducationWorkItem";
+import Skill from "../Skill";
 import { publish } from "../../event";
 import crypto from "crypto";
 import styles from "../../../styles/Section.module.css";
@@ -44,7 +44,13 @@ const Plane = () => {
   );
 };
 
-const Cursor = () => {
+const Cursor = ({
+  hovered,
+  buttonHovered,
+}: {
+  hovered: boolean;
+  buttonHovered: boolean;
+}) => {
   const radius = 0.4;
   const height = 20;
 
@@ -61,16 +67,22 @@ const Cursor = () => {
 
   const sphere = useRef<any>(null);
 
-  useFrame(({ camera, mouse }) => {
-    var vector = new Vector3(mouse.x, mouse.y, 0.5);
-    vector.unproject(camera);
-    var dir = vector.sub(camera.position).normalize();
-    var distance = -camera.position.z / dir.z;
-    var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+  const visible = useMemo(() => {
+    return hovered && !buttonHovered;
+  }, [hovered, buttonHovered]);
 
-    cylinderApi.position.set(pos.x, pos.y, pos.z);
-    if (sphere.current) {
-      sphere.current.position.set(pos.x, pos.y, pos.z);
+  useFrame(({ camera, mouse }) => {
+    if (hovered) {
+      var vector = new Vector3(mouse.x, mouse.y, 0.5);
+      vector.unproject(camera);
+      var dir = vector.sub(camera.position).normalize();
+      var distance = -camera.position.z / dir.z;
+      var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+
+      cylinderApi.position.set(pos.x, pos.y, pos.z);
+      if (sphere.current) {
+        sphere.current.position.set(pos.x, pos.y, pos.z);
+      }
     }
   });
 
@@ -79,7 +91,7 @@ const Cursor = () => {
       <mesh ref={cylinder} visible={false}>
         <cylinderGeometry args={[radius, radius, height, 32, 32]} />
       </mesh>
-      <mesh ref={sphere}>
+      <mesh ref={sphere} visible={visible}>
         <sphereGeometry args={[radius / 2, 32]} />
         <meshBasicMaterial
           fog={false}
@@ -150,6 +162,8 @@ export default function CubeScene({
   const uuid = useMemo(() => crypto.randomBytes(16).toString("hex"), []);
   const explosionName = "explosion" + uuid;
   const [buttonHovered, setButtonHovered] = useState(false);
+  const [hovered, setHovered] = useState(false);
+
   return (
     <Canvas
       shadows
@@ -157,6 +171,8 @@ export default function CubeScene({
         position: [0, 2, 5],
       }}
       dpr={[1, 1]}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
     >
       <color attach="background" args={["#ffffff"]} />
       <fog attach="fog" args={["#ffffff", 5, 20]} />
@@ -176,7 +192,12 @@ export default function CubeScene({
       />
       <Suspense fallback={null}>
         <Html fullscreen zIndexRange={[100, 0]}>
-          <div style={{ width: "100%", textAlign: "center" }}>
+          <div
+            style={{
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
             <Skill title={title} description={description} />
             <button
               className={styles.boomButton}
@@ -189,7 +210,7 @@ export default function CubeScene({
           </div>
         </Html>
         <Physics gravity={[0, -9.81, 0]}>
-          <Cursor />
+          <Cursor hovered={hovered} buttonHovered={buttonHovered} />
           <Boxes textures={textures} explosionName={explosionName} />
           <Plane />
           <Borders />
