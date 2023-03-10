@@ -13,7 +13,7 @@ const skillsScenes = [
 
 const Skills = () => {
   return (
-    <section id="skills" className={styles.section}>
+    <section id="skills" className={styles.section} style={{ width: "100vw" }}>
       <h1 className={styles.heading}>Skills</h1>
       <div className={styles.skills}>
         {
