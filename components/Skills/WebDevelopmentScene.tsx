@@ -1,9 +1,11 @@
 import CubeScene from "./CubeScene/CubeScene";
+import { useTranslation } from "next-i18next";
 
 const WebDevelopmentScene = () => {
+  const { t } = useTranslation("skills");
   return (
     <CubeScene
-      title="Web Development"
+      title={t("webDevelopment")}
       description="html, css, javascript, typescript, react, next, nodejs, sass, firebase, threejs"
       textures={[
         "/logos/skills/html.png",

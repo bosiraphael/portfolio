@@ -1,9 +1,11 @@
 import CubeScene from "./CubeScene/CubeScene";
+import { useTranslation } from "next-i18next";
 
 const DataScienceScene = () => {
+  const { t } = useTranslation("skills");
   return (
     <CubeScene
-      title="Data Science"
+      title={t("dataScience")}
       description="python, R, pytorch, tensorflow, keras, sklearn, pandas, numpy, matplotlib, seaborn"
       textures={[
         "/logos/skills/python.png",

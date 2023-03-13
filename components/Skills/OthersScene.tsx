@@ -1,9 +1,11 @@
 import CubeScene from "./CubeScene/CubeScene";
+import { useTranslation } from "next-i18next";
 
 const OthersScene = () => {
+  const { t } = useTranslation("skills");
   return (
     <CubeScene
-      title="Others"
+      title={t("others")}
       description="blender, photoshop, lightroom, premiere pro, microsoft office"
       textures={[
         "/logos/skills/blender.png",

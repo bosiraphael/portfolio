@@ -5,6 +5,7 @@ import DevelopmentScene from "./DevelopmentScene";
 import OthersScene from "./OthersScene";
 import SkillsNavbar from "./SkillsNavbar";
 import WebDevelopmentScene from "./WebDevelopmentScene";
+import { useTranslation } from "next-i18next";
 
 const skillsScenes = [
   DataScienceScene,
@@ -17,8 +18,11 @@ const skillsIds = ["dataScience", "webDevelopment", "development", "design"];
 
 const Skills = () => {
   const [activeScene, setActiveScene] = useState(0);
+  const { t } = useTranslation("skills");
+
   return (
     <>
+      <h1 className={styles.skills__heading}>{t("skills")}</h1>
       <SkillsNavbar activeScene={activeScene} />
       <div
         className={styles.skills}

@@ -19,7 +19,12 @@ const SkillsPage = () => {
 
 export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ["common", "navbar", "footer"])),
+    ...(await serverSideTranslations(locale, [
+      "skills",
+      "common",
+      "navbar",
+      "footer",
+    ])),
   },
 });
 

@@ -220,10 +220,13 @@ export default function CubeScene({
             <Skill title={title} description={description} />
             <button
               className={styles.boomButton}
-              onClick={() => explosion(explosionName)}
+              onClick={() => {
+                if (!isExploding) {
+                  explosion(explosionName);
+                }
+              }}
               onMouseEnter={() => setButtonHovered(true)}
               onMouseLeave={() => setButtonHovered(false)}
-              disabled={isExploding}
             >
               Boom {buttonHovered ? "💥" : "💣"}
             </button>
