@@ -39,8 +39,6 @@ const Circle = ({ filled }: { filled?: boolean }) => {
       style={{
         fontVariationSettings: filled ? "'FILL' 1" : "'FILL' 0",
         fontSize: isMobile ? "1rem" : "1.5rem",
-        backgroundColor: "#fff",
-        borderRadius: "50%",
       }}
     >
       circle
