@@ -1,4 +1,4 @@
-import styles from "../styles/Section.module.css";
+import styles from "../styles/Section.module.scss";
 import LogoTextScene from "./LogoTextScene/LogoTextScene";
 import EducationWorkItem from "./EducationWorkItem";
 import { useTranslation } from "next-i18next";

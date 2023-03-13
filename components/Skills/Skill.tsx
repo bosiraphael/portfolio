@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import styles from "../../styles/Section.module.css";
+import styles from "../../styles/Section.module.scss";
 
 const EducationWorkItem = ({
   title,

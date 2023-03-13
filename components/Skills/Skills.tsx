@@ -1,7 +1,9 @@
-import styles from "../../styles/Section.module.css";
+import { useState } from "react";
+import styles from "../../styles/Section.module.scss";
 import DataScienceScene from "./DataScienceScene";
 import DevelopmentScene from "./DevelopmentScene";
 import OthersScene from "./OthersScene";
+import SkillsNavbar from "./SkillsNavbar";
 import WebDevelopmentScene from "./WebDevelopmentScene";
 
 const skillsScenes = [
@@ -12,41 +14,48 @@ const skillsScenes = [
 ];
 
 const Skills = () => {
+  const [activeScene, setActiveScene] = useState(0);
   return (
-    <div
-      className={styles.skills}
-      style={{
-        height: "100vh",
-        scrollSnapType: "y mandatory",
-        scrollMarginTop: "6rem",
-        overflowY: "scroll",
-      }}
-    >
-      {/* <h1
-        className={styles.heading}
+    <>
+      <SkillsNavbar activeScene={activeScene} />
+      <div
+        className={styles.skills}
         style={{
-          scrollSnapAlign: "start",
+          height: "100vh",
+          scrollSnapType: "y mandatory",
+          scrollMarginTop: "6rem",
+          overflowY: "scroll",
+        }}
+        onScroll={(e) => {
+          const scrollY = e.currentTarget.scrollTop;
+          const scrollHeight = e.currentTarget.scrollHeight;
+          const clientHeight = e.currentTarget.clientHeight;
+          const maxScroll = scrollHeight - clientHeight;
+          const scrollPercentage = scrollY / maxScroll;
+          const sceneIndex = Math.round(
+            scrollPercentage * (skillsScenes.length - 1)
+          );
+          setActiveScene(sceneIndex);
         }}
       >
-        Skills
-      </h1> */}
-      {
-        // Map the skills
-        skillsScenes.map((Scene, index) => {
-          return (
-            <div
-              key={index}
-              className={styles.skill}
-              style={{
-                scrollSnapAlign: "center",
-              }}
-            >
-              <Scene />
-            </div>
-          );
-        })
-      }
-    </div>
+        {
+          // Map the skills
+          skillsScenes.map((Scene, index) => {
+            return (
+              <div
+                key={index}
+                className={styles.skill}
+                style={{
+                  scrollSnapAlign: "center",
+                }}
+              >
+                <Scene />
+              </div>
+            );
+          })
+        }
+      </div>
+    </>
   );
 };
 

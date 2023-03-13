@@ -1,5 +1,5 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import styles from "../styles/Section.module.css";
+import styles from "../styles/Section.module.scss";
 
 const Credits = () => {
   return (

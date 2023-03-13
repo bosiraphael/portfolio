@@ -1,7 +1,7 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Education from "../components/Education";
 import Work from "../components/Work";
-import styles from "../styles/Section.module.css";
+import styles from "../styles/Section.module.scss";
 
 const EducationWorkPage = () => {
   return (

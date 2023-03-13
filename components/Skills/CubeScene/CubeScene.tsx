@@ -7,7 +7,7 @@ import { Html, MeshReflectorMaterial, Preload } from "@react-three/drei";
 import Skill from "../Skill";
 import { publish } from "../../event";
 import crypto from "crypto";
-import styles from "../../../styles/Section.module.css";
+import styles from "../../../styles/Section.module.scss";
 import {
   motion,
   useScroll,
