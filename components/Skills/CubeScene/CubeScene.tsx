@@ -8,17 +8,6 @@ import Skill from "../Skill";
 import { publish, subscribe, unsubscribe } from "../../event";
 import crypto from "crypto";
 import styles from "../../../styles/Section.module.scss";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  MotionValue,
-} from "framer-motion";
-
-function useParallax(value: MotionValue<number>, distance: number) {
-  return useTransform(value, [0, 1], [-distance, distance]);
-}
 
 interface CubeSceneProps {
   textures: string[];
@@ -177,7 +166,7 @@ export default function CubeScene({
   const [isExploding, setIsExploding] = useState(false);
 
   useEffect(() => {
-    // change exploding state on explosion event
+    // change exploding
     const startlistener = () => {
       setIsExploding(true);
     };
@@ -193,10 +182,6 @@ export default function CubeScene({
       unsubscribe("end" + explosionName, endlistener);
     };
   }, [explosionName]);
-
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, 300);
 
   return (
     <Canvas
