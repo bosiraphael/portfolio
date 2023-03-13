@@ -8,6 +8,7 @@ import Skill from "../Skill";
 import { publish, subscribe, unsubscribe } from "../../event";
 import crypto from "crypto";
 import styles from "../../../styles/Section.module.scss";
+import { useMediaQuery } from "@mui/material";
 
 interface CubeSceneProps {
   textures: string[];
@@ -154,6 +155,26 @@ const explosion = (explosionName: string) => {
   }, 2000);
 };
 
+const CameraPosition = ({
+  isMobile,
+  isTablet,
+}: {
+  isMobile: boolean;
+  isTablet: boolean;
+}) => {
+  useFrame(({ camera }) => {
+    if (isMobile) {
+      camera.position.set(0, 5, 10);
+    } else if (isTablet) {
+      camera.position.set(0, 4, 8);
+    } else {
+      camera.position.set(0, 3, 5);
+    }
+  });
+
+  return null;
+};
+
 export default function CubeScene({
   textures,
   title,
@@ -164,6 +185,8 @@ export default function CubeScene({
   const [buttonHovered, setButtonHovered] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [isExploding, setIsExploding] = useState(false);
+  const isTablet = useMediaQuery("(max-width:1024px)");
+  const isMobile = useMediaQuery("(max-width:768px)");
 
   useEffect(() => {
     // change exploding
@@ -184,63 +207,75 @@ export default function CubeScene({
   }, [explosionName]);
 
   return (
-    <Canvas
-      shadows
-      camera={{
-        position: [0, 2, 5],
-      }}
-      dpr={[1, 1]}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-    >
-      <color attach="background" args={["#ffffff"]} />
-      <fog attach="fog" args={["#ffffff", 5, 20]} />
+    <div style={{ position: "relative", height: "100%", width: "100%" }}>
+      <div
+        style={{
+          margin: "0 auto",
+          textAlign: "center",
+          padding: "0 10%",
+          height: "100%",
+          width: "100%",
+          position: "absolute",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      >
+        <div style={{ pointerEvents: "none" }}>
+          <Skill title={title} description={description} />
+        </div>
+        <button
+          className={styles.boomButton}
+          style={{
+            pointerEvents: "all",
+          }}
+          onClick={() => {
+            if (!isExploding) {
+              explosion(explosionName);
+            }
+          }}
+          onMouseEnter={() => setButtonHovered(true)}
+          onMouseLeave={() => setButtonHovered(false)}
+        >
+          Boom {buttonHovered ? "💥" : "💣"}
+        </button>
+      </div>
+      <Canvas
+        shadows
+        camera={{
+          position: [0, 2, 5],
+        }}
+        dpr={[1, 1]}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+      >
+        <CameraPosition isMobile={isMobile} isTablet={isTablet} />
+        <color attach="background" args={["#ffffff"]} />
+        <fog attach="fog" args={["#ffffff", 10, 20]} />
 
-      <ambientLight intensity={2} />
-      <directionalLight
-        position={[0, 1, 1]}
-        intensity={1}
-        castShadow
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
-        shadow-camera-far={10}
-        shadow-camera-left={-10}
-        shadow-camera-right={10}
-        shadow-camera-top={10}
-        shadow-camera-bottom={-10}
-      />
-      <Suspense fallback={null}>
-        <Html fullscreen zIndexRange={[100, 0]}>
-          <div
-            style={{
-              width: "100%",
-              textAlign: "center",
-            }}
-          >
-            <Skill title={title} description={description} />
-            <button
-              className={styles.boomButton}
-              onClick={() => {
-                if (!isExploding) {
-                  explosion(explosionName);
-                }
-              }}
-              onMouseEnter={() => setButtonHovered(true)}
-              onMouseLeave={() => setButtonHovered(false)}
-            >
-              Boom {buttonHovered ? "💥" : "💣"}
-            </button>
-          </div>
-        </Html>
-        <Physics gravity={[0, -9.81, 0]}>
-          <Cursor hovered={hovered} buttonHovered={buttonHovered} />
-          <Boxes textures={textures} explosionName={explosionName} />
-          <Plane />
-          <Borders />
-        </Physics>
-      </Suspense>
+        <ambientLight intensity={3} />
+        <directionalLight
+          position={[0, 1, 1]}
+          intensity={1}
+          castShadow
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+          shadow-camera-far={10}
+          shadow-camera-left={-10}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-bottom={-10}
+        />
+        <Suspense fallback={null}>
+          <Physics gravity={[0, -9.81, 0]}>
+            <Cursor hovered={hovered} buttonHovered={buttonHovered} />
+            <Boxes textures={textures} explosionName={explosionName} />
+            <Plane />
+            <Borders />
+          </Physics>
+        </Suspense>
 
-      <Preload all />
-    </Canvas>
+        <Preload all />
+      </Canvas>
+    </div>
   );
 }

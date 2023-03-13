@@ -228,10 +228,16 @@
   .section {
     width: 85%;
   }
-  .gridSkills {
-    grid-template-areas: "skill1" "skillScene1" "skill2" "skillScene2" "skill3" "skillScene3" "skill4" "skillScene4";
-    grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: 1fr;
-    gap: 2rem;
+
+  .skills {
+    &__heading {
+      font-size: 2rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      transform: translateY(0);
+      width: 100%;
+      height: 6rem;
+    }
   }
 }

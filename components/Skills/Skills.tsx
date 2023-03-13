@@ -27,7 +27,6 @@ const Skills = () => {
       <div
         className={styles.skills}
         style={{
-          height: "100vh",
           scrollSnapType: "y mandatory",
           scrollMarginTop: "6rem",
           overflowY: "scroll",

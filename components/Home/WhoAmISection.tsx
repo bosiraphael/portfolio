@@ -12,17 +12,17 @@ const WhoAmISection = () => {
   const containerRef = useRef<any>(null);
   const { t } = useTranslation("home");
 
-  const isMobile = useMediaQuery("(max-width:1024px)");
+  const IsTabletOrMobile = useMediaQuery("(max-width:1024px)");
 
-  const macBookPosition: [number, number, number] = isMobile
+  const macBookPosition: [number, number, number] = IsTabletOrMobile
     ? [0, -1.2, -1]
     : [3, 0, 0];
 
-  const macBookScale: [number, number, number] = isMobile
+  const macBookScale: [number, number, number] = IsTabletOrMobile
     ? [0.5, 0.5, 0.5]
     : [1, 1, 1];
 
-  const macBookRotation: [number, number, number] = isMobile
+  const macBookRotation: [number, number, number] = IsTabletOrMobile
     ? [0.1, -0.2, 0]
     : [0.25, -1, 0];
 

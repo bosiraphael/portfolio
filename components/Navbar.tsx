@@ -8,7 +8,7 @@ import MenuButton from "./MenuButton";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
-  const isMobile = useMediaQuery("(max-width:1024px)");
+  const IsTabletOrMobile = useMediaQuery("(max-width:1024px)");
 
   const { t } = useTranslation("navbar");
 
@@ -18,9 +18,11 @@ const Navbar = () => {
 
   return (
     <>
-      {isMobile && <MenuButton isOpened={isOpened} setIsOpened={setIsOpened} />}
+      {IsTabletOrMobile && (
+        <MenuButton isOpened={isOpened} setIsOpened={setIsOpened} />
+      )}
       <AnimatePresence>
-        {(!isMobile || isOpened) && (
+        {(!IsTabletOrMobile || isOpened) && (
           <motion.nav
             className="navbar"
             ref={navbarRef}
@@ -28,7 +30,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <NavBarContent t={t} isMobile={isMobile} />
+            <NavBarContent t={t} IsTabletOrMobile={IsTabletOrMobile} />
           </motion.nav>
         )}
       </AnimatePresence>
@@ -38,10 +40,10 @@ const Navbar = () => {
 
 const NavBarContent = ({
   t,
-  isMobile,
+  IsTabletOrMobile,
 }: {
   t: (key: string) => string;
-  isMobile: boolean;
+  IsTabletOrMobile: boolean;
 }) => {
   return (
     <>
@@ -49,8 +51,8 @@ const NavBarContent = ({
         <Image
           src="/icons/rb.svg"
           alt="Raphaël Bosi's logo"
-          width={isMobile ? 80 : 40}
-          height={isMobile ? 80 : 40}
+          width={IsTabletOrMobile ? 80 : 40}
+          height={IsTabletOrMobile ? 80 : 40}
           className="navbar__logo"
         />
       </Link>

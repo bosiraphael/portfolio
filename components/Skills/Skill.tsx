@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styles from "../../styles/Section.module.scss";
 
-const EducationWorkItem = ({
+const Skill = ({
   title,
   description,
 }: {
@@ -45,4 +45,4 @@ const EducationWorkItem = ({
   );
 };
 
-export default EducationWorkItem;
+export default Skill;

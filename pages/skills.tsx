@@ -1,7 +1,5 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Navbar from "../components/Navbar";
 import Skills from "../components/Skills/Skills";
-import styles from "../styles/Section.module.scss";
 
 const SkillsPage = () => {
   return (
