@@ -1,6 +1,6 @@
 import styles from "../../styles/Section.module.scss";
 
-const SkillsNavbar = ({ activeScene }) => {
+const SkillsNavbar = ({ activeScene }: { activeScene: number }) => {
   return (
     <nav className={styles.skillsNavbar}>
       <ul>
@@ -15,7 +15,7 @@ const SkillsNavbar = ({ activeScene }) => {
           </a>
         </li>
         <li>
-          <a href="#mobileDevelopment">
+          <a href="#development">
             <Circle filled={activeScene === 2} />
           </a>
         </li>

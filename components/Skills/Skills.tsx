@@ -13,6 +13,8 @@ const skillsScenes = [
   OthersScene,
 ];
 
+const skillsIds = ["dataScience", "webDevelopment", "development", "design"];
+
 const Skills = () => {
   const [activeScene, setActiveScene] = useState(0);
   return (
@@ -25,6 +27,7 @@ const Skills = () => {
           scrollSnapType: "y mandatory",
           scrollMarginTop: "6rem",
           overflowY: "scroll",
+          scrollBehavior: "smooth",
         }}
         onScroll={(e) => {
           const scrollY = e.currentTarget.scrollTop;
@@ -44,6 +47,7 @@ const Skills = () => {
             return (
               <div
                 key={index}
+                id={skillsIds[index]}
                 className={styles.skill}
                 style={{
                   scrollSnapAlign: "center",
