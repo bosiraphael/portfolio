@@ -103,18 +103,15 @@
   }
 }
 
-.skillsNavbar {
+.skills__navbar {
   position: fixed;
   top: 50%;
   left: 4rem;
   transform: translateY(-50%);
   display: flex;
   z-index: 100;
-  background-color: var(--color-primary);
-  border-radius: 3rem;
-  background-color: #fff;
+  background: transparent;
   color: var(--color-primary);
-  box-shadow: 0 8px 32px 0 var(--color-gray-400);
   height: 25%;
   padding: 1rem 2rem;
   margin-top: 3rem;
@@ -238,6 +235,11 @@
       transform: translateY(0);
       width: 100%;
       height: 6rem;
+    }
+
+    &__navbar {
+      padding: 0.5rem;
+      left: 2rem;
     }
   }
 }

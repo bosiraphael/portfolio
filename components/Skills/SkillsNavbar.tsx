@@ -1,8 +1,9 @@
 import styles from "../../styles/Section.module.scss";
+import { useMediaQuery } from "@mui/material";
 
 const SkillsNavbar = ({ activeScene }: { activeScene: number }) => {
   return (
-    <nav className={styles.skillsNavbar}>
+    <nav className={styles.skills__navbar}>
       <ul>
         <li>
           <a href="#dataScience">
@@ -30,12 +31,16 @@ const SkillsNavbar = ({ activeScene }: { activeScene: number }) => {
 };
 
 const Circle = ({ filled }: { filled?: boolean }) => {
+  const isMobile = useMediaQuery("(max-width: 728px)");
+
   return (
     <span
       className="material-symbols-outlined"
       style={{
         fontVariationSettings: filled ? "'FILL' 1" : "'FILL' 0",
-        fontSize: "1.5rem",
+        fontSize: isMobile ? "1rem" : "1.5rem",
+        backgroundColor: "#fff",
+        borderRadius: "50%",
       }}
     >
       circle
