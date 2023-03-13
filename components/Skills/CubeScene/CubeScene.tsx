@@ -5,7 +5,7 @@ import { Vector3 } from "three";
 import dynamic from "next/dynamic";
 import { Html, MeshReflectorMaterial, Preload } from "@react-three/drei";
 import Skill from "../Skill";
-import { publish } from "../../event";
+import { publish, subscribe, unsubscribe } from "../../event";
 import crypto from "crypto";
 import styles from "../../../styles/Section.module.scss";
 import {
@@ -174,6 +174,25 @@ export default function CubeScene({
   const explosionName = "explosion" + uuid;
   const [buttonHovered, setButtonHovered] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [isExploding, setIsExploding] = useState(false);
+
+  useEffect(() => {
+    // change exploding state on explosion event
+    const startlistener = () => {
+      setIsExploding(true);
+    };
+    const endlistener = () => {
+      setIsExploding(false);
+    };
+
+    subscribe("start" + explosionName, startlistener);
+    subscribe("end" + explosionName, endlistener);
+
+    return () => {
+      unsubscribe("start" + explosionName, startlistener);
+      unsubscribe("end" + explosionName, endlistener);
+    };
+  }, [explosionName]);
 
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
@@ -219,6 +238,7 @@ export default function CubeScene({
               onClick={() => explosion(explosionName)}
               onMouseEnter={() => setButtonHovered(true)}
               onMouseLeave={() => setButtonHovered(false)}
+              disabled={isExploding}
             >
               Boom {buttonHovered ? "💥" : "💣"}
             </button>

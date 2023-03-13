@@ -82,9 +82,11 @@
 }
 
 .skill {
-  height: 80%;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  height: 100%;
+}
+
+.skills {
+  flex: 1;
 }
 
 .skillsNavbar {
