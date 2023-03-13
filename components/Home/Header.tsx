@@ -66,21 +66,7 @@ const Header = () => {
       <LaplandCanvas headerRef={headerRef} />
 
       <div className={styles.header}>
-        <div
-          style={{
-            fontSize: "8rem",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            fontWeight: 400,
-            textAlign: "center",
-            color: "white",
-            textShadow: "0 0 40px rgba(0,0,0,0.9)",
-            width: "100%",
-            pointerEvents: "none",
-          }}
-        >
+        <div className={styles.header__typewriterText}>
           <Typewriter
             options={{
               strings: ["Welcome", "Let's create something together!"],
@@ -89,19 +75,7 @@ const Header = () => {
             }}
           />
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "5fr 1fr 5fr",
-            alignItems: "center",
-            padding: "0 10rem",
-            width: "100%",
-            height: "20%",
-            position: "absolute",
-            bottom: 0,
-            textShadow: "0 0 10px rgba(255,255,255,0.5)",
-          }}
-        >
+        <div className={styles.header__name__container}>
           <motion.h1
             className={styles.heading}
             style={{

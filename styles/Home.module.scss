@@ -13,6 +13,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &__typewriterText {
+    font-size: 8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 400;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+    width: 80%;
+    pointer-events: none;
+  }
+
+  &__name__container {
+    display: grid;
+    grid-template-columns: 5fr 1fr 5fr;
+    align-items: center;
+    padding: 0 10rem;
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
 }
 
 .heading {
@@ -124,12 +150,23 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .header {
+    &__typewriterText {
+      top: 40%;
+      font-size: 5rem;
+    }
+    &__name__container {
+      padding: 0 5rem;
+      background-color: #fff;
+    }
+  }
+
   .heading {
     top: 40vh;
-    font-size: 5rem;
+    font-size: 3rem;
   }
   .subheading {
-    font-size: 2rem;
+    font-size: 1.6rem;
     top: 60vh;
   }
   .content {
